@@ -113,7 +113,7 @@ static GDT_GfxCardInfo gs_cardInfo[] =
     { GDT_HAINAN, 0x6664, 0x00, GDT_HW_GENERATION_SOUTHERNISLAND, false, "Hainan", "AMD Radeon R5 M200 Series" },
     { GDT_HAINAN, 0x6665, 0x00, GDT_HW_GENERATION_SOUTHERNISLAND, false, "Hainan", "AMD Radeon R5 M230 Series" },
     { GDT_HAINAN, 0x6665, 0x83, GDT_HW_GENERATION_SOUTHERNISLAND, false, "Hainan", "AMD Radeon (TM) R5 M320" },
-    { GDT_HAINAN, 0x6665, 0xC3, GDT_HW_GENERATION_SOUTHERNISLAND, false, "Hainan", "AMD Radeon R5 M430" },
+    { GDT_HAINAN, 0x6665, 0xC3, GDT_HW_GENERATION_SOUTHERNISLAND, false, "Hainan", "AMD Radeon R5 M435" },
     { GDT_HAINAN, 0x6666, 0x00, GDT_HW_GENERATION_SOUTHERNISLAND, false, "Hainan", "AMD Radeon R5 M200 Series" },
     { GDT_HAINAN, 0x6667, 0x00, GDT_HW_GENERATION_SOUTHERNISLAND, false, "Hainan", "AMD Radeon R5 M200 Series" },
     { GDT_HAINAN, 0x6667, 0x83, GDT_HW_GENERATION_SOUTHERNISLAND, false, "Hainan", "EXO ULP (6667)" },
@@ -232,7 +232,7 @@ static GDT_GfxCardInfo gs_cardInfo[] =
     { GDT_KALINDI, 0x9853, 0x40, GDT_HW_GENERATION_SEAISLAND, true, "Mullins", "AMD Radeon(TM) R2 Graphics" },
 
     // Mullins
-    { GDT_KALINDI, 0x9853, 0x08, GDT_HW_GENERATION_SEAISLAND, true, "Mullins", "AMD Radeon R1E Graphics?" },
+    { GDT_KALINDI, 0x9853, 0x08, GDT_HW_GENERATION_SEAISLAND, true, "Mullins", "AMD Radeon R1E Graphics" },
     { GDT_KALINDI, 0x9854, 0x00, GDT_HW_GENERATION_SEAISLAND, true, "Mullins", "AMD Radeon(TM) R3 Graphics" },
     { GDT_KALINDI, 0x9854, 0x01, GDT_HW_GENERATION_SEAISLAND, true, "Mullins", "AMD Radeon(TM) R3E Graphics" },
     { GDT_KALINDI, 0x9854, 0x02, GDT_HW_GENERATION_SEAISLAND, true, "Mullins", "AMD Radeon(TM) R3 Graphics" },
@@ -305,19 +305,19 @@ static GDT_GfxCardInfo gs_cardInfo[] =
     { GDT_CARRIZO_EMB, 0x9874, 0x87, GDT_HW_GENERATION_VOLCANICISLAND, true, "Carrizo", "AMD Radeon R5 Graphics" },
     { GDT_CARRIZO_EMB, 0x9874, 0x88, GDT_HW_GENERATION_VOLCANICISLAND, true, "Carrizo", "AMD Radeon R7E Graphics" },
     { GDT_CARRIZO_EMB, 0x9874, 0x89, GDT_HW_GENERATION_VOLCANICISLAND, true, "Carrizo", "AMD Radeon R6E Graphics" },
-    { GDT_CARRIZO, 0x9874, 0xC8, GDT_HW_GENERATION_VOLCANICISLAND, true, "Carrizo", "AMD Radeon R7 Graphics" },
-    { GDT_CARRIZO, 0x9874, 0xC9, GDT_HW_GENERATION_VOLCANICISLAND, true, "Carrizo", "AMD Radeon R7 Graphics" },
-    { GDT_CARRIZO, 0x9874, 0xCA, GDT_HW_GENERATION_VOLCANICISLAND, true, "Carrizo", "AMD Radeon R5 Graphics" },
-    { GDT_CARRIZO, 0x9874, 0xCB, GDT_HW_GENERATION_VOLCANICISLAND, true, "Carrizo", "AMD Radeon R5 Graphics" },
-    { GDT_CARRIZO, 0x9874, 0xCC, GDT_HW_GENERATION_VOLCANICISLAND, true, "Carrizo", "AMD Radeon R7 Graphics" },
-    { GDT_CARRIZO, 0x9874, 0xCD, GDT_HW_GENERATION_VOLCANICISLAND, true, "Carrizo", "AMD Radeon R7 Graphics" },
-    { GDT_CARRIZO, 0x9874, 0xCE, GDT_HW_GENERATION_VOLCANICISLAND, true, "Carrizo", "AMD Radeon R5 Graphics" },
-    { GDT_CARRIZO, 0x9874, 0xE1, GDT_HW_GENERATION_VOLCANICISLAND, true, "Carrizo", "AMD Radeon R7 Graphics" },
-    { GDT_CARRIZO, 0x9874, 0xE2, GDT_HW_GENERATION_VOLCANICISLAND, true, "Carrizo", "AMD Radeon R7 Graphics" },
-    { GDT_CARRIZO, 0x9874, 0xE3, GDT_HW_GENERATION_VOLCANICISLAND, true, "Carrizo", "AMD Radeon R7 Graphics" },
-    { GDT_CARRIZO, 0x9874, 0xE4, GDT_HW_GENERATION_VOLCANICISLAND, true, "Carrizo", "AMD Radeon R7 Graphics" },
-    { GDT_CARRIZO, 0x9874, 0xE5, GDT_HW_GENERATION_VOLCANICISLAND, true, "Carrizo", "AMD Radeon R5 Graphics" },
-    { GDT_CARRIZO, 0x9874, 0xE6, GDT_HW_GENERATION_VOLCANICISLAND, true, "Carrizo", "AMD Radeon R5 Graphics" },
+    { GDT_CARRIZO, 0x9874, 0xC8, GDT_HW_GENERATION_VOLCANICISLAND, true, "Bristol Ridge", "AMD Radeon R7 Graphics" },
+    { GDT_CARRIZO, 0x9874, 0xC9, GDT_HW_GENERATION_VOLCANICISLAND, true, "Bristol Ridge", "AMD Radeon R7 Graphics" },
+    { GDT_CARRIZO, 0x9874, 0xCA, GDT_HW_GENERATION_VOLCANICISLAND, true, "Bristol Ridge", "AMD Radeon R5 Graphics" },
+    { GDT_CARRIZO, 0x9874, 0xCB, GDT_HW_GENERATION_VOLCANICISLAND, true, "Bristol Ridge", "AMD Radeon R5 Graphics" },
+    { GDT_CARRIZO, 0x9874, 0xCC, GDT_HW_GENERATION_VOLCANICISLAND, true, "Bristol Ridge", "AMD Radeon R7 Graphics" },
+    { GDT_CARRIZO, 0x9874, 0xCD, GDT_HW_GENERATION_VOLCANICISLAND, true, "Bristol Ridge", "AMD Radeon R7 Graphics" },
+    { GDT_CARRIZO, 0x9874, 0xCE, GDT_HW_GENERATION_VOLCANICISLAND, true, "Bristol Ridge", "AMD Radeon R5 Graphics" },
+    { GDT_CARRIZO, 0x9874, 0xE1, GDT_HW_GENERATION_VOLCANICISLAND, true, "Bristol Ridge", "AMD Radeon R7 Graphics" },
+    { GDT_CARRIZO, 0x9874, 0xE2, GDT_HW_GENERATION_VOLCANICISLAND, true, "Bristol Ridge", "AMD Radeon R7 Graphics" },
+    { GDT_CARRIZO, 0x9874, 0xE3, GDT_HW_GENERATION_VOLCANICISLAND, true, "Bristol Ridge", "AMD Radeon R7 Graphics" },
+    { GDT_CARRIZO, 0x9874, 0xE4, GDT_HW_GENERATION_VOLCANICISLAND, true, "Bristol Ridge", "AMD Radeon R7 Graphics" },
+    { GDT_CARRIZO, 0x9874, 0xE5, GDT_HW_GENERATION_VOLCANICISLAND, true, "Bristol Ridge", "AMD Radeon R5 Graphics" },
+    { GDT_CARRIZO, 0x9874, 0xE6, GDT_HW_GENERATION_VOLCANICISLAND, true, "Bristol Ridge", "AMD Radeon R5 Graphics" },
 
     { GDT_CARRIZO, 0x9875, 0x00, GDT_HW_GENERATION_VOLCANICISLAND, true, "Carrizo", "CARRIZO 9875" },
     { GDT_CARRIZO, 0x9876, 0x00, GDT_HW_GENERATION_VOLCANICISLAND, true, "Carrizo", "CARRIZO 9876" },
@@ -350,49 +350,56 @@ static GDT_GfxCardInfo gs_cardInfo[] =
     { GDT_STONEY, 0x98E4, 0xD4, GDT_HW_GENERATION_VOLCANICISLAND, true, "Stoney", "AMD Radeon(TM) R2 Graphics" },
     { GDT_STONEY, 0x98E4, 0xD9, GDT_HW_GENERATION_VOLCANICISLAND, true, "Stoney", "AMD Radeon(TM) R5 Graphics" },
     { GDT_STONEY, 0x98E4, 0xDA, GDT_HW_GENERATION_VOLCANICISLAND, true, "Stoney", "AMD Radeon(TM) R5 Graphics" },
-    { GDT_STONEY, 0x98E4, 0xE1, GDT_HW_GENERATION_VOLCANICISLAND, true, "Stoney", "AMD Radeon(TM) R5 Graphics" },
-    { GDT_STONEY, 0x98E4, 0xE2, GDT_HW_GENERATION_VOLCANICISLAND, true, "Stoney", "AMD Radeon(TM) R5 Graphics" },
+    { GDT_STONEY, 0x98E4, 0xDB, GDT_HW_GENERATION_VOLCANICISLAND, true, "Stoney", "AMD Radeon(TM) R3 Graphics" },
+    { GDT_STONEY, 0x98E4, 0xE1, GDT_HW_GENERATION_VOLCANICISLAND, true, "Stoney", "AMD Radeon(TM) R3 Graphics" },
+    { GDT_STONEY, 0x98E4, 0xE2, GDT_HW_GENERATION_VOLCANICISLAND, true, "Stoney", "AMD Radeon(TM) R3 Graphics" },
     { GDT_STONEY, 0x98E4, 0xE9, GDT_HW_GENERATION_VOLCANICISLAND, true, "Stoney", "AMD Radeon(TM) R4 Graphics" },
     { GDT_STONEY, 0x98E4, 0xEA, GDT_HW_GENERATION_VOLCANICISLAND, true, "Stoney", "AMD Radeon(TM) R4 Graphics" },
 
     // Ellesmere
-    { GDT_ELLESMERE, 0x67C0, 0x00, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "67C0:00" },
-    { GDT_ELLESMERE, 0x67C1, 0x00, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "67C1:C0" },
-    { GDT_ELLESMERE, 0x67C2, 0x00, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "67C2:C0" },
-    { GDT_ELLESMERE, 0x67C4, 0x00, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "67C4:C0" },
-    { GDT_ELLESMERE, 0x67C7, 0x00, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "67C7:C0" },
+    { GDT_ELLESMERE, 0x67C0, 0x00, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "Radeon (TM) Pro WX 7100 Graphics" },
+    { GDT_ELLESMERE, 0x67C0, 0x80, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "AMD Radeon (TM) E9550" },
+    { GDT_ELLESMERE, 0x67C1, 0x00, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "67C1:00" },
+    { GDT_ELLESMERE, 0x67C2, 0x00, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "67C2:00" },
+    { GDT_ELLESMERE, 0x67C2, 0x01, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "67C2:01" },
+    { GDT_ELLESMERE, 0x67C2, 0x02, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "67C2:02" },
+    { GDT_ELLESMERE, 0x67C4, 0x00, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "Radeon (TM) Pro WX 7100 Graphics" },
+    { GDT_ELLESMERE, 0x67C7, 0x00, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "Radeon (TM) Pro WX 5100 Graphics" },
     { GDT_ELLESMERE, 0x67DF, 0x04, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "67DF:04" },
     { GDT_ELLESMERE, 0x67DF, 0x05, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "67DF:05" },
     { GDT_ELLESMERE, 0x67DF, 0xC0, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "67DF:C0" },
-    { GDT_ELLESMERE, 0x67DF, 0xC4, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "67DF:C4" },
-    { GDT_ELLESMERE, 0x67DF, 0xC5, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "67DF:C5" },
+    { GDT_ELLESMERE, 0x67DF, 0xC4, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "Radeon (TM) RX 480 Graphics" },
+    { GDT_ELLESMERE, 0x67DF, 0xC5, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "Radeon (TM) RX 470 Graphics" },
+    { GDT_ELLESMERE, 0x67DF, 0xC6, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "67DF:C6" },
     { GDT_ELLESMERE, 0x67DF, 0xC7, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "Radeon (TM) RX 480 Graphics" },
     { GDT_ELLESMERE, 0x67DF, 0xCC, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "67DF:CC" },
     { GDT_ELLESMERE, 0x67DF, 0xCD, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "67DF:CD" },
     { GDT_ELLESMERE, 0x67DF, 0xCF, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "Radeon (TM) RX 470 Graphics" },
 
     // Baffin
-    { GDT_BAFFIN, 0x67E0, 0x00, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "67E0:00" },
-    { GDT_BAFFIN, 0x67E3, 0x00, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "67E3:00" },
-    { GDT_BAFFIN, 0x67E8, 0x00, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "67E8:00" },
-    { GDT_BAFFIN, 0x67EB, 0x00, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "67EB:00" },
-    { GDT_BAFFIN, 0x67EF, 0xC0, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "67EF:C0" },
+    { GDT_BAFFIN, 0x67E0, 0x00, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "Radeon (TM) Pro WX Series" },
+    { GDT_BAFFIN, 0x67E3, 0x00, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "Radeon (TM) Pro WX 4100" },
+    { GDT_BAFFIN, 0x67E8, 0x00, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "Radeon (TM) Pro WX Series" },
+    { GDT_BAFFIN, 0x67E8, 0x01, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "Radeon (TM) Pro WX Series" },
+    { GDT_BAFFIN, 0x67E8, 0x80, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "AMD Radeon (TM) E9260" },
+    { GDT_BAFFIN, 0x67EB, 0x00, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "Radeon (TM) Pro WX Series" },
+    { GDT_BAFFIN, 0x67EF, 0xC0, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "AMD Radeon Pro 460" },
     { GDT_BAFFIN, 0x67EF, 0xC1, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "Radeon(TM) RX 460 Graphics" },
     { GDT_BAFFIN, 0x67EF, 0xC3, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "67EF:C3" },
-    { GDT_BAFFIN, 0x67EF, 0xC5, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "67EF:C5" },
-    { GDT_BAFFIN, 0x67EF, 0xC7, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "67EF:C7" },
+    { GDT_BAFFIN, 0x67EF, 0xC5, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "Radeon(TM) RX 460 Graphics" },
+    { GDT_BAFFIN, 0x67EF, 0xC7, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "AMD Radeon Pro 455" },
     { GDT_BAFFIN, 0x67EF, 0xCF, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "Radeon(TM) RX 460 Graphics" },
-    { GDT_BAFFIN, 0x67EF, 0xEF, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "67EF:EF" },
+    { GDT_BAFFIN, 0x67EF, 0xEF, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "AMD Radeon Pro 450" },
     { GDT_BAFFIN, 0x67FF, 0x08, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "67FF:08" },
-    { GDT_BAFFIN, 0x67FF, 0xC0, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "67FF:C0" },
-    { GDT_BAFFIN, 0x67FF, 0xC1, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "67FF:C1" },
+    { GDT_BAFFIN, 0x67FF, 0xC0, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "AMD Radeon Pro 465" },
+    { GDT_BAFFIN, 0x67FF, 0xC1, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "Radeon(TM) RX 460 Graphics" },
 };
 
-/// NOTE: Don't update the table below, it's generated from the csv file.
+/// NOTE: Don't update the table below, it's generated from the deviceinfo.csv file.
 /// How to update this table:
-/// 1. Update device info in the CSV file
+/// 1. Update device info in the deviceinfo.csv file
 /// 2. Run deviceinfogen.exe
-/// 3. Replace GDT_DeviceInfo gs_deviceInfo[] in DeviceInfo.cpp with the content of generated file device_info_table.txt
+/// 3. Replace GDT_DeviceInfo gs_deviceInfo[] below with the gs_deviceInfo declaration in the generated file device_info_table.txt
 static GDT_DeviceInfo gs_deviceInfo[] =
 {
     { 2, 10, 1, 8, 2, 64, 2, 7, 4, true }, // GDT_TAHITI_PRO
@@ -418,6 +425,8 @@ static GDT_DeviceInfo gs_deviceInfo[] =
     { 1, 10, 1, 8, 1, 64, 1, 3, 4, true }, // GDT_STONEY
     { 4, 8, 1, 8, 4, 64, 1, 9, 4, true }, // GDT_ELLESMERE
     { 2, 8, 1, 8, 2, 64, 1, 8, 4, true }, // GDT_BAFFIN
+    { 0, 0, 0, 0, 0, 0, 0, 0, 0, false }, // GDT_GFX8_0_4 placeholder
+    { 0, 0, 0, 0, 0, 0, 0, 0, 0, false }, // GDT_GFX9_0_0 placeholder
 };
 
 static size_t gs_cardInfoSize = sizeof(gs_cardInfo) / sizeof(GDT_GfxCardInfo);

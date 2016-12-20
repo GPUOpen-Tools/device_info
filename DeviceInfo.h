@@ -40,6 +40,8 @@ enum GDT_HW_ASIC_TYPE
     GDT_STONEY,               ///< STONEY APU
     GDT_ELLESMERE,            ///< ELLESMERE GPU
     GDT_BAFFIN,               ///< BAFFIN GPU
+    GDT_GFX8_0_4,             ///< GFX8_0_4 GPU
+    GDT_GFX9_0_0,             ///< GFX9_0_0 GPU
     GDT_LAST                  ///< last
 };
 
@@ -55,6 +57,7 @@ enum GDT_HW_GENERATION
     GDT_HW_GENERATION_FIRST_AMD = GDT_HW_GENERATION_SOUTHERNISLAND,   ///< first AMD generation
     GDT_HW_GENERATION_SEAISLAND,                                      ///< GFX IP 7
     GDT_HW_GENERATION_VOLCANICISLAND,                                 ///< GFX IP 8
+    GDT_HW_GENERATION_GFX9,                                           ///< GFX IP 9
     GDT_HW_GENERATION_LAST
 };
 
