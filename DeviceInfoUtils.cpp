@@ -626,6 +626,17 @@ bool AMDTDeviceInfoUtils::GetHardwareGeneration(const char* szName, GDT_HW_GENER
     }
 }
 
+void AMDTDeviceInfoUtils::GetAllCards(std::vector<GDT_GfxCardInfo>& cardList) const
+{
+    cardList.clear();
+    cardList.reserve(gs_cardInfoSize);
+
+    for(size_t i = 0ULL; i < gs_cardInfoSize; ++i)
+    {
+        cardList.push_back(gs_cardInfo[i]);
+    }
+}
+
 bool AMDTDeviceInfoUtils::GetAllCardsInHardwareGeneration(GDT_HW_GENERATION gen, std::vector<GDT_GfxCardInfo>& cardList) const
 {
     cardList.clear();
