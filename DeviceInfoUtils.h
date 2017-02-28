@@ -108,6 +108,10 @@ public:
     /// \return True if device info is found
     bool GetHardwareGeneration(const char* szCALDeviceName, GDT_HW_GENERATION& gen) const;
 
+    /// Get all cards in all hardware generations.
+    /// \param[out] cardList Output vector of all graphics card info.
+    void GetAllCards(std::vector<GDT_GfxCardInfo>& cardList) const;
+
     /// Get all cards from the specified hardware generation
     /// \param[in] gen Hardware generation
     /// \param[out] cardList Output vector of graphics card info.
