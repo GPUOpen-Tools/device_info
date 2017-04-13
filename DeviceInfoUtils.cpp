@@ -706,6 +706,34 @@ std::string AMDTDeviceInfoUtils::TranslateDeviceName(const char* strDeviceName) 
     return retVal;
 }
 
+bool AMDTDeviceInfoUtils::GfxIPVerToHwGeneration(size_t gfxIPVer, GDT_HW_GENERATION& hwGen)
+{
+    hwGen = static_cast<GDT_HW_GENERATION>(gfxIPVer - ms_gfxToGdtHwGenConversionFactor);
+
+    bool retVal = hwGen >= GDT_HW_GENERATION_FIRST_AMD && hwGen < GDT_HW_GENERATION_LAST;
+
+    if (!retVal)
+    {
+        hwGen = GDT_HW_GENERATION_NONE;
+    }
+
+    return retVal;
+}
+
+bool AMDTDeviceInfoUtils::HwGenerationToGfxIPVer(GDT_HW_GENERATION hwGen, size_t& gfxIPVer)
+{
+    gfxIPVer = 0;
+
+    bool retVal = hwGen >= GDT_HW_GENERATION_FIRST_AMD && hwGen < GDT_HW_GENERATION_LAST;
+
+    if (retVal)
+    {
+        gfxIPVer = static_cast<size_t>(hwGen) + ms_gfxToGdtHwGenConversionFactor;
+    }
+
+    return retVal;
+}
+
 AMDTDeviceInfoUtils* AMDTDeviceInfoUtils::ms_pInstance = nullptr;
 AMDTDeviceInfoManager AMDTDeviceInfoManager::ms_instance;
 

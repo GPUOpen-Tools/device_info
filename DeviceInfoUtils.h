@@ -204,6 +204,18 @@ public:
     /// \return the true device name as exposed by the device info table.
     std::string TranslateDeviceName(const char* strDeviceName) const;
 
+    /// Converts gfxIPVersion to GDT_HW_GENERATION
+    /// \param gfxIPVer the graphics IP version whose corresponding GDT_HW_GENERATION is needed
+    /// \param[out] hwGen the GDT_HW_GENERATION that corresponds to the specified graphics IP version
+    /// \return true on success, false if there is no equivalent GDT_HW_GENERATION
+    bool GfxIPVerToHwGeneration(size_t gfxIPVer, GDT_HW_GENERATION& hwGen);
+
+    /// Converts GDT_HW_GENERATION to gfxIPVersion
+    /// \param hwGen the GDT_HW_GENERATION whose corresponding graphics IP version is needed
+    /// \param[out] gfxIPVer the graphics IP version that corresponds to the specified GDT_HW_GENERATION
+    /// \return true on success, false if there is no equivalent graphics IP version
+    bool HwGenerationToGfxIPVer(GDT_HW_GENERATION hwGen, size_t& gfxIPVer);
+
 private:
     /// private constructor
     AMDTDeviceInfoUtils() : m_pDeviceNameTranslatorFunction(nullptr) {}
@@ -238,15 +250,17 @@ private:
     typedef std::map<GDT_HW_ASIC_TYPE, GDT_DeviceInfo> ASICTypeDeviceInfoMap;          ///< typedef for map from asic type to device info
     typedef std::pair<GDT_HW_ASIC_TYPE, GDT_DeviceInfo> ASICTypeDeviceInfoMapPair;     ///< typedef for asic type / device info pair
 
-    DeviceIDMap           m_deviceIDMap;            ///< device ID to card info map.
-    DeviceNameMap         m_deviceNameMap;          ///< cal device name to card info map.
-    DeviceNameMap         m_deviceMarketingNameMap; ///< marketing device name to card info map.
-    DeviceHWGenerationMap m_deviceHwGenerationMap;  ///< hardware generation to card info map.
-    ASICTypeDeviceInfoMap m_asicTypeDeviceInfoMap;  ///< ASIC type to device info map.
+    DeviceIDMap           m_deviceIDMap;                                               ///< device ID to card info map.
+    DeviceNameMap         m_deviceNameMap;                                             ///< cal device name to card info map.
+    DeviceNameMap         m_deviceMarketingNameMap;                                    ///< marketing device name to card info map.
+    DeviceHWGenerationMap m_deviceHwGenerationMap;                                     ///< hardware generation to card info map.
+    ASICTypeDeviceInfoMap m_asicTypeDeviceInfoMap;                                     ///< ASIC type to device info map.
 
-    DeviceNameTranslatorFunction m_pDeviceNameTranslatorFunction; /// the function to call to translate device names
+    DeviceNameTranslatorFunction m_pDeviceNameTranslatorFunction;                      ///< the function to call to translate device names
 
-    static AMDTDeviceInfoUtils* ms_pInstance;
+    static AMDTDeviceInfoUtils* ms_pInstance;                                          ///< singleton instance
+
+    static const unsigned int ms_gfxToGdtHwGenConversionFactor = 3;                    /// factor to apply when converting between GFX IP version and GDT_HW_GENERATION
 };
 
 //------------------------------------------------------------------------------------
