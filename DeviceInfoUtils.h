@@ -150,6 +150,15 @@ public:
         }
     }
 
+    /// Determine if the specified device is a member of the Gfx9 family
+    /// \param[in] szCALDeviceName CAL device name
+    /// \param[out] bIsGfx9 Set to true if input device name is a member of the Gfx9 family
+    /// \return false if device name is not found
+    bool IsGfx9Family(const char* szCALDeviceName, bool& bIsGfx9) const
+    {
+        return IsXFamily(szCALDeviceName, GDT_HW_GENERATION_GFX9, bIsGfx9);
+    }
+
     /// Determine if the specified device is a member of the VI family
     /// \param[in] szCALDeviceName CAL device name
     /// \param[out] bIsVI Set to true if input device name is a member of the VI family
@@ -184,7 +193,12 @@ public:
     bool IsGCN(const char* szCALDeviceName, bool& bIsGCN) const
     {
         bIsGCN = false;
-        bool bRet = IsVIFamily(szCALDeviceName, bIsGCN);
+        bool bRet = IsGfx9Family(szCALDeviceName, bIsGCN);
+
+        if (!bIsGCN)
+        {
+            bRet = IsVIFamily(szCALDeviceName, bIsGCN);
+        }
 
         if (!bIsGCN)
         {

@@ -42,6 +42,11 @@ enum GDT_HW_ASIC_TYPE
     GDT_BAFFIN,               ///< BAFFIN GPU
     GDT_GFX8_0_4,             ///< GFX8_0_4 GPU
     GDT_GFX9_0_0,             ///< GFX9_0_0 GPU
+    GDT_ASIC_PLACEHOLDER_1,   ///< Placeholder for future ASIC
+    GDT_ASIC_PLACEHOLDER_2,   ///< Placeholder for future ASIC
+    GDT_ASIC_PLACEHOLDER_3,   ///< Placeholder for future ASIC
+    GDT_ASIC_PLACEHOLDER_4,   ///< Placeholder for future ASIC
+    GDT_ASIC_PLACEHOLDER_5,   ///< Placeholder for future ASIC
     GDT_LAST                  ///< last
 };
 
