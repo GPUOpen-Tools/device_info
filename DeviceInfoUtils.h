@@ -50,6 +50,10 @@ public:
     /// \param cardInfo the card being added
     void AddDevice(const GDT_GfxCardInfo& cardInfo);
 
+    /// Removes the specified card info
+    /// \param cardInfo the card being removed
+    void RemoveDevice(const GDT_GfxCardInfo& cardInfo);
+
     /// Function pointer type for a function that will translate device names
     typedef std::string(*DeviceNameTranslatorFunction)(const char* strDeviceName);
 
