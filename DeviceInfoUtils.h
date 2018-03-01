@@ -1,5 +1,5 @@
 //==============================================================================
-// Copyright (c) 2010-2016 Advanced Micro Devices, Inc. All rights reserved.
+// Copyright (c) 2010-2018 Advanced Micro Devices, Inc. All rights reserved.
 /// \author AMD Developer Tools Team
 /// \file
 /// \brief  Device info utils class
@@ -123,7 +123,7 @@ public:
     bool GetAllCardsInHardwareGeneration(GDT_HW_GENERATION gen, std::vector<GDT_GfxCardInfo>& cardList) const;
 
     /// Get all cards with the specified device id
-    /// \param[in] deviceId DeviceId
+    /// \param[in] deviceID DeviceId
     /// \param[out] cardList Output vector of graphics card info.
     /// \return true if successful, false otherwise
     bool GetAllCardsWithDeviceId(size_t deviceID, std::vector<GDT_GfxCardInfo>& cardList) const;
@@ -226,20 +226,20 @@ public:
     /// \param gfxIPVer the graphics IP version whose corresponding GDT_HW_GENERATION is needed
     /// \param[out] hwGen the GDT_HW_GENERATION that corresponds to the specified graphics IP version
     /// \return true on success, false if there is no equivalent GDT_HW_GENERATION
-    bool GfxIPVerToHwGeneration(size_t gfxIPVer, GDT_HW_GENERATION& hwGen);
+    bool GfxIPVerToHwGeneration(size_t gfxIPVer, GDT_HW_GENERATION& hwGen) const;
 
     /// Converts GDT_HW_GENERATION to gfxIPVersion
     /// \param hwGen the GDT_HW_GENERATION whose corresponding graphics IP version is needed
     /// \param[out] gfxIPVer the graphics IP version that corresponds to the specified GDT_HW_GENERATION
     /// \return true on success, false if there is no equivalent graphics IP version
-    bool HwGenerationToGfxIPVer(GDT_HW_GENERATION hwGen, size_t& gfxIPVer);
+    bool HwGenerationToGfxIPVer(GDT_HW_GENERATION hwGen, size_t& gfxIPVer) const;
 
 private:
     /// private constructor
     AMDTDeviceInfoUtils() : m_pDeviceNameTranslatorFunction(nullptr) {}
 
     /// private destructor
-    virtual ~AMDTDeviceInfoUtils() {}
+    virtual ~AMDTDeviceInfoUtils() = default;
 
     //------------------------------------------------------------------------------------
     /// const char* comparer used in the DeviceNameMap below
@@ -299,7 +299,7 @@ private:
     AMDTDeviceInfoManager();
 
     /// Destructor
-    ~AMDTDeviceInfoManager();
+    ~AMDTDeviceInfoManager() = default;
 
     /// Locates and calls the device info utils function to initialize internal device info.
     /// This allows internal versions of the tools to expose hardware not exposed in the public

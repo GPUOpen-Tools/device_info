@@ -1,12 +1,12 @@
 //==============================================================================
-// Copyright (c) 2010-2016 Advanced Micro Devices, Inc. All rights reserved.
+// Copyright (c) 2010-2018 Advanced Micro Devices, Inc. All rights reserved.
 /// \author AMD Developer Tools Team
 /// \file
 /// \brief  Device info utils class
 //==============================================================================
 
 #ifdef _WIN32
-    #include <windows.h>
+    #include <Windows.h>
 #endif
 #ifdef _LINUX
     #include <dlfcn.h>
@@ -375,7 +375,13 @@ static GDT_GfxCardInfo gs_cardInfo[] =
     { GDT_GFX8_0_4, 0x699F, 0xC1, GDT_HW_GENERATION_VOLCANICISLAND, false, "gfx804", "Radeon 540 Series" },
     { GDT_GFX8_0_4, 0x699F, 0xC3, GDT_HW_GENERATION_VOLCANICISLAND, false, "gfx804", "Radeon 500 Series" },
     { GDT_GFX8_0_4, 0x699F, 0xC5, GDT_HW_GENERATION_VOLCANICISLAND, false, "gfx804", "699F:C5" },
-    { GDT_GFX8_0_4, 0x699F, 0xC7, GDT_HW_GENERATION_VOLCANICISLAND, false, "gfx804", "Radeon RX 550 Series" },
+    { GDT_GFX8_0_4, 0x699F, 0xC7, GDT_HW_GENERATION_VOLCANICISLAND, false, "gfx804", "Radeon 550 Series" },
+    { GDT_GFX8_0_4, 0x699F, 0xCF, GDT_HW_GENERATION_VOLCANICISLAND, false, "gfx804", "699F:CF" },
+
+    // VegaM
+    { GDT_VEGAM1, 0x694C, 0xC0, GDT_HW_GENERATION_VOLCANICISLAND, true, "gfx804", "Radeon RX Vega M GH Graphics" },
+    { GDT_VEGAM2, 0x694E, 0xC0, GDT_HW_GENERATION_VOLCANICISLAND, true, "gfx804", "Radeon RX Vega M GL Graphics" },
+    { GDT_VEGAM2, 0x694F, 0xC0, GDT_HW_GENERATION_VOLCANICISLAND, true, "gfx804", "694F:C0" },
 
     // GFX9_0_0
     { GDT_GFX9_0_0, 0x6860, 0x00, GDT_HW_GENERATION_GFX9, false, "gfx900", "Radeon Instinct MI25" },
@@ -401,21 +407,22 @@ static GDT_GfxCardInfo gs_cardInfo[] =
     { GDT_GFX9_0_0, 0x686C, 0x03, GDT_HW_GENERATION_GFX9, false, "gfx900", "686C:03" },
     { GDT_GFX9_0_0, 0x686C, 0x04, GDT_HW_GENERATION_GFX9, false, "gfx900", "686C:04" },
     { GDT_GFX9_0_0, 0x686C, 0xC1, GDT_HW_GENERATION_GFX9, false, "gfx900", "686C:C1" },
+    { GDT_GFX9_0_0, 0x687F, 0x01, GDT_HW_GENERATION_GFX9, false, "gfx900", "687F:01" },
     { GDT_GFX9_0_0, 0x687F, 0xC0, GDT_HW_GENERATION_GFX9, false, "gfx900", "Radeon RX Vega" },
     { GDT_GFX9_0_0, 0x687F, 0xC1, GDT_HW_GENERATION_GFX9, false, "gfx900", "Radeon RX Vega" },
     { GDT_GFX9_0_0, 0x687F, 0xC3, GDT_HW_GENERATION_GFX9, false, "gfx900", "Radeon RX Vega" },
     { GDT_GFX9_0_0, 0x687F, 0xC4, GDT_HW_GENERATION_GFX9, false, "gfx900", "687F:C4" },
-    { GDT_GFX9_0_0, 0x687F, 0xC7, GDT_HW_GENERATION_GFX9, false, "gfx900", "687F:C7" },
+    { GDT_GFX9_0_0, 0x687F, 0xC7, GDT_HW_GENERATION_GFX9, false, "gfx900", "Radeon RX Vega" },
 
     // GFX9_0_2
     { GDT_GFX9_0_2, 0x15DD, 0x00, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD 15DD Graphics" },
-    { GDT_GFX9_0_2, 0x15DD, 0x81, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD 15DD Graphics" },
-    { GDT_GFX9_0_2, 0x15DD, 0x82, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD 15DD Graphics" },
-    { GDT_GFX9_0_2, 0x15DD, 0x83, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD 15DD Graphics" },
-    { GDT_GFX9_0_2, 0x15DD, 0x84, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD 15DD Graphics" },
-    { GDT_GFX9_0_2, 0x15DD, 0x85, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD 15DD Graphics" },
+    { GDT_GFX9_0_2, 0x15DD, 0x82, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 8 Graphics" },
+    { GDT_GFX9_0_2, 0x15DD, 0x83, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 8 Graphics" },
+    { GDT_GFX9_0_2, 0x15DD, 0x84, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 6 Graphics" },
+    { GDT_GFX9_0_2, 0x15DD, 0x85, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 3 Graphics" },
     { GDT_GFX9_0_2, 0x15DD, 0x86, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD 15DD Graphics" },
     { GDT_GFX9_0_2, 0x15DD, 0x87, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD 15DD Graphics" },
+    { GDT_GFX9_0_2, 0x15DD, 0x88, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 8 Graphics" },
     { GDT_GFX9_0_2, 0x15DD, 0xC1, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD 15DD Graphics" },
     { GDT_GFX9_0_2, 0x15DD, 0xC2, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 8 Graphics" },
     { GDT_GFX9_0_2, 0x15DD, 0xC3, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) RX Vega 10 Graphics" },
@@ -429,6 +436,7 @@ static GDT_GfxCardInfo gs_cardInfo[] =
     { GDT_GFX9_0_2, 0x15DD, 0xCB, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 3 Graphics" },
     { GDT_GFX9_0_2, 0x15DD, 0xCC, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 6 Graphics" },
     { GDT_GFX9_0_2, 0x15DD, 0xCD, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD 15DD Graphics" },
+    { GDT_GFX9_0_2, 0x15DD, 0xCE, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 3 Graphics" },
     { GDT_GFX9_0_2, 0x15DD, 0xD0, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 10 Graphics" },
     { GDT_GFX9_0_2, 0x15DD, 0xD1, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 8 Graphics" },
     { GDT_GFX9_0_2, 0x15DD, 0xD2, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD 15DD Graphics" },
@@ -439,6 +447,8 @@ static GDT_GfxCardInfo gs_cardInfo[] =
     { GDT_GFX9_0_2, 0x15DD, 0xD7, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 8 Graphics" },
     { GDT_GFX9_0_2, 0x15DD, 0xD8, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 3 Graphics" },
     { GDT_GFX9_0_2, 0x15DD, 0xD9, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 6 Graphics" },
+    { GDT_GFX9_0_2, 0x15DD, 0xE1, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 3 Graphics" },
+    { GDT_GFX9_0_2, 0x15DD, 0xE2, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 3 Graphics" },
 };
 
 /// NOTE: Don't update the table below, it's generated from the deviceinfo.csv file.
@@ -472,6 +482,8 @@ static GDT_DeviceInfo gs_deviceInfo[] =
     { 4, 8, 1, 8, 4, 64, 1, 9, 4, true }, // GDT_ELLESMERE
     { 2, 8, 1, 8, 2, 64, 1, 8, 4, true }, // GDT_BAFFIN
     { 2, 8, 1, 8, 2, 64, 1, 5, 4, true }, // GDT_GFX8_0_4
+    { 4, 8, 1, 8, 4, 64, 1, 6, 4, true }, // GDT_VEGAM1
+    { 4, 8, 1, 8, 4, 64, 1, 5, 4, true }, // GDT_VEGAM2
     { 4, 10, 1, 8, 4, 64, 1, 16, 4, true }, // GDT_GFX9_0_0
     { 1, 10, 1, 8, 1, 64, 1, 11, 4, true }, // GDT_GFX9_0_2
     { 0, 0, 0, 0, 0, 0, 0, 0, 0, false }, // GDT_ASIC_PLACEHOLDER_1
@@ -500,9 +512,6 @@ AMDTDeviceInfoManager::AMDTDeviceInfoManager()
 
     CallInitInternalDeviceInfo();
 }
-
-AMDTDeviceInfoManager::~AMDTDeviceInfoManager()
-{}
 
 #ifdef _WIN32
     extern "C" IMAGE_DOS_HEADER __ImageBase;
@@ -602,9 +611,9 @@ bool AMDTDeviceInfoUtils::GetDeviceInfo(size_t deviceID, size_t revisionID, GDT_
     return found;
 }
 
-bool AMDTDeviceInfoUtils::GetDeviceInfo(const char* szCalName, vector<GDT_GfxCardInfo>& cardList) const
+bool AMDTDeviceInfoUtils::GetDeviceInfo(const char* szCALDeviceName, vector<GDT_GfxCardInfo>& cardList) const
 {
-    std::string strDeviceName = TranslateDeviceName(szCalName);
+    std::string strDeviceName = TranslateDeviceName(szCALDeviceName);
 
     cardList.clear();
     auto matches = m_deviceNameMap.equal_range(strDeviceName.c_str());
@@ -617,10 +626,10 @@ bool AMDTDeviceInfoUtils::GetDeviceInfo(const char* szCalName, vector<GDT_GfxCar
     return !cardList.empty();
 }
 
-bool AMDTDeviceInfoUtils::GetDeviceInfoMarketingName(const char* szMarketingName, vector<GDT_GfxCardInfo>& cardList) const
+bool AMDTDeviceInfoUtils::GetDeviceInfoMarketingName(const char* szMarketingDeviceName, vector<GDT_GfxCardInfo>& cardList) const
 {
     cardList.clear();
-    auto matches = m_deviceMarketingNameMap.equal_range(szMarketingName);
+    auto matches = m_deviceMarketingNameMap.equal_range(szMarketingDeviceName);
 
     for (auto it = matches.first; it != matches.second; ++it)
     {
@@ -773,7 +782,7 @@ std::string AMDTDeviceInfoUtils::TranslateDeviceName(const char* strDeviceName) 
     return retVal;
 }
 
-bool AMDTDeviceInfoUtils::GfxIPVerToHwGeneration(size_t gfxIPVer, GDT_HW_GENERATION& hwGen)
+bool AMDTDeviceInfoUtils::GfxIPVerToHwGeneration(size_t gfxIPVer, GDT_HW_GENERATION& hwGen) const
 {
     hwGen = static_cast<GDT_HW_GENERATION>(gfxIPVer - ms_gfxToGdtHwGenConversionFactor);
 
@@ -787,7 +796,7 @@ bool AMDTDeviceInfoUtils::GfxIPVerToHwGeneration(size_t gfxIPVer, GDT_HW_GENERAT
     return retVal;
 }
 
-bool AMDTDeviceInfoUtils::HwGenerationToGfxIPVer(GDT_HW_GENERATION hwGen, size_t& gfxIPVer)
+bool AMDTDeviceInfoUtils::HwGenerationToGfxIPVer(GDT_HW_GENERATION hwGen, size_t& gfxIPVer) const
 {
     gfxIPVer = 0;
 
