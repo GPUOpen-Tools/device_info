@@ -128,6 +128,12 @@ public:
     /// \return true if successful, false otherwise
     bool GetAllCardsWithDeviceId(size_t deviceID, std::vector<GDT_GfxCardInfo>& cardList) const;
 
+    /// Get all cards with the specified ASIC type
+    /// \param[in] asicType ASICType
+    /// \param[out] cardList Output vector of graphics card info.
+    /// \return true if successful, false otherwise
+    bool GetAllCardsWithAsicType(GDT_HW_ASIC_TYPE asicType, std::vector<GDT_GfxCardInfo>& cardList) const;
+
     /// Get hardware generation display name
     /// \param[in] gen Hardware generation
     /// \param[out] strGenerationDisplayName the display name for the specified hardware generation
@@ -259,6 +265,9 @@ private:
     typedef std::multimap<size_t, GDT_GfxCardInfo> DeviceIDMap;                        ///< typedef for map from device id to card info
     typedef std::pair<size_t, GDT_GfxCardInfo> DeviceIDMapPair;                        ///< typedef for device id / card info pair
 
+    typedef std::multimap<GDT_HW_ASIC_TYPE, GDT_GfxCardInfo> ASICTypeCardInfoMap;      ///< typedef for map from asic type to card info
+    typedef std::pair<GDT_HW_ASIC_TYPE, GDT_GfxCardInfo> ASICTypeCardInfoMapPair;      ///< typedef for asic type / card info pair
+
     typedef std::multimap<const char*, GDT_GfxCardInfo, cmp_str> DeviceNameMap;        ///< typedef for map from CAL device name to card info (with custom comparer)
     typedef std::pair<const char*, GDT_GfxCardInfo> DeviceNameMapPair;                 ///< typedef for device name / card info pair
 
@@ -269,6 +278,7 @@ private:
     typedef std::pair<GDT_HW_ASIC_TYPE, GDT_DeviceInfo> ASICTypeDeviceInfoMapPair;     ///< typedef for asic type / device info pair
 
     DeviceIDMap           m_deviceIDMap;                                               ///< device ID to card info map.
+    ASICTypeCardInfoMap   m_asicTypeCardInfoMap;                                       ///< ASIC type to card info map.
     DeviceNameMap         m_deviceNameMap;                                             ///< cal device name to card info map.
     DeviceNameMap         m_deviceMarketingNameMap;                                    ///< marketing device name to card info map.
     DeviceHWGenerationMap m_deviceHwGenerationMap;                                     ///< hardware generation to card info map.

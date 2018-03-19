@@ -724,6 +724,19 @@ bool AMDTDeviceInfoUtils::GetAllCardsWithDeviceId(size_t deviceID, std::vector<G
     return !cardList.empty();
 }
 
+bool AMDTDeviceInfoUtils::GetAllCardsWithAsicType(GDT_HW_ASIC_TYPE asicType, std::vector<GDT_GfxCardInfo>& cardList) const
+{
+    cardList.clear();
+    auto matches = m_asicTypeCardInfoMap.equal_range(asicType);
+
+    for (auto it = matches.first; it != matches.second; ++it)
+    {
+        cardList.push_back((*it).second);
+    }
+
+    return !cardList.empty();
+}
+
 bool AMDTDeviceInfoUtils::GetHardwareGenerationDisplayName(GDT_HW_GENERATION gen, std::string& strGenerationDisplayName) const
 {
     static const std::string s_SI_FAMILY_NAME    = "Graphics IP v6";
@@ -828,6 +841,7 @@ void AMDTDeviceInfoUtils::AddDeviceInfo(GDT_HW_ASIC_TYPE asicType, const GDT_Dev
 void AMDTDeviceInfoUtils::AddDevice(const GDT_GfxCardInfo& cardInfo)
 {
     m_deviceIDMap.insert(DeviceIDMapPair(cardInfo.m_deviceID, cardInfo));
+    m_asicTypeCardInfoMap.insert(ASICTypeCardInfoMapPair(cardInfo.m_asicType, cardInfo));
     m_deviceNameMap.insert(DeviceNameMapPair(cardInfo.m_szCALName, cardInfo));
     m_deviceMarketingNameMap.insert(DeviceNameMapPair(cardInfo.m_szMarketingName, cardInfo));
     m_deviceHwGenerationMap.insert(DeviceHWGenerationMapPair(cardInfo.m_generation, cardInfo));
@@ -840,6 +854,15 @@ void AMDTDeviceInfoUtils::RemoveDevice(const GDT_GfxCardInfo& cardInfo)
         if (it->first == cardInfo.m_deviceID && it->second.m_revID == cardInfo.m_revID)
         {
             m_deviceIDMap.erase(it);
+            break;
+        }
+    }
+
+    for (auto it = m_asicTypeCardInfoMap.begin(); it != m_asicTypeCardInfoMap.end(); ++it)
+    {
+        if (it->second.m_deviceID == cardInfo.m_deviceID && it->second.m_revID == cardInfo.m_revID)
+        {
+            m_asicTypeCardInfoMap.erase(it);
             break;
         }
     }
