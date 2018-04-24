@@ -100,6 +100,12 @@ public:
     /// \return True if device info is found
     bool IsAPU(const char* szCALDeviceName, bool& bIsAPU) const;
 
+    /// Query whether or not input device is APU or not
+    /// \param[in] deviceID the PCIE device ID
+    /// \param[out] isAPU flag indicating whether or not the specified device is an APU
+    /// \return True if device info is found
+    bool IsAPU(size_t deviceID, bool& isAPU) const;
+
     /// Get hardware generation from device ID
     /// \param[in] deviceID Device id
     /// \param[out] gen Hardware generation
@@ -160,6 +166,13 @@ public:
         }
     }
 
+    /// Determine if the specified device is a member of the specified family
+    /// \param[in] deviceID the PCIE device ID
+    /// \param[in] generation Generation enum
+    /// \param[out] bRes Set to true if input device name is a specified family card
+    /// \return false if device ID is not found
+    bool IsXFamily(size_t deviceID, GDT_HW_GENERATION generation, bool& isXFamily) const;
+
     /// Determine if the specified device is a member of the Gfx9 family
     /// \param[in] szCALDeviceName CAL device name
     /// \param[out] bIsGfx9 Set to true if input device name is a member of the Gfx9 family
@@ -168,6 +181,12 @@ public:
     {
         return IsXFamily(szCALDeviceName, GDT_HW_GENERATION_GFX9, bIsGfx9);
     }
+
+    /// Determine if the specified device is a member of the Gfx9 family
+    /// \param[in] deviceID the PCIE device ID
+    /// \param[out] isGfx9 Set to true if input device name is a member of the Gfx9 family
+    /// \return false if device ID is not found
+    bool IsGfx9Family(size_t deviceID, bool& isGfx9) const;
 
     /// Determine if the specified device is a member of the VI family
     /// \param[in] szCALDeviceName CAL device name
@@ -178,6 +197,12 @@ public:
         return IsXFamily(szCALDeviceName, GDT_HW_GENERATION_VOLCANICISLAND, bIsVI);
     }
 
+    /// Determine if the specified device is a member of the VI family
+    /// \param[in] deviceID the PCIE device ID
+    /// \param[out] isVI Set to true if input device name is a member of the VI family
+    /// \return false if device ID is not found
+    bool IsVIFamily(size_t deviceID, bool& isVI) const;
+
     /// Determine if the specified device is a member of the CI family
     /// \param[in] szCALDeviceName CAL device name
     /// \param[out] bIsCI Set to true if input device name is a member of the CI family
@@ -187,6 +212,12 @@ public:
         return IsXFamily(szCALDeviceName, GDT_HW_GENERATION_SEAISLAND, bIsCI);
     }
 
+    /// Determine if the specified device is a member of the CI family
+    /// \param[in] deviceID the PCIE device ID
+    /// \param[out] isCI Set to true if input device name is a member of the CI family
+    /// \return false if device ID is not found
+    bool IsCIFamily(size_t deviceID, bool& isCI) const;
+
     /// Determine if the specified device is a member of the SI family
     /// \param[in] szCALDeviceName CAL device name
     /// \param[out] bIsSI Set to true if input device name is a member of the SI family
@@ -195,6 +226,12 @@ public:
     {
         return IsXFamily(szCALDeviceName, GDT_HW_GENERATION_SOUTHERNISLAND, bIsSI);
     }
+
+    /// Determine if the specified device is a member of the SI family
+    /// \param[in] deviceID the PCIE device ID
+    /// \param[out] isSI Set to true if input device name is a member of the SI family
+    /// \return false if device ID is not found
+    bool IsSIFamily(size_t deviceID, bool& isSI) const;
 
     /// Determine if the specified device is based on GCN architecture.
     /// \param[in] szCALDeviceName CAL device name
@@ -222,6 +259,12 @@ public:
 
         return bRet;
     }
+
+    /// Determine if the specified device is based on GCN architecture.
+    /// \param[in] deviceID the PCIE device ID
+    /// \param[out] isGCN Set to true if input device name is based on GCN architecture.
+    /// \return false if device ID is not found
+    bool IsGCN(size_t deviceID, bool& isGCN) const;
 
     /// Translates the reported device name to the true device name exposed in the DeviceInfo table.
     /// \param strDeviceName the device name reported by the runtime.

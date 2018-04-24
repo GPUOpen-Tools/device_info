@@ -655,6 +655,79 @@ bool AMDTDeviceInfoUtils::IsAPU(const char* szCALDeviceName, bool& bIsAPU) const
     }
 }
 
+bool AMDTDeviceInfoUtils::IsAPU(size_t deviceID, bool& isAPU) const
+{
+    auto matches = m_deviceIDMap.equal_range(deviceID);
+
+    if (matches.first != matches.second)
+    {
+        isAPU = matches.first->second.m_bAPU;
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+bool AMDTDeviceInfoUtils::IsXFamily(size_t deviceID, GDT_HW_GENERATION generation, bool& isXFamily) const
+{
+    GDT_HW_GENERATION gen = GDT_HW_GENERATION_NONE;
+
+    if (GetHardwareGeneration(deviceID, gen))
+    {
+        isXFamily = gen == generation;
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+bool AMDTDeviceInfoUtils::IsGfx9Family(size_t deviceID, bool& isGfx9) const
+{
+    return IsXFamily(deviceID, GDT_HW_GENERATION_GFX9, isGfx9);
+}
+
+bool AMDTDeviceInfoUtils::IsVIFamily(size_t deviceID, bool& isVI) const
+{
+    return IsXFamily(deviceID, GDT_HW_GENERATION_VOLCANICISLAND, isVI);
+}
+
+bool AMDTDeviceInfoUtils::IsCIFamily(size_t deviceID, bool& isCI) const
+{
+    return IsXFamily(deviceID, GDT_HW_GENERATION_SEAISLAND, isCI);
+}
+
+bool AMDTDeviceInfoUtils::IsSIFamily(size_t deviceID, bool& isSI) const
+{
+    return IsXFamily(deviceID, GDT_HW_GENERATION_SOUTHERNISLAND, isSI);
+}
+
+bool AMDTDeviceInfoUtils::IsGCN(size_t deviceID, bool& isGCN) const
+{
+    isGCN = false;
+    bool ret = IsGfx9Family(deviceID, isGCN);
+
+    if (!isGCN)
+    {
+        ret = IsVIFamily(deviceID, isGCN);
+    }
+
+    if (!isGCN)
+    {
+        ret = IsCIFamily(deviceID, isGCN);
+    }
+
+    if (!isGCN)
+    {
+        ret = IsSIFamily(deviceID, isGCN);
+    }
+
+    return ret;
+}
+
 bool AMDTDeviceInfoUtils::GetHardwareGeneration(size_t deviceID, GDT_HW_GENERATION& gen) const
 {
     // revId not needed here, since all revs will have the same hardware family
