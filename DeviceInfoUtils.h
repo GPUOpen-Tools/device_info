@@ -122,6 +122,12 @@ public:
     /// \param[out] cardList Output vector of all graphics card info.
     void GetAllCards(std::vector<GDT_GfxCardInfo>& cardList) const;
 
+    /// Get all cards with the specified CAL device name -- this a wrapper around one of the GetDeviceInfo overloads
+    /// \param[in] szCALDeviceName CAL device name string
+    /// \param[out] cardList Output vector of graphics card info.
+    /// \return True if any graphics card info is found for CAL device name.
+    bool GetAllCardsWithName(const char* szCALDeviceName, std::vector<GDT_GfxCardInfo>& cardList) const;
+
     /// Get all cards from the specified hardware generation
     /// \param[in] gen Hardware generation
     /// \param[out] cardList Output vector of graphics card info.
@@ -169,7 +175,7 @@ public:
     /// Determine if the specified device is a member of the specified family
     /// \param[in] deviceID the PCIE device ID
     /// \param[in] generation Generation enum
-    /// \param[out] bRes Set to true if input device name is a specified family card
+    /// \param[out] isXFamily Set to true if input device name is a specified family card
     /// \return false if device ID is not found
     bool IsXFamily(size_t deviceID, GDT_HW_GENERATION generation, bool& isXFamily) const;
 

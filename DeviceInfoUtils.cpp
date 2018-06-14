@@ -341,17 +341,16 @@ static GDT_GfxCardInfo gs_cardInfo[] =
     { GDT_BAFFIN, 0x67E8, 0x01, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "Radeon (TM) Pro WX Series" },
     { GDT_BAFFIN, 0x67E8, 0x80, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "AMD Radeon (TM) E9260" },
     { GDT_BAFFIN, 0x67EB, 0x00, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "Radeon (TM) Pro V5300X" },
-    { GDT_BAFFIN, 0x67EF, 0xC0, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "AMD Radeon Pro 460" },
-    { GDT_BAFFIN, 0x67EF, 0xC1, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "Radeon(TM) RX 460 Graphics" },
-    { GDT_BAFFIN, 0x67EF, 0xC5, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "Radeon(TM) RX 460 Graphics" },
-    { GDT_BAFFIN, 0x67EF, 0xC7, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "AMD Radeon Pro 455" },
+    { GDT_BAFFIN, 0x67EF, 0xC0, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "Radeon RX 560 Series" },
+    { GDT_BAFFIN, 0x67EF, 0xC1, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "Radeon RX 560 Series" },
+    { GDT_BAFFIN, 0x67EF, 0xC5, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "Radeon RX 560 Series" },
+    { GDT_BAFFIN, 0x67EF, 0xC7, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "Radeon 550 Series" },
     { GDT_BAFFIN, 0x67EF, 0xCF, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "Radeon(TM) RX 460 Graphics" },
-    { GDT_BAFFIN, 0x67EF, 0xEF, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "AMD Radeon Pro 450" },
+    { GDT_BAFFIN, 0x67EF, 0xEF, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "Radeon 550 Series" },
     { GDT_BAFFIN, 0x67FF, 0xC0, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "AMD Radeon Pro 465" },
     { GDT_BAFFIN, 0x67FF, 0xC1, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "Radeon RX 560 Series" },
     { GDT_BAFFIN, 0x67EF, 0xC2, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "Radeon Pro Series" },
     { GDT_BAFFIN, 0x67EF, 0xC3, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "67EF:C3" },
-    { GDT_BAFFIN, 0x67EF, 0xE2, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "67EF:E2" },
     { GDT_BAFFIN, 0x67EF, 0xE3, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "Radeon Pro Series" },
     { GDT_BAFFIN, 0x67EF, 0xE5, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "Radeon RX 560 Series" },
     { GDT_BAFFIN, 0x67EF, 0xE7, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "Radeon RX 560 Series" },
@@ -360,7 +359,7 @@ static GDT_GfxCardInfo gs_cardInfo[] =
     { GDT_BAFFIN, 0x67FF, 0x08, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "67FF:08" },
     { GDT_BAFFIN, 0x67FF, 0xCF, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "Radeon RX 560 Series" },
     { GDT_BAFFIN, 0x67FF, 0xEF, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "Radeon RX 560 Series" },
-    { GDT_BAFFIN, 0x67FF, 0xFF, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "Radeon RX 550 Series" },
+    { GDT_BAFFIN, 0x67FF, 0xFF, GDT_HW_GENERATION_VOLCANICISLAND, false, "Baffin", "Radeon 550 Series" },
 
     // GFX8_0_4
     { GDT_GFX8_0_4, 0x6980, 0x00, GDT_HW_GENERATION_VOLCANICISLAND, false, "gfx804", "Radeon Pro WX 3100" },
@@ -381,11 +380,10 @@ static GDT_GfxCardInfo gs_cardInfo[] =
     // VegaM
     { GDT_VEGAM1, 0x694C, 0xC0, GDT_HW_GENERATION_VOLCANICISLAND, true, "gfx804", "Radeon RX Vega M GH Graphics" },
     { GDT_VEGAM2, 0x694E, 0xC0, GDT_HW_GENERATION_VOLCANICISLAND, true, "gfx804", "Radeon RX Vega M GL Graphics" },
-    { GDT_VEGAM2, 0x694F, 0xC0, GDT_HW_GENERATION_VOLCANICISLAND, true, "gfx804", "694F:C0" },
 
     // GFX9_0_0
     { GDT_GFX9_0_0, 0x6860, 0x00, GDT_HW_GENERATION_GFX9, false, "gfx900", "Radeon Instinct MI25" },
-    { GDT_GFX9_0_0, 0x6860, 0x01, GDT_HW_GENERATION_GFX9, false, "gfx900", "6860:01" },
+    { GDT_GFX9_0_0, 0x6860, 0x01, GDT_HW_GENERATION_GFX9, false, "gfx900", "Radeon Instinct MI25" },
     { GDT_GFX9_0_0, 0x6860, 0x02, GDT_HW_GENERATION_GFX9, false, "gfx900", "Radeon Instinct MI25" },
     { GDT_GFX9_0_0, 0x6860, 0x03, GDT_HW_GENERATION_GFX9, false, "gfx900", "6860:03" },
     { GDT_GFX9_0_0, 0x6860, 0x04, GDT_HW_GENERATION_GFX9, false, "gfx900", "6860:04" },
@@ -402,12 +400,14 @@ static GDT_GfxCardInfo gs_cardInfo[] =
     { GDT_GFX9_0_0, 0x686A, 0x00, GDT_HW_GENERATION_GFX9, false, "gfx900", "686A:00" },
     { GDT_GFX9_0_0, 0x686B, 0x00, GDT_HW_GENERATION_GFX9, false, "gfx900", "686B:00" },
     { GDT_GFX9_0_0, 0x686C, 0x00, GDT_HW_GENERATION_GFX9, false, "gfx900", "Radeon Instinct MI25 MxGPU" },
-    { GDT_GFX9_0_0, 0x686C, 0x01, GDT_HW_GENERATION_GFX9, false, "gfx900", "686C:01" },
+    { GDT_GFX9_0_0, 0x686C, 0x01, GDT_HW_GENERATION_GFX9, false, "gfx900", "Radeon Instinct MI25 MxGPU" },
     { GDT_GFX9_0_0, 0x686C, 0x02, GDT_HW_GENERATION_GFX9, false, "gfx900", "Radeon Instinct MI25 MxGPU" },
     { GDT_GFX9_0_0, 0x686C, 0x03, GDT_HW_GENERATION_GFX9, false, "gfx900", "686C:03" },
     { GDT_GFX9_0_0, 0x686C, 0x04, GDT_HW_GENERATION_GFX9, false, "gfx900", "686C:04" },
     { GDT_GFX9_0_0, 0x686C, 0xC1, GDT_HW_GENERATION_GFX9, false, "gfx900", "686C:C1" },
-    { GDT_GFX9_0_0, 0x687F, 0x01, GDT_HW_GENERATION_GFX9, false, "gfx900", "687F:01" },
+    { GDT_GFX9_0_0, 0x686D, 0x00, GDT_HW_GENERATION_GFX9, false, "gfx900", "686D:00" },
+    { GDT_GFX9_0_0, 0x686E, 0x00, GDT_HW_GENERATION_GFX9, false, "gfx900", "686E:00" },
+    { GDT_GFX9_0_0, 0x687F, 0x01, GDT_HW_GENERATION_GFX9, false, "gfx900", "Radeon RX Vega" },
     { GDT_GFX9_0_0, 0x687F, 0xC0, GDT_HW_GENERATION_GFX9, false, "gfx900", "Radeon RX Vega" },
     { GDT_GFX9_0_0, 0x687F, 0xC1, GDT_HW_GENERATION_GFX9, false, "gfx900", "Radeon RX Vega" },
     { GDT_GFX9_0_0, 0x687F, 0xC3, GDT_HW_GENERATION_GFX9, false, "gfx900", "Radeon RX Vega" },
@@ -451,11 +451,6 @@ static GDT_GfxCardInfo gs_cardInfo[] =
     { GDT_GFX9_0_2, 0x15DD, 0xE2, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 3 Graphics" },
 };
 
-/// NOTE: Don't update the table below, it's generated from the deviceinfo.csv file.
-/// How to update this table:
-/// 1. Update device info in the deviceinfo.csv file
-/// 2. Run deviceinfogen.exe
-/// 3. Replace GDT_DeviceInfo gs_deviceInfo[] below with the gs_deviceInfo declaration in the generated file device_info_table.txt
 static GDT_DeviceInfo gs_deviceInfo[] =
 {
     { 2, 10, 1, 8, 2, 64, 2, 7, 4, true }, // GDT_TAHITI_PRO
@@ -744,9 +739,9 @@ bool AMDTDeviceInfoUtils::GetHardwareGeneration(size_t deviceID, GDT_HW_GENERATI
     }
 }
 
-bool AMDTDeviceInfoUtils::GetHardwareGeneration(const char* szName, GDT_HW_GENERATION& gen) const
+bool AMDTDeviceInfoUtils::GetHardwareGeneration(const char* szCALDeviceName, GDT_HW_GENERATION& gen) const
 {
-    std::string strDeviceName = TranslateDeviceName(szName);
+    std::string strDeviceName = TranslateDeviceName(szCALDeviceName);
     auto matches = m_deviceNameMap.equal_range(strDeviceName.c_str());
 
     if (matches.first != matches.second)
@@ -769,6 +764,11 @@ void AMDTDeviceInfoUtils::GetAllCards(std::vector<GDT_GfxCardInfo>& cardList) co
     {
         cardList.push_back(gs_cardInfo[i]);
     }
+}
+
+bool AMDTDeviceInfoUtils::GetAllCardsWithName(const char* szCALDeviceName, std::vector<GDT_GfxCardInfo>& cardList) const
+{
+    return GetDeviceInfo(szCALDeviceName, cardList);
 }
 
 bool AMDTDeviceInfoUtils::GetAllCardsInHardwareGeneration(GDT_HW_GENERATION gen, std::vector<GDT_GfxCardInfo>& cardList) const
