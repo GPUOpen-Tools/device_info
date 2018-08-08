@@ -50,6 +50,7 @@ enum GDT_HW_ASIC_TYPE
     GDT_ASIC_PLACEHOLDER_3,   ///< Placeholder for future ASIC
     GDT_ASIC_PLACEHOLDER_4,   ///< Placeholder for future ASIC
     GDT_ASIC_PLACEHOLDER_5,   ///< Placeholder for future ASIC
+    GDT_ASIC_PLACEHOLDER_6,   ///< Placeholder for future ASIC
     GDT_LAST                  ///< last
 };
 
