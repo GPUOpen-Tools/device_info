@@ -45,12 +45,12 @@ enum GDT_HW_ASIC_TYPE
     GDT_VEGAM2,               ///< VegaM GPU
     GDT_GFX9_0_0,             ///< GFX9_0_0 GPU
     GDT_GFX9_0_2,             ///< GFX9_0_2 APU
+    GDT_GFX9_0_6,             ///< GFX9_0_6 GPU
     GDT_ASIC_PLACEHOLDER_1,   ///< Placeholder for future ASIC
     GDT_ASIC_PLACEHOLDER_2,   ///< Placeholder for future ASIC
     GDT_ASIC_PLACEHOLDER_3,   ///< Placeholder for future ASIC
     GDT_ASIC_PLACEHOLDER_4,   ///< Placeholder for future ASIC
     GDT_ASIC_PLACEHOLDER_5,   ///< Placeholder for future ASIC
-    GDT_ASIC_PLACEHOLDER_6,   ///< Placeholder for future ASIC
     GDT_LAST                  ///< last
 };
 
