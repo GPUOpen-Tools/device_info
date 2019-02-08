@@ -505,7 +505,7 @@ static GDT_GfxCardInfo gs_cardInfo[] =
     { GDT_GFX9_0_6, 0x66A3, 0x00, GDT_HW_GENERATION_GFX9, false, "gfx906", "66A3:00" },
     { GDT_GFX9_0_6, 0x66A7, 0x00, GDT_HW_GENERATION_GFX9, false, "gfx906", "66A7:00" },
     { GDT_GFX9_0_6, 0x66AF, 0xC0, GDT_HW_GENERATION_GFX9, false, "gfx906", "66AF:C0" },
-    { GDT_GFX9_0_6, 0x66AF, 0xC1, GDT_HW_GENERATION_GFX9, false, "gfx906", "69AF:C1" },
+    { GDT_GFX9_0_6, 0x66AF, 0xC1, GDT_HW_GENERATION_GFX9, false, "gfx906", "AMD Radeon VII" },
     { GDT_GFX9_0_6, 0x66AF, 0xCF, GDT_HW_GENERATION_GFX9, false, "gfx906", "69AF:CF" },
     { GDT_GFX9_0_6, 0x66A0, 0x00, GDT_HW_GENERATION_GFX9, false, "gfx906", "69A0:00" },
     { GDT_GFX9_0_6, 0x66A1, 0x00, GDT_HW_GENERATION_GFX9, false, "gfx906", "69A1:00" },
