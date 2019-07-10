@@ -46,6 +46,8 @@ enum GDT_HW_ASIC_TYPE
     GDT_GFX9_0_0,             ///< GFX9_0_0 GPU
     GDT_GFX9_0_2,             ///< GFX9_0_2 APU
     GDT_GFX9_0_6,             ///< GFX9_0_6 GPU
+    GDT_GFX10_1_0,            ///< GFX10_1_0 GPU
+    GDT_GFX10_1_0_XL,         ///< GFX10_1_0_XL GPU
     GDT_ASIC_PLACEHOLDER_1,   ///< Placeholder for future ASIC
     GDT_ASIC_PLACEHOLDER_2,   ///< Placeholder for future ASIC
     GDT_ASIC_PLACEHOLDER_3,   ///< Placeholder for future ASIC
@@ -67,6 +69,7 @@ enum GDT_HW_GENERATION
     GDT_HW_GENERATION_SEAISLAND,                                      ///< GFX IP 7
     GDT_HW_GENERATION_VOLCANICISLAND,                                 ///< GFX IP 8
     GDT_HW_GENERATION_GFX9,                                           ///< GFX IP 9
+    GDT_HW_GENERATION_GFX10,                                          ///< GFX IP 10
     GDT_HW_GENERATION_LAST
 };
 
