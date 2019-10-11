@@ -254,39 +254,6 @@ public:
     /// \return false if device ID is not found
     bool IsSIFamily(size_t deviceID, bool& isSI) const;
 
-    /// Determine if the specified device is based on GCN architecture.
-    /// \param[in] szCALDeviceName CAL device name
-    /// \param[out] bIsGCN Set to true if input device name is based on GCN architecture.
-    /// \return false if device name is not found
-    bool IsGCN(const char* szCALDeviceName, bool& bIsGCN) const
-    {
-        bIsGCN = false;
-        bool bRet = IsGfx9Family(szCALDeviceName, bIsGCN);
-
-        if (!bIsGCN)
-        {
-            bRet = IsVIFamily(szCALDeviceName, bIsGCN);
-        }
-
-        if (!bIsGCN)
-        {
-            bRet = IsCIFamily(szCALDeviceName, bIsGCN);
-        }
-
-        if (!bIsGCN)
-        {
-            bRet = IsSIFamily(szCALDeviceName, bIsGCN);
-        }
-
-        return bRet;
-    }
-
-    /// Determine if the specified device is based on GCN architecture.
-    /// \param[in] deviceID the PCIE device ID
-    /// \param[out] isGCN Set to true if input device name is based on GCN architecture.
-    /// \return false if device ID is not found
-    bool IsGCN(size_t deviceID, bool& isGCN) const;
-
     /// Translates the reported device name to the true device name exposed in the DeviceInfo table.
     /// \param strDeviceName the device name reported by the runtime.
     /// \return the true device name as exposed by the device info table.
