@@ -474,11 +474,12 @@ static GDT_GfxCardInfo gs_cardInfo[] =
     { GDT_GFX9_0_2, 0x15DD, 0xD9, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 6 Graphics" },
     { GDT_GFX9_0_2, 0x15DD, 0xE1, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 3 Graphics" },
     { GDT_GFX9_0_2, 0x15DD, 0xE2, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 3 Graphics" },
-
     { GDT_GFX9_0_2, 0x15D8, 0x00, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) RX Vega 8 Graphics WS" },
     { GDT_GFX9_0_2, 0x15D8, 0x91, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 3 Graphics" },
     { GDT_GFX9_0_2, 0x15D8, 0x92, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 3 Graphics" },
     { GDT_GFX9_0_2, 0x15D8, 0x93, GDT_HW_GENERATION_GFX9, true, "gfx902", "15D8:93" },
+    { GDT_GFX9_0_2, 0x15D8, 0x94, GDT_HW_GENERATION_GFX9, true, "gfx902", "15D8:94" },
+    { GDT_GFX9_0_2, 0x15D8, 0x95, GDT_HW_GENERATION_GFX9, true, "gfx902", "15D8:95" },
     { GDT_GFX9_0_2, 0x15D8, 0xA1, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) RX Vega 10 Graphics" },
     { GDT_GFX9_0_2, 0x15D8, 0xA2, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 8 Graphics" },
     { GDT_GFX9_0_2, 0x15D8, 0xA3, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 6 Graphics" },
@@ -516,6 +517,46 @@ static GDT_GfxCardInfo gs_cardInfo[] =
     { GDT_GFX9_0_2, 0x15D8, 0xE2, GDT_HW_GENERATION_GFX9, true, "gfx902", "15D8:E2" },
     { GDT_GFX9_0_2, 0x15D8, 0xE3, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 3 Graphics"},
     { GDT_GFX9_0_2, 0x15D8, 0xE4, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 3 Graphics"},
+    { GDT_GFX9_0_2, 0x15D8, 0xE9, GDT_HW_GENERATION_GFX9, true, "gfx902", "15D8:E9" },
+    { GDT_GFX9_0_2, 0x15D8, 0xEA, GDT_HW_GENERATION_GFX9, true, "gfx902", "15D8:EA" },
+    { GDT_GFX9_0_2, 0x15D8, 0xEB, GDT_HW_GENERATION_GFX9, true, "gfx902", "15D8:EB" },
+    { GDT_GFX9_0_2, 0x15D9, 0x91, GDT_HW_GENERATION_GFX9, true, "gfx902", "15D9:91" },
+    { GDT_GFX9_0_2, 0x15D9, 0x92, GDT_HW_GENERATION_GFX9, true, "gfx902", "15D9:92" },
+    { GDT_GFX9_0_2, 0x15D9, 0xC1, GDT_HW_GENERATION_GFX9, true, "gfx902", "15D9:C1" },
+    { GDT_GFX9_0_2, 0x15D9, 0xC2, GDT_HW_GENERATION_GFX9, true, "gfx902", "15D9:C2" },
+    { GDT_GFX9_0_2, 0x15D9, 0xC3, GDT_HW_GENERATION_GFX9, true, "gfx902", "15D9:C3" },
+    { GDT_GFX9_0_2, 0x1636, 0x00, GDT_HW_GENERATION_GFX9, true, "gfx902", "1636:00" },
+    { GDT_GFX9_0_2, 0x1636, 0xC1, GDT_HW_GENERATION_GFX9, true, "gfx902", "1636:C1" },
+    { GDT_GFX9_0_2, 0x1636, 0xC2, GDT_HW_GENERATION_GFX9, true, "gfx902", "1636:C2" },
+    { GDT_GFX9_0_2, 0x1636, 0xC3, GDT_HW_GENERATION_GFX9, true, "gfx902", "1636:C3" },
+    { GDT_GFX9_0_2, 0x1636, 0xC4, GDT_HW_GENERATION_GFX9, true, "gfx902", "1636:C4" },
+    { GDT_GFX9_0_2, 0x1636, 0xC5, GDT_HW_GENERATION_GFX9, true, "gfx902", "1636:C5" },
+    { GDT_GFX9_0_2, 0x1636, 0xC6, GDT_HW_GENERATION_GFX9, true, "gfx902", "1636:C6" },
+    { GDT_GFX9_0_2, 0x1636, 0xC7, GDT_HW_GENERATION_GFX9, true, "gfx902", "1636:C7" },
+    { GDT_GFX9_0_2, 0x1636, 0xC8, GDT_HW_GENERATION_GFX9, true, "gfx902", "1636:C8" },
+    { GDT_GFX9_0_2, 0x1636, 0xC9, GDT_HW_GENERATION_GFX9, true, "gfx902", "1636:C9" },
+    { GDT_GFX9_0_2, 0x1636, 0xCA, GDT_HW_GENERATION_GFX9, true, "gfx902", "1636:CA" },
+    { GDT_GFX9_0_2, 0x1636, 0xCB, GDT_HW_GENERATION_GFX9, true, "gfx902", "1636:CB" },
+    { GDT_GFX9_0_2, 0x1636, 0xCC, GDT_HW_GENERATION_GFX9, true, "gfx902", "1636:CC" },
+    { GDT_GFX9_0_2, 0x1636, 0xCD, GDT_HW_GENERATION_GFX9, true, "gfx902", "1636:CD" },
+    { GDT_GFX9_0_2, 0x1636, 0xCE, GDT_HW_GENERATION_GFX9, true, "gfx902", "1636:CE" },
+    { GDT_GFX9_0_2, 0x1636, 0xD1, GDT_HW_GENERATION_GFX9, true, "gfx902", "1636:D1" },
+    { GDT_GFX9_0_2, 0x1636, 0xD2, GDT_HW_GENERATION_GFX9, true, "gfx902", "1636:D2" },
+    { GDT_GFX9_0_2, 0x1636, 0xD3, GDT_HW_GENERATION_GFX9, true, "gfx902", "1636:D3" },
+    { GDT_GFX9_0_2, 0x1636, 0xD4, GDT_HW_GENERATION_GFX9, true, "gfx902", "1636:D4" },
+    { GDT_GFX9_0_2, 0x1636, 0xD5, GDT_HW_GENERATION_GFX9, true, "gfx902", "1636:D5" },
+    { GDT_GFX9_0_2, 0x1636, 0xD6, GDT_HW_GENERATION_GFX9, true, "gfx902", "1636:D6" },
+    { GDT_GFX9_0_2, 0x1636, 0xD7, GDT_HW_GENERATION_GFX9, true, "gfx902", "1636:D7" },
+    { GDT_GFX9_0_2, 0x1636, 0xD8, GDT_HW_GENERATION_GFX9, true, "gfx902", "1636:D8" },
+    { GDT_GFX9_0_2, 0x1636, 0xD9, GDT_HW_GENERATION_GFX9, true, "gfx902", "1636:D9" },
+    { GDT_GFX9_0_2, 0x1636, 0xDA, GDT_HW_GENERATION_GFX9, true, "gfx902", "1636:DA" },
+    { GDT_GFX9_0_2, 0x1636, 0xDB, GDT_HW_GENERATION_GFX9, true, "gfx902", "1636:DB" },
+    { GDT_GFX9_0_2, 0x1636, 0xDC, GDT_HW_GENERATION_GFX9, true, "gfx902", "1636:DC" },
+    { GDT_GFX9_0_2, 0x1636, 0xDD, GDT_HW_GENERATION_GFX9, true, "gfx902", "1636:DD" },
+    { GDT_GFX9_0_2, 0x1636, 0xDE, GDT_HW_GENERATION_GFX9, true, "gfx902", "1636:DE" },
+    { GDT_GFX9_0_2, 0x1636, 0xE1, GDT_HW_GENERATION_GFX9, true, "gfx902", "1636:E1" },
+    { GDT_GFX9_0_2, 0x1636, 0xE2, GDT_HW_GENERATION_GFX9, true, "gfx902", "1636:E2" },
+    { GDT_GFX9_0_2, 0x1636, 0xE3, GDT_HW_GENERATION_GFX9, true, "gfx902", "1636:E3" },
 
     // GFX9_0_6
     { GDT_GFX9_0_6, 0x66A3, 0x00, GDT_HW_GENERATION_GFX9, false, "gfx906", "66A3:00" },
@@ -543,11 +584,16 @@ static GDT_GfxCardInfo gs_cardInfo[] =
     { GDT_GFX10_1_0, 0x731B, 0x40, GDT_HW_GENERATION_GFX10, false, "gfx1010", "731B:40" },
     { GDT_GFX10_1_0, 0x731F, 0xC0, GDT_HW_GENERATION_GFX10, false, "gfx1010", "AMD Radeon RX 5700 XT 50th Anniversary" },
     { GDT_GFX10_1_0, 0x731F, 0xC1, GDT_HW_GENERATION_GFX10, false, "gfx1010", "AMD Radeon RX 5700 XT" },
+    { GDT_GFX10_1_0, 0x731F, 0xC2, GDT_HW_GENERATION_GFX10, false, "gfx1010", "731F:C2" },
     { GDT_GFX10_1_0, 0x731F, 0xC3, GDT_HW_GENERATION_GFX10, false, "gfx1010", "731F:C3" },
     { GDT_GFX10_1_0_XL, 0x731F, 0xC4, GDT_HW_GENERATION_GFX10, false, "gfx1010", "AMD Radeon RX 5700" },
+    { GDT_GFX10_1_0, 0x731F, 0xC5, GDT_HW_GENERATION_GFX10, false, "gfx1010", "AMD Radeon RX 5700 XT" },
     { GDT_GFX10_1_0, 0x731F, 0xC7, GDT_HW_GENERATION_GFX10, false, "gfx1010", "731F:C7" },
     { GDT_GFX10_1_0, 0x731F, 0xCA, GDT_HW_GENERATION_GFX10, false, "gfx1010", "731F:CA" },
     { GDT_GFX10_1_0, 0x731F, 0xCB, GDT_HW_GENERATION_GFX10, false, "gfx1010", "731F:CB" },
+    { GDT_GFX10_1_0, 0x731F, 0xE1, GDT_HW_GENERATION_GFX10, false, "gfx1010", "731F:E1" },
+    { GDT_GFX10_1_0, 0x731F, 0xE3, GDT_HW_GENERATION_GFX10, false, "gfx1010", "731F:E3" },
+    { GDT_GFX10_1_0, 0x731F, 0xE7, GDT_HW_GENERATION_GFX10, false, "gfx1010", "731F:E7" },
 
     // GFX10_1_2
     { GDT_GFX10_1_2, 0x7340, 0x00, GDT_HW_GENERATION_GFX10, false, "gfx1012", "7340:00" },
@@ -555,7 +601,8 @@ static GDT_GfxCardInfo gs_cardInfo[] =
     { GDT_GFX10_1_2, 0x7340, 0x43, GDT_HW_GENERATION_GFX10, false, "gfx1012", "7340:43" },
     { GDT_GFX10_1_2, 0x7340, 0x47, GDT_HW_GENERATION_GFX10, false, "gfx1012", "7340:47" },
     { GDT_GFX10_1_2, 0x7340, 0xC1, GDT_HW_GENERATION_GFX10, false, "gfx1012", "Radeon RX 5500M" },
-    { GDT_GFX10_1_2, 0x7340, 0xC5, GDT_HW_GENERATION_GFX10, false, "gfx1012", "7340:C5" },
+    { GDT_GFX10_1_2, 0x7340, 0xC3, GDT_HW_GENERATION_GFX10, false, "gfx1012", "Radeon RX 5300M" },
+    { GDT_GFX10_1_2, 0x7340, 0xC5, GDT_HW_GENERATION_GFX10, false, "gfx1012", "Radeon RX 5500 XT" },
     { GDT_GFX10_1_2, 0x7340, 0xC7, GDT_HW_GENERATION_GFX10, false, "gfx1012", "Radeon RX 5500" },
     { GDT_GFX10_1_2, 0x7340, 0xCF, GDT_HW_GENERATION_GFX10, false, "gfx1012", "7340:CF" },
     { GDT_GFX10_1_2, 0x7340, 0x70, GDT_HW_GENERATION_GFX10, false, "gfx1012", "7340:70" },
@@ -564,6 +611,7 @@ static GDT_GfxCardInfo gs_cardInfo[] =
     { GDT_GFX10_1_2, 0x7341, 0x00, GDT_HW_GENERATION_GFX10, false, "gfx1012", "7341:00" },
     { GDT_GFX10_1_2, 0x7343, 0x00, GDT_HW_GENERATION_GFX10, false, "gfx1012", "7343:00" },
     { GDT_GFX10_1_2, 0x7347, 0x00, GDT_HW_GENERATION_GFX10, false, "gfx1012", "7347:00" },
+    { GDT_GFX10_1_2, 0x734F, 0x00, GDT_HW_GENERATION_GFX10, false, "gfx1012", "734F:00" },
 };
 
 static GDT_DeviceInfo gs_deviceInfo[] =
@@ -605,6 +653,7 @@ static GDT_DeviceInfo gs_deviceInfo[] =
     { 0, 0, 0, 0, 0, 0, 0, 0, 0, false }, // GDT_ASIC_PLACEHOLDER_3
     { 0, 0, 0, 0, 0, 0, 0, 0, 0, false }, // GDT_ASIC_PLACEHOLDER_4
     { 0, 0, 0, 0, 0, 0, 0, 0, 0, false }, // GDT_ASIC_PLACEHOLDER_5
+    { 0, 0, 0, 0, 0, 0, 0, 0, 0, false }, // GDT_ASIC_PLACEHOLDER_6
 };
 
 static size_t gs_cardInfoSize = sizeof(gs_cardInfo) / sizeof(GDT_GfxCardInfo);
