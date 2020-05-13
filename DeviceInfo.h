@@ -1,5 +1,5 @@
 //==============================================================================
-// Copyright (c) 2010-2016 Advanced Micro Devices, Inc. All rights reserved.
+// Copyright (c) 2010-2020 Advanced Micro Devices, Inc. All rights reserved.
 /// \author AMD Developer Tools Team
 /// \file
 /// \brief  Device info table
@@ -46,6 +46,7 @@ enum GDT_HW_ASIC_TYPE
     GDT_GFX9_0_0,             ///< GFX9_0_0 GPU
     GDT_GFX9_0_2,             ///< GFX9_0_2 APU
     GDT_GFX9_0_6,             ///< GFX9_0_6 GPU
+    GDT_GFX9_0_9,             ///< GFX9_0_9 GPU
     GDT_GFX10_1_0,            ///< GFX10_1_0 GPU
     GDT_GFX10_1_0_XL,         ///< GFX10_1_0_XL GPU
     GDT_GFX10_1_2,            ///< GFX10_1_2 GPU

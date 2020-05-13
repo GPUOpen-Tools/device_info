@@ -24,15 +24,7 @@ public:
 
     /// Get AMDTDeviceInfoUtils instance
     /// \return the dynamically created AMDTDeviceInfoUtils instance
-    static AMDTDeviceInfoUtils* Instance()
-    {
-        if (nullptr == ms_pInstance)
-        {
-            ms_pInstance = new AMDTDeviceInfoUtils();
-        }
-
-        return ms_pInstance;
-    }
+    static AMDTDeviceInfoUtils* Instance();
 
     /// Deletes the AMDTDeviceInfoUtils instance
     static void DeleteInstance()
@@ -275,6 +267,20 @@ private:
     /// private constructor
     AMDTDeviceInfoUtils() : m_pDeviceNameTranslatorFunction(nullptr) {}
 
+    /// disable copy constructor
+    AMDTDeviceInfoUtils(const AMDTDeviceInfoUtils&) = delete;
+
+    /// disable move constructor
+    AMDTDeviceInfoUtils(AMDTDeviceInfoUtils&&) = delete;
+
+    /// disable assignment operator
+    /// \return reference to object
+    AMDTDeviceInfoUtils& operator=(AMDTDeviceInfoUtils&) = delete;
+
+    /// disable move operator
+    /// \return reference to object
+    AMDTDeviceInfoUtils& operator=(AMDTDeviceInfoUtils&&) = delete;
+
     /// private destructor
     virtual ~AMDTDeviceInfoUtils() = default;
 
@@ -327,17 +333,45 @@ private:
 //------------------------------------------------------------------------------------
 class AMDTDeviceInfoManager
 {
-    /// Get singleton AMDTDeviceInfoManager instance
-    /// \return the singleton AMDTDeviceInfoManager instance
+    friend class AMDTDeviceInfoUtils;
+
+    /// Get AMDTDeviceInfoManager instance
+    /// \return the dynamically created AMDTDeviceInfoManager instance
     static AMDTDeviceInfoManager* Instance()
     {
-        return &ms_instance;
+        if (nullptr == ms_pInstance)
+        {
+            ms_pInstance = new AMDTDeviceInfoManager();
+        }
+
+        return ms_pInstance;
+    }
+
+    /// Deletes the AMDTDeviceInfoManager instance
+    static void DeleteInstance()
+    {
+        delete ms_pInstance;
+        ms_pInstance = nullptr;
     }
 
 private:
 
     /// Constructor
     AMDTDeviceInfoManager();
+
+    /// disable copy constructor
+    AMDTDeviceInfoManager(const AMDTDeviceInfoManager&) = delete;
+
+    /// disable move constructor
+    AMDTDeviceInfoManager(AMDTDeviceInfoManager&&) = delete;
+
+    /// disable assignment operator
+    /// \return reference to object
+    AMDTDeviceInfoManager& operator=(AMDTDeviceInfoManager&) = delete;
+
+    /// disable move operator
+    /// \return reference to object
+    AMDTDeviceInfoManager& operator=(AMDTDeviceInfoManager&&) = delete;
 
     /// Destructor
     ~AMDTDeviceInfoManager() = default;
@@ -347,7 +381,7 @@ private:
     /// versions of the tools (i.e. unreleased hardware)
     void CallInitInternalDeviceInfo() const;
 
-    static AMDTDeviceInfoManager ms_instance; ///< the singleton AMDTDeviceInfoManager instance
+    static AMDTDeviceInfoManager* ms_pInstance; ///< the singleton AMDTDeviceInfoManager instance
 };
 
 #endif // _DEVICE_INFO_UTILS_H_
