@@ -50,6 +50,8 @@ enum GDT_HW_ASIC_TYPE
     GDT_GFX10_1_0,            ///< GFX10_1_0 GPU
     GDT_GFX10_1_0_XL,         ///< GFX10_1_0_XL GPU
     GDT_GFX10_1_2,            ///< GFX10_1_2 GPU
+    GDT_GFX10_1_1,            ///< GFX10_1_1 GPU
+    GDT_GFX10_3_0,            ///< GFX10_3_0 GPU
     GDT_ASIC_PLACEHOLDER_1,   ///< Placeholder for future ASIC
     GDT_ASIC_PLACEHOLDER_2,   ///< Placeholder for future ASIC
     GDT_ASIC_PLACEHOLDER_3,   ///< Placeholder for future ASIC
@@ -73,6 +75,7 @@ enum GDT_HW_GENERATION
     GDT_HW_GENERATION_VOLCANICISLAND,                                 ///< GFX IP 8
     GDT_HW_GENERATION_GFX9,                                           ///< GFX IP 9
     GDT_HW_GENERATION_GFX10,                                          ///< GFX IP 10
+    GDT_HW_GENERATION_GFX103,                                         ///< GFX IP 10.3
     GDT_HW_GENERATION_LAST
 };
 
@@ -125,5 +128,10 @@ struct GDT_DeviceInfo
         return numberSHs() * m_nNumCUPerSH;
     }
 };
+
+extern GDT_GfxCardInfo gs_cardInfo[];
+extern GDT_DeviceInfo gs_deviceInfo[];
+extern size_t gs_cardInfoSize;
+extern size_t gs_deviceInfoSize;
 
 #endif // _DEVICE_INFO_H_

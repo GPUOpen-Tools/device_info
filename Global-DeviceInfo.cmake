@@ -10,8 +10,9 @@ set(ADDITIONAL_INCLUDE_DIRECTORIES ${ADDITIONAL_INCLUDE_DIRECTORIES}
 
 ## Define device info sources
 set(DEVICE_INFO_SRC
-    DeviceInfoUtils.cpp)
+    ${CMAKE_CURRENT_LIST_DIR}/DeviceInfoUtils.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/DeviceInfo.cpp)
 
 set(DEVICE_INFO_HEADERS
-    DeviceInfo.h
-    DeviceInfoUtils.h)
+    ${CMAKE_CURRENT_LIST_DIR}/DeviceInfo.h
+    ${CMAKE_CURRENT_LIST_DIR}/DeviceInfoUtils.h)
