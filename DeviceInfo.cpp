@@ -605,7 +605,7 @@ GDT_GfxCardInfo gs_cardInfo[] =
     { GDT_GFX10_1_1, 0x7360, 0x40, GDT_HW_GENERATION_GFX10, false, "gfx1011", "7360:40" },
     { GDT_GFX10_1_1, 0x7360, 0xC1, GDT_HW_GENERATION_GFX10, false, "gfx1011", "7360:C1" },
     { GDT_GFX10_1_1, 0x7360, 0x41, GDT_HW_GENERATION_GFX10, false, "gfx1011", "AMD Radeon Pro 5600M" },
-    { GDT_GFX10_1_1, 0x7360, 0xC3, GDT_HW_GENERATION_GFX10, false, "gfx1011", "7360:C3" },
+    { GDT_GFX10_1_1, 0x7360, 0xC3, GDT_HW_GENERATION_GFX10, false, "gfx1011", "AMD Radeon Pro V520" },
     { GDT_GFX10_1_1, 0x7362, 0x71, GDT_HW_GENERATION_GFX10, false, "gfx1011", "7362:71" },
     { GDT_GFX10_1_1, 0x7362, 0xC1, GDT_HW_GENERATION_GFX10, false, "gfx1011", "7362:C1" },
     { GDT_GFX10_1_1, 0x7362, 0xC3, GDT_HW_GENERATION_GFX10, false, "gfx1011", "7362:C3" },
