@@ -337,7 +337,8 @@ bool AMDTDeviceInfoUtils::GetHardwareGenerationDisplayName(GDT_HW_GENERATION gen
     static const std::string s_CI_FAMILY_NAME    = "Graphics IP v7";
     static const std::string s_VI_FAMILY_NAME    = "Graphics IP v8";
     static const std::string s_GFX9_FAMILY_NAME  = "Vega";
-    static const std::string s_GFX10_FAMILY_NAME = "RDNA";
+    static const std::string s_RDNA_FAMILY_NAME  = "RDNA";
+    static const std::string s_RDNA2_FAMILY_NAME = "RDNA2";
 
     bool retVal = true;
 
@@ -360,8 +361,11 @@ bool AMDTDeviceInfoUtils::GetHardwareGenerationDisplayName(GDT_HW_GENERATION gen
             break;
 
         case GDT_HW_GENERATION_GFX10:
+            strGenerationDisplayName = s_RDNA_FAMILY_NAME;
+            break;
+
         case GDT_HW_GENERATION_GFX103:
-            strGenerationDisplayName = s_GFX10_FAMILY_NAME;
+            strGenerationDisplayName = s_RDNA2_FAMILY_NAME;
             break;
 
         default:
