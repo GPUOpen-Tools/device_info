@@ -46,6 +46,7 @@ enum GDT_HW_ASIC_TYPE
     GDT_GFX9_0_0,             ///< GFX9_0_0 GPU
     GDT_GFX9_0_2,             ///< GFX9_0_2 APU
     GDT_GFX9_0_6,             ///< GFX9_0_6 GPU
+    GDT_GFX9_0_8,             ///< GFX9_0_8 GPU
     GDT_GFX9_0_9,             ///< GFX9_0_9 GPU
     GDT_GFX9_0_C,             ///< GfX9_0_C GPU
     GDT_GFX10_1_0,            ///< GFX10_1_0 GPU
@@ -54,6 +55,7 @@ enum GDT_HW_ASIC_TYPE
     GDT_GFX10_1_1,            ///< GFX10_1_1 GPU
     GDT_GFX10_3_0,            ///< GFX10_3_0 GPU
     GDT_GFX10_3_1,            ///< GFX10_3_1 GPU
+    GDT_GFX10_3_2,            ///< GFX10_3_2 GPU
     GDT_ASIC_PLACEHOLDER_1,   ///< Placeholder for future ASIC
     GDT_ASIC_PLACEHOLDER_2,   ///< Placeholder for future ASIC
     GDT_ASIC_PLACEHOLDER_3,   ///< Placeholder for future ASIC
