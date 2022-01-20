@@ -469,10 +469,6 @@ GDT_GfxCardInfo gs_cardInfo[] =
     { GDT_GFX9_0_2, 0x15DD, 0xE1, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 3 Graphics" },
     { GDT_GFX9_0_2, 0x15DD, 0xE2, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 3 Graphics" },
     { GDT_GFX9_0_2, 0x15D8, 0x00, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) RX Vega 8 Graphics WS" },
-    { GDT_GFX9_0_2, 0x15D8, 0x71, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Graphics" },
-    { GDT_GFX9_0_2, 0x15D8, 0x72, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Graphics" },
-    { GDT_GFX9_0_2, 0x15D8, 0x73, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Graphics" },
-    { GDT_GFX9_0_2, 0x15D8, 0x74, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Graphics" },
     { GDT_GFX9_0_2, 0x15D8, 0x91, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 3 Graphics" },
     { GDT_GFX9_0_2, 0x15D8, 0x92, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 3 Graphics" },
     { GDT_GFX9_0_2, 0x15D8, 0x93, GDT_HW_GENERATION_GFX9, true, "gfx902", "15D8:93" },
@@ -491,7 +487,6 @@ GDT_GfxCardInfo gs_cardInfo[] =
     { GDT_GFX9_0_2, 0x15D8, 0xC3, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 6 Graphics" },
     { GDT_GFX9_0_2, 0x15D8, 0xC4, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 3 Graphics" },
     { GDT_GFX9_0_2, 0x15D8, 0xC5, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 3 Graphics" },
-    { GDT_GFX9_0_2, 0x15D8, 0xC6, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Graphics" },
     { GDT_GFX9_0_2, 0x15D8, 0xC8, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) RX Vega 11 Graphics" },
     { GDT_GFX9_0_2, 0x15D8, 0xC9, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) Vega 8 Graphics" },
     { GDT_GFX9_0_2, 0x15D8, 0xCA, GDT_HW_GENERATION_GFX9, true, "gfx902", "AMD Radeon(TM) RX Vega 11 Graphics" },
@@ -542,7 +537,7 @@ GDT_GfxCardInfo gs_cardInfo[] =
     { GDT_GFX9_0_6, 0x66AF, 0xC3, GDT_HW_GENERATION_GFX9, false, "gfx906", "66AF:C3" },
     { GDT_GFX9_0_6, 0x66AF, 0xC7, GDT_HW_GENERATION_GFX9, false, "gfx906", "66AF:C7" },
 
-    // GFX9_0_C
+    // GFX9_0_9
     { GDT_GFX9_0_C, 0x1636, 0x00, GDT_HW_GENERATION_GFX9, true, "gfx90c", "1636:00" },
     { GDT_GFX9_0_C, 0x1636, 0x80, GDT_HW_GENERATION_GFX9, true, "gfx90c", "AMD Radeon(TM) Graphics" },
     { GDT_GFX9_0_C, 0x1636, 0x81, GDT_HW_GENERATION_GFX9, true, "gfx90c", "AMD Radeon(TM) Graphics" },
@@ -563,7 +558,6 @@ GDT_GfxCardInfo gs_cardInfo[] =
     { GDT_GFX9_0_C, 0x1636, 0xCC, GDT_HW_GENERATION_GFX9, true, "gfx90c", "AMD Radeon(TM) Graphics" },
     { GDT_GFX9_0_C, 0x1636, 0xCD, GDT_HW_GENERATION_GFX9, true, "gfx90c", "AMD Radeon(TM) Graphics" },
     { GDT_GFX9_0_C, 0x1636, 0xCE, GDT_HW_GENERATION_GFX9, true, "gfx90c", "AMD Radeon(TM) Graphics" },
-    { GDT_GFX9_0_C, 0x1636, 0xCF, GDT_HW_GENERATION_GFX9, true, "gfx90c", "AMD Radeon(TM) Graphics" },
     { GDT_GFX9_0_C, 0x1636, 0xD1, GDT_HW_GENERATION_GFX9, true, "gfx90c", "AMD Radeon(TM) Graphics" },
     { GDT_GFX9_0_C, 0x1636, 0xD2, GDT_HW_GENERATION_GFX9, true, "gfx90c", "AMD Radeon(TM) Graphics" },
     { GDT_GFX9_0_C, 0x1636, 0xD3, GDT_HW_GENERATION_GFX9, true, "gfx90c", "AMD Radeon(TM) Graphics" },
@@ -639,7 +633,6 @@ GDT_GfxCardInfo gs_cardInfo[] =
     // GFX10_1_1
     { GDT_GFX10_1_1, 0x7360, 0x40, GDT_HW_GENERATION_GFX10, false, "gfx1011", "7360:40" },
     { GDT_GFX10_1_1, 0x7360, 0xC1, GDT_HW_GENERATION_GFX10, false, "gfx1011", "7360:C1" },
-    { GDT_GFX10_1_1, 0x7360, 0xC7, GDT_HW_GENERATION_GFX10, false, "gfx1011", "7360:C7" },
     { GDT_GFX10_1_1, 0x7360, 0x41, GDT_HW_GENERATION_GFX10, false, "gfx1011", "AMD Radeon Pro 5600M" },
     { GDT_GFX10_1_1, 0x7360, 0xC3, GDT_HW_GENERATION_GFX10, false, "gfx1011", "AMD Radeon Pro V520" },
     { GDT_GFX10_1_1, 0x7362, 0x71, GDT_HW_GENERATION_GFX10, false, "gfx1011", "7362:71" },
@@ -672,7 +665,6 @@ GDT_GfxCardInfo gs_cardInfo[] =
     { GDT_GFX10_3_0, 0x731F, 0xD1, GDT_HW_GENERATION_GFX103, false, "gfx1030", "731F:D1" },
     { GDT_GFX10_3_0, 0x731F, 0xD3, GDT_HW_GENERATION_GFX103, false, "gfx1030", "731F:D3" },
     { GDT_GFX10_3_0, 0x731F, 0xDF, GDT_HW_GENERATION_GFX103, false, "gfx1030", "731F:DF" },
-    { GDT_GFX10_3_0, 0x73AF, 0xC0, GDT_HW_GENERATION_GFX103, false, "gfx1030", "AMD Radeon RX 6900 XT" },
     { GDT_GFX10_3_0, 0x73BF, 0x40, GDT_HW_GENERATION_GFX103, false, "gfx1030", "AMD Radeon(TM) Graphics" },
     { GDT_GFX10_3_0, 0x73BF, 0x41, GDT_HW_GENERATION_GFX103, false, "gfx1030", "AMD Radeon(TM) Graphics" },
     { GDT_GFX10_3_0, 0x73BF, 0xC0, GDT_HW_GENERATION_GFX103, false, "gfx1030", "AMD Radeon RX 6900 XT" },
@@ -695,26 +687,39 @@ GDT_GfxCardInfo gs_cardInfo[] =
     { GDT_GFX10_3_1, 0x73C3, 0x00, GDT_HW_GENERATION_GFX103, false, "gfx1031", "73C3:00" },
     { GDT_GFX10_3_1, 0x73DF, 0x40, GDT_HW_GENERATION_GFX103, false, "gfx1031", "73DF:40" },
     { GDT_GFX10_3_1, 0x73DF, 0x41, GDT_HW_GENERATION_GFX103, false, "gfx1031", "73DF:41" },
-    { GDT_GFX10_3_1, 0x73DF, 0xC0, GDT_HW_GENERATION_GFX103, false, "gfx1031", "AMD Radeon RX 6700 XT" },
     { GDT_GFX10_3_1, 0x73DF, 0xC1, GDT_HW_GENERATION_GFX103, false, "gfx1031", "AMD Radeon RX 6700 XT" },
     { GDT_GFX10_3_1, 0x73DF, 0xC5, GDT_HW_GENERATION_GFX103, false, "gfx1031", "AMD Radeon RX 6700 XT" },
     { GDT_GFX10_3_1, 0x73DF, 0xC7, GDT_HW_GENERATION_GFX103, false, "gfx1031", "73DF:C7" },
     { GDT_GFX10_3_1, 0x73DF, 0xDF, GDT_HW_GENERATION_GFX103, false, "gfx1031", "73DF:DF" },
-    { GDT_GFX10_3_1, 0x73DF, 0xC2, GDT_HW_GENERATION_GFX103, false, "gfx1031", "AMD Radeon RX 6800M" },
-    { GDT_GFX10_3_1, 0x73DF, 0xC3, GDT_HW_GENERATION_GFX103, false, "gfx1031", "AMD Radeon RX 6800M" },
-    { GDT_GFX10_3_1, 0x73DF, 0xCF, GDT_HW_GENERATION_GFX103, false, "gfx1031", "AMD Radeon RX 6700M" },
+    { GDT_GFX10_3_1, 0x73DF, 0xC3, GDT_HW_GENERATION_GFX103, false, "gfx1031", "73DF:C3" },
+    { GDT_GFX10_3_1, 0x73DF, 0xCF, GDT_HW_GENERATION_GFX103, false, "gfx1031", "73DF:CF" },
 
     // GFX10_3_2
     { GDT_GFX10_3_2, 0x73E0, 0x00, GDT_HW_GENERATION_GFX103, false, "gfx1032", "73E0:00" },
-    { GDT_GFX10_3_2, 0x73FF, 0xC1, GDT_HW_GENERATION_GFX103, false, "gfx1032", "73FF:C1" },
+    { GDT_GFX10_3_2, 0x73EF, 0xC1, GDT_HW_GENERATION_GFX103, false, "gfx1032", "AMD Radeon(TM) Graphics" },
+    { GDT_GFX10_3_2, 0x73FF, 0xC1, GDT_HW_GENERATION_GFX103, false, "gfx1032", "AMD Radeon RX 6600 XT" },
     { GDT_GFX10_3_2, 0x73FF, 0xC7, GDT_HW_GENERATION_GFX103, false, "gfx1032", "73FF:C7" },
+    { GDT_GFX10_3_2, 0x73EF, 0xC0, GDT_HW_GENERATION_GFX103, false, "gfx1032", "AMD Radeon(TM) Graphics" },
+    { GDT_GFX10_3_2, 0x73EF, 0xC2, GDT_HW_GENERATION_GFX103, false, "gfx1032", "AMD Radeon(TM) Graphics" },
+    { GDT_GFX10_3_2, 0x73EF, 0xC3, GDT_HW_GENERATION_GFX103, false, "gfx1032", "AMD Radeon(TM) Graphics" },
     { GDT_GFX10_3_2, 0x73FF, 0x40, GDT_HW_GENERATION_GFX103, false, "gfx1032", "AMD Radeon(TM) Graphics" },
     { GDT_GFX10_3_2, 0x73FF, 0x41, GDT_HW_GENERATION_GFX103, false, "gfx1032", "AMD Radeon(TM) Graphics" },
     { GDT_GFX10_3_2, 0x73FF, 0x42, GDT_HW_GENERATION_GFX103, false, "gfx1032", "AMD Radeon(TM) Graphics" },
     { GDT_GFX10_3_2, 0x73FF, 0x43, GDT_HW_GENERATION_GFX103, false, "gfx1032", "AMD Radeon(TM) Graphics" },
     { GDT_GFX10_3_2, 0x73FF, 0xC3, GDT_HW_GENERATION_GFX103, false, "gfx1032", "AMD Radeon RX 6600M" },
+    { GDT_GFX10_3_2, 0x73FF, 0xCB, GDT_HW_GENERATION_GFX103, false, "gfx1032", "AMD Radeon(TM) Graphics" },
     { GDT_GFX10_3_2, 0x73E1, 0x00, GDT_HW_GENERATION_GFX103, false, "gfx1032", "73E1:00" },
     { GDT_GFX10_3_2, 0x73E3, 0x00, GDT_HW_GENERATION_GFX103, false, "gfx1032", "73E3:00" },
+
+    // GFX10_3_4 - Navi24
+    { GDT_GFX10_3_4, 0x7420, 0x00, GDT_HW_GENERATION_GFX103, false, "gfx1034", "AMD Radeon(TM) Graphics" },
+    { GDT_GFX10_3_4, 0x7422, 0x00, GDT_HW_GENERATION_GFX103, false, "gfx1034", "AMD Radeon(TM) Graphics" },
+    { GDT_GFX10_3_4, 0x743F, 0xC1, GDT_HW_GENERATION_GFX103, false, "gfx1034", "AMD Radeon RX 6500 XT" },
+    { GDT_GFX10_3_4, 0x743F, 0xC7, GDT_HW_GENERATION_GFX103, false, "gfx1034", "AMD Radeon RX 6400" },
+    { GDT_GFX10_3_4, 0x7421, 0x00, GDT_HW_GENERATION_GFX103, false, "gfx1034", "AMD Radeon(TM) Graphics" },
+    { GDT_GFX10_3_4, 0x7423, 0x00, GDT_HW_GENERATION_GFX103, false, "gfx1034", "AMD Radeon(TM) Graphics" },
+    { GDT_GFX10_3_4, 0x743F, 0xC3, GDT_HW_GENERATION_GFX103, false, "gfx1034", "AMD Radeon RX 6500M" },
+    { GDT_GFX10_3_4, 0x743F, 0xCF, GDT_HW_GENERATION_GFX103, false, "gfx1034", "AMD Radeon RX 6300M" },
 };
 
 GDT_DeviceInfo gs_deviceInfo[] = {
@@ -756,6 +761,7 @@ GDT_DeviceInfo gs_deviceInfo[] = {
     {4, 16, 1, 16, 4, 64, 2, 10, 2, true},  // GDT_GFX10_3_0
     {2, 16, 1, 16, 2, 64, 2, 10, 2, true},  // GDT_GFX10_3_1
     {2, 16, 1, 16, 2, 64, 2,  8, 2, true},  // GDT_GFX10_3_2
+    {1, 16, 1, 16, 2, 64, 2,  8, 2, true},  // GDT_GFX10_3_4
     {0, 0, 0, 0, 0, 0, 0, 0, 0, false},     // GDT_ASIC_PLACEHOLDER_1
     {0, 0, 0, 0, 0, 0, 0, 0, 0, false},     // GDT_ASIC_PLACEHOLDER_2
     {0, 0, 0, 0, 0, 0, 0, 0, 0, false},     // GDT_ASIC_PLACEHOLDER_3
