@@ -55,6 +55,7 @@ enum GDT_HW_ASIC_TYPE
     GDT_GFX10_3_0,            ///< GFX10_3_0 GPU
     GDT_GFX10_3_1,            ///< GFX10_3_1 GPU
     GDT_GFX10_3_2,            ///< GFX10_3_2 GPU
+    GDT_GFX10_3_4,            ///< GFX10_3_4 GPU
     GDT_ASIC_PLACEHOLDER_1,   ///< Placeholder for future ASIC
     GDT_ASIC_PLACEHOLDER_2,   ///< Placeholder for future ASIC
     GDT_ASIC_PLACEHOLDER_3,   ///< Placeholder for future ASIC
