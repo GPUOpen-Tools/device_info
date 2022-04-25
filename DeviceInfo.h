@@ -1,5 +1,5 @@
 //==============================================================================
-/// Copyright (c) 2010-2021 Advanced Micro Devices, Inc. All rights reserved.
+/// Copyright (c) 2010-2022 Advanced Micro Devices, Inc. All rights reserved.
 /// \author AMD Developer Tools Team
 /// \file
 /// \brief  Device info table
@@ -56,6 +56,7 @@ enum GDT_HW_ASIC_TYPE
     GDT_GFX10_3_1,            ///< GFX10_3_1 GPU
     GDT_GFX10_3_2,            ///< GFX10_3_2 GPU
     GDT_GFX10_3_4,            ///< GFX10_3_4 GPU
+    GDT_GFX10_3_5,            ///< GFX10_3_5 APU
     GDT_ASIC_PLACEHOLDER_1,   ///< Placeholder for future ASIC
     GDT_ASIC_PLACEHOLDER_2,   ///< Placeholder for future ASIC
     GDT_ASIC_PLACEHOLDER_3,   ///< Placeholder for future ASIC

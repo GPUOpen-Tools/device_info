@@ -1,1 +1,1 @@
-# common-src-DeviceInfo
+# device_info
