@@ -684,7 +684,7 @@ GDT_GfxCardInfo gs_cardInfo[] =
     { GDT_GFX10_3_0, 0x731F, 0xD1, GDT_HW_GENERATION_GFX103, false, "gfx1030", "731F:D1" },
     { GDT_GFX10_3_0, 0x731F, 0xD3, GDT_HW_GENERATION_GFX103, false, "gfx1030", "731F:D3" },
     { GDT_GFX10_3_0, 0x731F, 0xDF, GDT_HW_GENERATION_GFX103, false, "gfx1030", "731F:DF" },
-    { GDT_GFX10_3_0, 0x73A5, 0xC0, GDT_HW_GENERATION_GFX103, false, "gfx1030", "AMD Radeon(TM) Graphics" },
+    { GDT_GFX10_3_0, 0x73A5, 0xC0, GDT_HW_GENERATION_GFX103, false, "gfx1030", "AMD Radeon RX 6950 XT" },
     { GDT_GFX10_3_0, 0x73AF, 0xC0, GDT_HW_GENERATION_GFX103, false, "gfx1030", "AMD Radeon RX 6900 XT" },
     { GDT_GFX10_3_0, 0x73BF, 0x40, GDT_HW_GENERATION_GFX103, false, "gfx1030", "AMD Radeon(TM) Graphics" },
     { GDT_GFX10_3_0, 0x73BF, 0x41, GDT_HW_GENERATION_GFX103, false, "gfx1030", "AMD Radeon(TM) Graphics" },
@@ -708,7 +708,7 @@ GDT_GfxCardInfo gs_cardInfo[] =
     { GDT_GFX10_3_1, 0x73C3, 0x00, GDT_HW_GENERATION_GFX103, false, "gfx1031", "73C3:00" },
     { GDT_GFX10_3_1, 0x73DF, 0x40, GDT_HW_GENERATION_GFX103, false, "gfx1031", "73DF:40" },
     { GDT_GFX10_3_1, 0x73DF, 0x41, GDT_HW_GENERATION_GFX103, false, "gfx1031", "73DF:41" },
-    { GDT_GFX10_3_1, 0x73DF, 0xC0, GDT_HW_GENERATION_GFX103, false, "gfx1031", "AMD Radeon RX 6700 XT" },
+    { GDT_GFX10_3_1, 0x73DF, 0xC0, GDT_HW_GENERATION_GFX103, false, "gfx1031", "AMD Radeon RX 6750 XT" },
     { GDT_GFX10_3_1, 0x73DF, 0xC1, GDT_HW_GENERATION_GFX103, false, "gfx1031", "AMD Radeon RX 6700 XT" },
     { GDT_GFX10_3_1, 0x73DF, 0xC5, GDT_HW_GENERATION_GFX103, false, "gfx1031", "AMD Radeon RX 6700 XT" },
     { GDT_GFX10_3_1, 0x73DF, 0xC7, GDT_HW_GENERATION_GFX103, false, "gfx1031", "73DF:C7" },
@@ -719,7 +719,7 @@ GDT_GfxCardInfo gs_cardInfo[] =
 
     // GFX10_3_2
     { GDT_GFX10_3_2, 0x73E0, 0x00, GDT_HW_GENERATION_GFX103, false, "gfx1032", "73E0:00" },
-    { GDT_GFX10_3_2, 0x73EF, 0xC1, GDT_HW_GENERATION_GFX103, false, "gfx1032", "AMD Radeon(TM) Graphics" },
+    { GDT_GFX10_3_2, 0x73EF, 0xC1, GDT_HW_GENERATION_GFX103, false, "gfx1032", "AMD Radeon RX 6650 XT" },
     { GDT_GFX10_3_2, 0x73FF, 0xC1, GDT_HW_GENERATION_GFX103, false, "gfx1032", "AMD Radeon RX 6600 XT" },
     { GDT_GFX10_3_2, 0x73FF, 0xC7, GDT_HW_GENERATION_GFX103, false, "gfx1032", "AMD Radeon RX 6600" },
     { GDT_GFX10_3_2, 0x73FF, 0xD7, GDT_HW_GENERATION_GFX103, false, "gfx1032", "AMD Radeon(TM) Graphics" },
