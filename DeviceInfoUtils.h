@@ -1,13 +1,12 @@
 //==============================================================================
-// Copyright (c) 2010-2018 Advanced Micro Devices, Inc. All rights reserved.
-/// \author AMD Developer Tools Team
-/// \file
-/// \brief  Device info utils class
+// Copyright (c) 2010-2022 Advanced Micro Devices, Inc. All rights reserved.
+/// @author AMD Developer Tools Team
+/// @file
+/// @brief Device info utils class.
 //==============================================================================
 
-
-#ifndef _DEVICE_INFO_UTILS_H_
-#define _DEVICE_INFO_UTILS_H_
+#ifndef DEVICE_INFO_DEVICE_INFO_UTILS_H_
+#define DEVICE_INFO_DEVICE_INFO_UTILS_H_
 
 #include <string>
 #include <cstring>
@@ -376,12 +375,7 @@ private:
     /// Destructor
     ~AMDTDeviceInfoManager() = default;
 
-    /// Locates and calls the device info utils function to initialize internal device info.
-    /// This allows internal versions of the tools to expose hardware not exposed in the public
-    /// versions of the tools (i.e. unreleased hardware)
-    void CallInitInternalDeviceInfo() const;
-
     static AMDTDeviceInfoManager* ms_pInstance; ///< the singleton AMDTDeviceInfoManager instance
 };
 
-#endif // _DEVICE_INFO_UTILS_H_
+#endif // DEVICE_INFO_DEVICE_INFO_UTILS_H_

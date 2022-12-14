@@ -1,15 +1,15 @@
 //==============================================================================
-// Copyright (c) 2010-2020 Advanced Micro Devices, Inc. All rights reserved.
-/// \author AMD Developer Tools Team
-/// \file
-/// \brief  Device info utils class
+// Copyright (c) 2010-2022 Advanced Micro Devices, Inc. All rights reserved.
+/// @author AMD Developer Tools Team
+/// @file
+/// @brief Device info utils class.
 //==============================================================================
 
 #ifdef _WIN32
-    #include <Windows.h>
+#include <Windows.h>
 #endif
 #ifdef _LINUX
-    #include <dlfcn.h>
+#include <dlfcn.h>
 #endif
 
 #include <cassert>
@@ -32,37 +32,6 @@ AMDTDeviceInfoManager::AMDTDeviceInfoManager()
     for (size_t i = 0; i < gs_deviceInfoSize; ++i)
     {
         pDeviceInfoUtils->AddDeviceInfo(static_cast<GDT_HW_ASIC_TYPE>(i), gs_deviceInfo[i]);
-    }
-
-    CallInitInternalDeviceInfo();
-}
-
-#ifdef _WIN32
-    extern "C" IMAGE_DOS_HEADER __ImageBase;
-    #define HINST_THISCOMPONENT ((HINSTANCE)&__ImageBase)
-#endif
-
-void AMDTDeviceInfoManager::CallInitInternalDeviceInfo() const
-{
-    static const char* initFuncName = "InitInternalDeviceInfo";
-    static bool initFuncCalled = false;
-
-    if (!initFuncCalled)
-    {
-        typedef void(*DeviceInfoUtilsReadyFunc)();
-        DeviceInfoUtilsReadyFunc func = nullptr;
-#ifdef _WIN32
-        func = (DeviceInfoUtilsReadyFunc)GetProcAddress(HINST_THISCOMPONENT, initFuncName);
-#endif
-#ifdef _LINUX
-        func = (DeviceInfoUtilsReadyFunc)dlsym(nullptr, initFuncName);
-#endif
-
-        if (nullptr != func)
-        {
-            func();
-            initFuncCalled = true;
-        }
     }
 }
 
@@ -339,6 +308,7 @@ bool AMDTDeviceInfoUtils::GetHardwareGenerationDisplayName(GDT_HW_GENERATION gen
     static const std::string s_GFX9_FAMILY_NAME  = "Vega";
     static const std::string s_RDNA_FAMILY_NAME  = "RDNA";
     static const std::string s_RDNA2_FAMILY_NAME = "RDNA2";
+    static const std::string s_RDNA3_FAMILY_NAME = "RDNA3";
 
     bool retVal = true;
 
@@ -368,6 +338,10 @@ bool AMDTDeviceInfoUtils::GetHardwareGenerationDisplayName(GDT_HW_GENERATION gen
             strGenerationDisplayName = s_RDNA2_FAMILY_NAME;
             break;
 
+        case GDT_HW_GENERATION_GFX11:
+            strGenerationDisplayName = s_RDNA3_FAMILY_NAME;
+            break;
+
         default:
             strGenerationDisplayName.clear();
             assert(false);
@@ -390,6 +364,16 @@ std::string AMDTDeviceInfoUtils::TranslateDeviceName(const char* strDeviceName) 
     if (retVal.compare("gfx903") == 0) // some gfx902 APUs are identified as gfx903 by some drivers
     {
         retVal = "gfx902";
+    }
+
+    if (retVal.compare("gfx905") == 0)  // some gfx904 boards are identified as gfx905
+    {
+        retVal = "gfx904";
+    }
+
+    if (retVal.compare("gfx907") == 0)  // some gfx906 boards are identified as gfx907
+    {
+        retVal = "gfx906";
     }
 
     if (nullptr != m_pDeviceNameTranslatorFunction)
