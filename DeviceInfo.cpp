@@ -1,5 +1,5 @@
 //==============================================================================
-/// Copyright (c) 2020-2022 Advanced Micro Devices, Inc. All rights reserved.
+/// Copyright (c) 2020-2023 Advanced Micro Devices, Inc. All rights reserved.
 /// @author AMD Developer Tools Team
 /// @file
 /// @brief Device info table.
@@ -308,7 +308,9 @@ GDT_GfxCardInfo gs_cardInfo[] = {
     {GDT_ELLESMERE, 0x67C7, 0x00, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "Radeon (TM) Pro WX 5100 Graphics"},
     {GDT_ELLESMERE, 0x67C7, 0x80, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "AMD Radeon Embedded E9390"},
     {GDT_ELLESMERE, 0x67D0, 0x01, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "AMD Radeon (TM) Pro V7350x2"},
-    {GDT_ELLESMERE, 0x67FF, 0xE3, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "AMD Radeon (TM) Pro WX 7100 Graphics"},
+    {GDT_ELLESMERE, 0x67FF, 0xE3, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "AMD Radeon (TM) E9550"},
+    {GDT_ELLESMERE, 0x67FF, 0xF3, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "AMD Radeon (TM) PRO E9565 Graphics"},
+    {GDT_ELLESMERE, 0x67FF, 0xF7, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "Radeon (TM) Pro WX 5100 Graphics"},
     {GDT_ELLESMERE, 0x67D0, 0x02, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "AMD Radeon (TM) Pro V7300X"},
     {GDT_ELLESMERE, 0x67DF, 0x04, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "67DF:04"},
     {GDT_ELLESMERE, 0x67DF, 0x05, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "67DF:05"},
@@ -317,6 +319,7 @@ GDT_GfxCardInfo gs_cardInfo[] = {
     {GDT_ELLESMERE, 0x67DF, 0xC7, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "Radeon (TM) RX 480 Graphics"},
     {GDT_ELLESMERE, 0x67DF, 0xCF, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "Radeon (TM) RX 470 Graphics"},
     {GDT_ELLESMERE, 0x67DF, 0xFF, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "Radeon RX 470 Series"},
+    {GDT_ELLESMERE, 0x67FF, 0xE7, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "AMD Radeon Embedded E9390"},
     {GDT_ELLESMERE, 0x67DF, 0xC0, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "Radeon Pro 580X"},
     {GDT_ELLESMERE, 0x67DF, 0xC1, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "Radeon RX 580 Series"},
     {GDT_ELLESMERE, 0x67DF, 0xC2, GDT_HW_GENERATION_VOLCANICISLAND, false, "Ellesmere", "Radeon RX 570 Series"},
@@ -728,10 +731,11 @@ GDT_GfxCardInfo gs_cardInfo[] = {
     {GDT_GFX10_3_1, 0x73DF, 0xC1, GDT_HW_GENERATION_GFX103, false, "gfx1031", "AMD Radeon RX 6700 XT"},
     {GDT_GFX10_3_1, 0x73DF, 0xC5, GDT_HW_GENERATION_GFX103, false, "gfx1031", "AMD Radeon RX 6700 XT"},
     {GDT_GFX10_3_1, 0x73DF, 0xC7, GDT_HW_GENERATION_GFX103, false, "gfx1031", "73DF:C7"},
-    {GDT_GFX10_3_1, 0x73DF, 0xDF, GDT_HW_GENERATION_GFX103, false, "gfx1031", "73DF:DF"},
+    {GDT_GFX10_3_1, 0x73DF, 0xDF, GDT_HW_GENERATION_GFX103, false, "gfx1031", "AMD Radeon RX 6700"},
     {GDT_GFX10_3_1, 0x73DF, 0xC2, GDT_HW_GENERATION_GFX103, false, "gfx1031", "AMD Radeon RX 6800M"},
     {GDT_GFX10_3_1, 0x73DF, 0xC3, GDT_HW_GENERATION_GFX103, false, "gfx1031", "AMD Radeon RX 6800M"},
     {GDT_GFX10_3_1, 0x73DF, 0xCF, GDT_HW_GENERATION_GFX103, false, "gfx1031", "AMD Radeon RX 6700M"},
+    {GDT_GFX10_3_1, 0x73DF, 0xFF, GDT_HW_GENERATION_GFX103, false, "gfx1031", "AMD Radeon RX 6700"},
 
     // GFX10_3_2
     {GDT_GFX10_3_2, 0x73E0, 0x00, GDT_HW_GENERATION_GFX103, false, "gfx1032", "73E0:00"},
@@ -763,10 +767,10 @@ GDT_GfxCardInfo gs_cardInfo[] = {
     {GDT_GFX10_3_4, 0x7423, 0x01, GDT_HW_GENERATION_GFX103, false, "gfx1034", "AMD Radeon PRO W6300"},
     {GDT_GFX10_3_4, 0x743F, 0xC3, GDT_HW_GENERATION_GFX103, false, "gfx1034", "AMD Radeon(TM) RX 6500M"},
     {GDT_GFX10_3_4, 0x743F, 0xCF, GDT_HW_GENERATION_GFX103, false, "gfx1034", "AMD Radeon RX 6300M"},
-    {GDT_GFX10_3_4, 0x743F, 0xC8, GDT_HW_GENERATION_GFX103, false, "gfx1034", "AMD Radeon RX 6500M"},
+    {GDT_GFX10_3_4, 0x743F, 0xC8, GDT_HW_GENERATION_GFX103, false, "gfx1034", "AMD Radeon(TM) RX 6550M"},
     {GDT_GFX10_3_4, 0x743F, 0xCC, GDT_HW_GENERATION_GFX103, false, "gfx1034", "AMD Radeon(TM) 6550S"},
-    {GDT_GFX10_3_4, 0x743F, 0xCE, GDT_HW_GENERATION_GFX103, false, "gfx1034", "AMD Radeon RX 6400M"},
-    {GDT_GFX10_3_4, 0x743F, 0xD3, GDT_HW_GENERATION_GFX103, false, "gfx1034", "AMD Radeon RX 6500M"},
+    {GDT_GFX10_3_4, 0x743F, 0xCE, GDT_HW_GENERATION_GFX103, false, "gfx1034", "AMD Radeon(TM) RX 6450M"},
+    {GDT_GFX10_3_4, 0x743F, 0xD3, GDT_HW_GENERATION_GFX103, false, "gfx1034", "AMD Radeon(TM) RX 6550M"},
 
     // GFX10_3_5
     {GDT_GFX10_3_5, 0x164D, 0x00, GDT_HW_GENERATION_GFX103, true, "gfx1035", "AMD Radeon(TM) Graphics"},
@@ -861,8 +865,8 @@ GDT_GfxCardInfo gs_cardInfo[] = {
     // GFX11_0_0
     {GDT_GFX11_0_0, 0x73A8, 0x00, GDT_HW_GENERATION_GFX11, true, "gfx1100", "AMD Radeon(TM) Graphics"},
     {GDT_GFX11_0_0, 0x744C, 0xC0, GDT_HW_GENERATION_GFX11, true, "gfx1100", "AMD Radeon(TM) Graphics"},
-    {GDT_GFX11_0_0, 0x744C, 0xC8, GDT_HW_GENERATION_GFX11, true, "gfx1100", "AMD Radeon(TM) RX 7900 XTX"},
-    {GDT_GFX11_0_0, 0x744C, 0xCC, GDT_HW_GENERATION_GFX11, true, "gfx1100", "AMD Radeon(TM) RX 7900 XT"},
+    {GDT_GFX11_0_0, 0x744C, 0xC8, GDT_HW_GENERATION_GFX11, true, "gfx1100", "AMD Radeon RX 7900 XTX"},
+    {GDT_GFX11_0_0, 0x744C, 0xCC, GDT_HW_GENERATION_GFX11, true, "gfx1100", "AMD Radeon RX 7900 XT"},
     {GDT_GFX11_0_0, 0x744C, 0xCE, GDT_HW_GENERATION_GFX11, true, "gfx1100", "AMD Radeon(TM) Graphics"},
     {GDT_GFX11_0_0, 0x744C, 0xE0, GDT_HW_GENERATION_GFX11, true, "gfx1100", "AMD Radeon(TM) Graphics"},
     {GDT_GFX11_0_0, 0x744C, 0xEC, GDT_HW_GENERATION_GFX11, true, "gfx1100", "AMD Radeon(TM) Graphics"},
@@ -870,6 +874,31 @@ GDT_GfxCardInfo gs_cardInfo[] = {
     {GDT_GFX11_0_0, 0x744C, 0xCF, GDT_HW_GENERATION_GFX11, true, "gfx1100", "AMD Radeon(TM) Graphics"},
     {GDT_GFX11_0_0, 0x7448, 0x00, GDT_HW_GENERATION_GFX11, true, "gfx1100", "AMD Radeon(TM) Graphics"},
     {GDT_GFX11_0_0, 0x745E, 0xCC, GDT_HW_GENERATION_GFX11, true, "gfx1100", "AMD Radeon(TM) Graphics"},
+
+    // GFX11_0_2
+    {GDT_GFX11_0_2, 0x73F0, 0x3C, GDT_HW_GENERATION_GFX11, true, "gfx1102", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_0_2, 0x73F0, 0x3D, GDT_HW_GENERATION_GFX11, true, "gfx1102", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_0_2, 0x73F0, 0xF5, GDT_HW_GENERATION_GFX11, true, "gfx1102", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_0_2, 0x73F0, 0xF6, GDT_HW_GENERATION_GFX11, true, "gfx1102", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_0_2, 0x73F0, 0xF7, GDT_HW_GENERATION_GFX11, true, "gfx1102", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_0_2, 0x7480, 0xC0, GDT_HW_GENERATION_GFX11, true, "gfx1102", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_0_2, 0x7480, 0xCF, GDT_HW_GENERATION_GFX11, true, "gfx1102", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_0_2, 0x749F, 0xCF, GDT_HW_GENERATION_GFX11, true, "gfx1102", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_0_2, 0x73F0, 0x3E, GDT_HW_GENERATION_GFX11, true, "gfx1102", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_0_2, 0x73F0, 0x3F, GDT_HW_GENERATION_GFX11, true, "gfx1102", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_0_2, 0x73F0, 0xF1, GDT_HW_GENERATION_GFX11, true, "gfx1102", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_0_2, 0x73F0, 0xF2, GDT_HW_GENERATION_GFX11, true, "gfx1102", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_0_2, 0x73F0, 0xF3, GDT_HW_GENERATION_GFX11, true, "gfx1102", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_0_2, 0x73F0, 0xF4, GDT_HW_GENERATION_GFX11, true, "gfx1102", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_0_2, 0x7480, 0xC1, GDT_HW_GENERATION_GFX11, true, "gfx1102", "AMD Radeon RX 7700S"},
+    {GDT_GFX11_0_2, 0x7480, 0xC3, GDT_HW_GENERATION_GFX11, true, "gfx1102", "AMD Radeon RX 7600S"},
+    {GDT_GFX11_0_2, 0x7480, 0xC7, GDT_HW_GENERATION_GFX11, true, "gfx1102", "AMD Radeon RX 7600M XT"},
+    {GDT_GFX11_0_2, 0x7483, 0xCF, GDT_HW_GENERATION_GFX11, true, "gfx1102", "AMD Radeon RX 7600M"},
+    {GDT_GFX11_0_2, 0x7480, 0x00, GDT_HW_GENERATION_GFX11, true, "gfx1102", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_0_2, 0x7481, 0x00, GDT_HW_GENERATION_GFX11, true, "gfx1102", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_0_2, 0x7489, 0x00, GDT_HW_GENERATION_GFX11, true, "gfx1102", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_0_2, 0x748B, 0x00, GDT_HW_GENERATION_GFX11, true, "gfx1102", "AMD Radeon(TM) Graphics"},
+
 };
 
 GDT_DeviceInfo gs_deviceInfo[] = {
@@ -915,6 +944,7 @@ GDT_DeviceInfo gs_deviceInfo[] = {
     {1, 16, 1, 16, 2, 64, 2, 8, 2, true},   // GDT_GFX10_3_4
     {1, 16, 1, 16, 1, 64, 2, 6, 2, true},   // GDT_GFX10_3_5
     {6, 16, 1, 8, 12, 64, 2, 8, 2, true},   // GDT_GFX11_0_0
+    {2, 16, 1, 16, 4, 64, 2, 8, 2, true},   // GDT_GFX11_0_2
 };
 
 size_t gs_cardInfoSize   = sizeof(gs_cardInfo) / sizeof(GDT_GfxCardInfo);

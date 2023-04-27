@@ -45,6 +45,14 @@ AMDTDeviceInfoUtils* AMDTDeviceInfoUtils::Instance()
     return ms_pInstance;
 }
 
+void AMDTDeviceInfoUtils::DeleteInstance()
+{
+    delete ms_pInstance;
+    ms_pInstance = nullptr;
+
+    AMDTDeviceInfoManager::DeleteInstance();
+}
+
 bool AMDTDeviceInfoUtils::GetDeviceInfo(size_t deviceID, size_t revisionID, GDT_DeviceInfo& deviceInfo) const
 {
     bool found = false;
@@ -98,6 +106,8 @@ bool AMDTDeviceInfoUtils::GetDeviceInfo(const char* szCALDeviceName, GDT_DeviceI
 bool AMDTDeviceInfoUtils::GetDeviceInfo(size_t deviceID, size_t revisionID, GDT_GfxCardInfo& cardInfo) const
 {
     bool found = false;
+
+    assert(m_deviceIDMap.size() != 0);
 
     auto matches = m_deviceIDMap.equal_range(deviceID);
     for (auto it = matches.first; it != matches.second && !found; ++it)

@@ -26,11 +26,7 @@ public:
     static AMDTDeviceInfoUtils* Instance();
 
     /// Deletes the AMDTDeviceInfoUtils instance
-    static void DeleteInstance()
-    {
-        delete ms_pInstance;
-        ms_pInstance = nullptr;
-    }
+    static void DeleteInstance();
 
     /// Adds the specified device info
     /// \param asicType the asic type of the device info being added
