@@ -1,5 +1,5 @@
 //==============================================================================
-/// Copyright (c) 2010-2022 Advanced Micro Devices, Inc. All rights reserved.
+/// Copyright (c) 2010-2023 Advanced Micro Devices, Inc. All rights reserved.
 /// @author AMD Developer Tools Team
 /// @file
 /// @brief Device info table.
@@ -60,6 +60,8 @@ enum GDT_HW_ASIC_TYPE
     GDT_GFX10_3_5,            ///< GFX10_3_5 APU
     GDT_GFX11_0_0,            ///< GFX11_0_0 GPU
     GDT_GFX11_0_2,            ///< GFX11_0_2 GPU
+    GDT_GFX11_0_3,            ///< GFX11_0_3 APU
+    GDT_GFX11_0_3B,           ///< GFX11_0_3B APU
     GDT_LAST                  ///< last
 };
 

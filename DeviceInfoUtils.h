@@ -166,6 +166,21 @@ public:
     /// \return false if device ID is not found
     bool IsXFamily(size_t deviceID, GDT_HW_GENERATION generation, bool& isXFamily) const;
 
+    /// Determine if the specified device is a member of the Gfx11 family
+    /// \param[in] szCALDeviceName CAL device name
+    /// \param[out] bIsGfx11 Set to true if input device name is a member of the Gfx11 family
+    /// \return false if device name is not found
+    bool IsGfx11Family(const char* szCALDeviceName, bool& bIsGfx11) const
+    {
+        return IsXFamily(szCALDeviceName, GDT_HW_GENERATION_GFX11, bIsGfx11);
+    }
+
+    /// Determine if the specified device is a member of the Gfx11 family
+    /// \param[in] deviceID the PCIE device ID
+    /// \param[out] isGfx11 Set to true if input device name is a member of the Gfx11 family
+    /// \return false if device ID is not found
+    bool IsGfx11Family(size_t deviceID, bool& isGfx11) const;
+
     /// Determine if the specified device is a member of the Gfx10 family
     /// \param[in] szCALDeviceName CAL device name
     /// \param[out] bIsGfx10 Set to true if input device name is a member of the Gfx10 family

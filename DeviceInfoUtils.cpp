@@ -198,6 +198,11 @@ bool AMDTDeviceInfoUtils::IsXFamily(size_t deviceID, GDT_HW_GENERATION generatio
     }
 }
 
+bool AMDTDeviceInfoUtils::IsGfx11Family(size_t deviceID, bool& isGfx11) const
+{
+    return IsXFamily(deviceID, GDT_HW_GENERATION_GFX11, isGfx11);
+}
+
 bool AMDTDeviceInfoUtils::IsGfx10Family(size_t deviceID, bool& isGfx10) const
 {
     return IsXFamily(deviceID, GDT_HW_GENERATION_GFX10, isGfx10);
