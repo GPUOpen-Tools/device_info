@@ -869,11 +869,29 @@ GDT_GfxCardInfo gs_cardInfo[] = {
     {GDT_GFX11_0_0, 0x744C, 0xCC, GDT_HW_GENERATION_GFX11, true, "gfx1100", "AMD Radeon RX 7900 XT"},
     {GDT_GFX11_0_0, 0x744C, 0xCE, GDT_HW_GENERATION_GFX11, true, "gfx1100", "AMD Radeon(TM) Graphics"},
     {GDT_GFX11_0_0, 0x744C, 0xE0, GDT_HW_GENERATION_GFX11, true, "gfx1100", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_0_0, 0x744C, 0xE8, GDT_HW_GENERATION_GFX11, true, "gfx1100", "AMD Radeon(TM) Graphics"},
     {GDT_GFX11_0_0, 0x744C, 0xEC, GDT_HW_GENERATION_GFX11, true, "gfx1100", "AMD Radeon(TM) Graphics"},
     {GDT_GFX11_0_0, 0x744C, 0xEE, GDT_HW_GENERATION_GFX11, true, "gfx1100", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_0_0, 0x744C, 0xEF, GDT_HW_GENERATION_GFX11, true, "gfx1100", "AMD Radeon(TM) Graphics"},
     {GDT_GFX11_0_0, 0x744C, 0xCF, GDT_HW_GENERATION_GFX11, true, "gfx1100", "AMD Radeon(TM) Graphics"},
     {GDT_GFX11_0_0, 0x7448, 0x00, GDT_HW_GENERATION_GFX11, true, "gfx1100", "AMD Radeon PRO W7900"},
     {GDT_GFX11_0_0, 0x745E, 0xCC, GDT_HW_GENERATION_GFX11, true, "gfx1100", "AMD Radeon PRO W7800"},
+
+    // GFX11_0_1
+    {GDT_GFX11_0_1, 0x73C8, 0x00, GDT_HW_GENERATION_GFX11, true, "gfx1101", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_0_1, 0x73C8, 0x02, GDT_HW_GENERATION_GFX11, true, "gfx1101", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_0_1, 0x73C8, 0x03, GDT_HW_GENERATION_GFX11, true, "gfx1101", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_0_1, 0x747E, 0xC8, GDT_HW_GENERATION_GFX11, true, "gfx1101", "AMD Radeon RX 7800 XT Graphics"},
+    {GDT_GFX11_0_1, 0x747E, 0xFF, GDT_HW_GENERATION_GFX11, true, "gfx1101", "AMD Radeon RX 7700 XT Graphics"},
+    {GDT_GFX11_0_1, 0x747E, 0xD8, GDT_HW_GENERATION_GFX11, true, "gfx1101", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_0_1, 0x747E, 0xD9, GDT_HW_GENERATION_GFX11, true, "gfx1101", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_0_1, 0x747E, 0x9B, GDT_HW_GENERATION_GFX11, true, "gfx1101", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_0_1, 0x73C4, 0x00, GDT_HW_GENERATION_GFX11, true, "gfx1101", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_0_1, 0x73C5, 0x00, GDT_HW_GENERATION_GFX11, true, "gfx1101", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_0_1, 0x7460, 0x00, GDT_HW_GENERATION_GFX11, true, "gfx1101", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_0_1, 0x7461, 0x00, GDT_HW_GENERATION_GFX11, true, "gfx1101", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_0_1, 0x7470, 0x00, GDT_HW_GENERATION_GFX11, true, "gfx1101", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_0_1, 0x7478, 0x00, GDT_HW_GENERATION_GFX11, true, "gfx1101", "AMD Radeon(TM) Graphics"},
 
     // GFX11_0_2
     {GDT_GFX11_0_2, 0x73F0, 0x3C, GDT_HW_GENERATION_GFX11, true, "gfx1102", "AMD Radeon(TM) Graphics"},
@@ -896,9 +914,9 @@ GDT_GfxCardInfo gs_cardInfo[] = {
     {GDT_GFX11_0_2, 0x7481, 0xC3, GDT_HW_GENERATION_GFX11, true, "gfx1102", "AMD Radeon(TM) Graphics"},
     {GDT_GFX11_0_2, 0x7483, 0xCF, GDT_HW_GENERATION_GFX11, true, "gfx1102", "AMD Radeon RX 7600M"},
     {GDT_GFX11_0_2, 0x7487, 0xCF, GDT_HW_GENERATION_GFX11, true, "gfx1102", "AMD Radeon(TM) Graphics"},
-    {GDT_GFX11_0_2, 0x7480, 0x00, GDT_HW_GENERATION_GFX11, true, "gfx1102", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_0_2, 0x7480, 0x00, GDT_HW_GENERATION_GFX11, true, "gfx1102", "AMD Radeon PRO W7600"},
     {GDT_GFX11_0_2, 0x7481, 0x00, GDT_HW_GENERATION_GFX11, true, "gfx1102", "AMD Radeon(TM) Graphics"},
-    {GDT_GFX11_0_2, 0x7489, 0x00, GDT_HW_GENERATION_GFX11, true, "gfx1102", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_0_2, 0x7489, 0x00, GDT_HW_GENERATION_GFX11, true, "gfx1102", "AMD Radeon PRO W7500"},
     {GDT_GFX11_0_2, 0x748B, 0x00, GDT_HW_GENERATION_GFX11, true, "gfx1102", "AMD Radeon(TM) Graphics"},
 
     // GFX11_0_3
@@ -948,6 +966,42 @@ GDT_GfxCardInfo gs_cardInfo[] = {
     {GDT_GFX11_0_3, 0x15BF, 0xE9, GDT_HW_GENERATION_GFX11, true, "gfx1103", "15BF:E9"},
     {GDT_GFX11_0_3, 0x15BF, 0xEA, GDT_HW_GENERATION_GFX11, true, "gfx1103", "15BF:EA"},
     {GDT_GFX11_0_3, 0x15BF, 0xF0, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 760M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0x01, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 780M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0x02, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 760M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0x03, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 780M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0x04, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 760M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0x05, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 780M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0x06, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 780M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0x07, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 760M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0xC0, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 780M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0xC1, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 760M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0xC2, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 780M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0xC3, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 760M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0xC4, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 780M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0xC5, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 780M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0xC6, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 760M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0xC7, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 780M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0xC8, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 760M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0xC9, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 780M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0xCA, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 760M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0xCB, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 780M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0xCC, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 780M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0xCD, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 760M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0xCE, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 780M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0xCF, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 760M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0xD0, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 780M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0xD1, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 760M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0xD2, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 780M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0xD3, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 760M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0xD4, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 780M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0xD5, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 780M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0xD6, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 760M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0xD7, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 780M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0xD8, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 760M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0xD9, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 780M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0xDA, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 760M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0xDB, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 780M Graphics"},
+    {GDT_GFX11_0_3, 0x1900, 0xDC, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 780M Graphics"},
     {GDT_GFX11_0_3B, 0x15C8, 0xC1, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 740M Graphics"},
     {GDT_GFX11_0_3B, 0x15C8, 0xC2, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 740M Graphics"},
     {GDT_GFX11_0_3B, 0x15C8, 0xC3, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 740M Graphics"},
@@ -965,6 +1019,15 @@ GDT_GfxCardInfo gs_cardInfo[] = {
     {GDT_GFX11_0_3B, 0x15C8, 0xD6, GDT_HW_GENERATION_GFX11, true, "gfx1103", "15C8:D6"},
     {GDT_GFX11_0_3B, 0x15C8, 0xD7, GDT_HW_GENERATION_GFX11, true, "gfx1103", "15C8:D7"},
     {GDT_GFX11_0_3B, 0x15C8, 0xD8, GDT_HW_GENERATION_GFX11, true, "gfx1103", "15C8:D8"},
+    {GDT_GFX11_0_3B, 0x1901, 0xC1, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 740M Graphics"},
+    {GDT_GFX11_0_3B, 0x1901, 0xC2, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 740M Graphics"},
+    {GDT_GFX11_0_3B, 0x1901, 0xC3, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 740M Graphics"},
+    {GDT_GFX11_0_3B, 0x1901, 0xC6, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 740M Graphics"},
+    {GDT_GFX11_0_3B, 0x1901, 0xC7, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 740M Graphics"},
+    {GDT_GFX11_0_3B, 0x1901, 0xD1, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 740M Graphics"},
+    {GDT_GFX11_0_3B, 0x1901, 0xD2, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 740M Graphics"},
+    {GDT_GFX11_0_3B, 0x1901, 0xD3, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 740M Graphics"},
+    {GDT_GFX11_0_3B, 0x1901, 0xD4, GDT_HW_GENERATION_GFX11, true, "gfx1103", "AMD Radeon 740M Graphics"},
 };
 
 GDT_DeviceInfo gs_deviceInfo[] = {
@@ -1010,6 +1073,7 @@ GDT_DeviceInfo gs_deviceInfo[] = {
     {1, 16, 1, 16, 2, 64, 2, 8, 2, true},   // GDT_GFX10_3_4
     {1, 16, 1, 16, 1, 64, 2, 6, 2, true},   // GDT_GFX10_3_5
     {6, 16, 1, 8, 12, 64, 2, 8, 2, true},   // GDT_GFX11_0_0
+    {3, 16, 1, 8, 6, 64, 2, 10, 2, true},   // GDT_GFX11_0_1
     {2, 16, 1, 8, 4, 64, 2, 8, 2, true},    // GDT_GFX11_0_2
     {1, 16, 1, 8, 2, 64, 2, 6, 2, true},    // GDT_GFX11_0_3
     {1, 16, 1, 8, 1, 64, 1, 4, 2, true},    // GDT_GFX11_0_3B
