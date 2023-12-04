@@ -560,6 +560,10 @@ GDT_GfxCardInfo gs_cardInfo[] = {
     {GDT_GFX9_0_6, 0x66AF, 0xC3, GDT_HW_GENERATION_GFX9, false, "gfx906", "66AF:C3"},
     {GDT_GFX9_0_6, 0x66AF, 0xC7, GDT_HW_GENERATION_GFX9, false, "gfx906", "66AF:C7"},
 
+    // GFX9_0_A
+    {GDT_GFX9_0_A, 0x740C, 0x01, GDT_HW_GENERATION_GFX9, false, "gfx90a", "AMD Instinct(TM) MI250X"},
+    {GDT_GFX9_0_A, 0x740F, 0x02, GDT_HW_GENERATION_GFX9, false, "gfx90a", "AMD Instinct(TM) MI210"},
+
     // GFX9_0_C
     {GDT_GFX9_0_C, 0x1636, 0x00, GDT_HW_GENERATION_GFX9, true, "gfx90c", "1636:00"},
     {GDT_GFX9_0_C, 0x1636, 0x80, GDT_HW_GENERATION_GFX9, true, "gfx90c", "AMD Radeon(TM) Graphics"},
@@ -1062,6 +1066,7 @@ GDT_DeviceInfo gs_deviceInfo[] = {
     {4, 10, 1, 8, 4, 64, 1, 5, 4, true},    // GDT_GFX9_0_4
     {4, 10, 1, 8, 4, 64, 1, 16, 4, true},   // GDT_GFX9_0_6
     {1, 10, 1, 8, 1, 64, 1, 8, 4, true},    // GDT_GFX9_0_9
+    {8, 10, 1, 8, 0, 64, 1, 14, 4, true},   // GDT_GFX9_0_A
     {1, 10, 1, 8, 1, 64, 1, 8, 4, true},    // GDT_GFX9_0_C
     {2, 20, 1, 16, 4, 64, 2, 10, 2, true},  // GDT_GFX10_1_0
     {2, 20, 1, 16, 4, 64, 2, 9, 2, true},   // GDT_GFX10_1_0_XL

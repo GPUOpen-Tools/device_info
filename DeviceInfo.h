@@ -48,6 +48,7 @@ enum GDT_HW_ASIC_TYPE
     GDT_GFX9_0_4,             ///< GFX9_0_4 GPU
     GDT_GFX9_0_6,             ///< GFX9_0_6 GPU
     GDT_GFX9_0_9,             ///< GFX9_0_9 GPU
+    GDT_GFX9_0_A,             ///< GFX9_0_A GPU
     GDT_GFX9_0_C,             ///< GfX9_0_C GPU
     GDT_GFX10_1_0,            ///< GFX10_1_0 GPU
     GDT_GFX10_1_0_XL,         ///< GFX10_1_0_XL GPU
