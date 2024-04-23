@@ -1,5 +1,5 @@
 //==============================================================================
-// Copyright (c) 2010-2022 Advanced Micro Devices, Inc. All rights reserved.
+// Copyright (c) 2010-2024 Advanced Micro Devices, Inc. All rights reserved.
 /// @author AMD Developer Tools Team
 /// @file
 /// @brief Device info utils class.
@@ -324,6 +324,9 @@ bool AMDTDeviceInfoUtils::GetHardwareGenerationDisplayName(GDT_HW_GENERATION gen
     static const std::string s_RDNA_FAMILY_NAME  = "RDNA";
     static const std::string s_RDNA2_FAMILY_NAME = "RDNA2";
     static const std::string s_RDNA3_FAMILY_NAME = "RDNA3";
+    static const std::string s_CDNA_FAMILY_NAME  = "CDNA";
+    static const std::string s_CDNA2_FAMILY_NAME = "CDNA2";
+    static const std::string s_CDNA3_FAMILY_NAME = "CDNA3";
 
     bool retVal = true;
 
@@ -355,6 +358,18 @@ bool AMDTDeviceInfoUtils::GetHardwareGenerationDisplayName(GDT_HW_GENERATION gen
 
         case GDT_HW_GENERATION_GFX11:
             strGenerationDisplayName = s_RDNA3_FAMILY_NAME;
+            break;
+
+        case GDT_HW_GENERATION_CDNA:
+            strGenerationDisplayName = s_CDNA_FAMILY_NAME;
+            break;
+
+        case GDT_HW_GENERATION_CDNA2:
+            strGenerationDisplayName = s_CDNA2_FAMILY_NAME;
+            break;
+
+        case GDT_HW_GENERATION_CDNA3:
+            strGenerationDisplayName = s_CDNA3_FAMILY_NAME;
             break;
 
         default:

@@ -1,5 +1,5 @@
 //==============================================================================
-/// Copyright (c) 2010-2023 Advanced Micro Devices, Inc. All rights reserved.
+/// Copyright (c) 2010-2024 Advanced Micro Devices, Inc. All rights reserved.
 /// @author AMD Developer Tools Team
 /// @file
 /// @brief Device info table.
@@ -50,6 +50,7 @@ enum GDT_HW_ASIC_TYPE
     GDT_GFX9_0_9,             ///< GFX9_0_9 GPU
     GDT_GFX9_0_A,             ///< GFX9_0_A GPU
     GDT_GFX9_0_C,             ///< GfX9_0_C GPU
+    GDT_GFX9_4_2,             ///< GfX9_4_2 GPU
     GDT_GFX10_1_0,            ///< GFX10_1_0 GPU
     GDT_GFX10_1_0_XL,         ///< GFX10_1_0_XL GPU
     GDT_GFX10_1_2,            ///< GFX10_1_2 GPU
@@ -81,6 +82,9 @@ enum GDT_HW_GENERATION
     GDT_HW_GENERATION_GFX10,                                         ///< GFX IP 10
     GDT_HW_GENERATION_GFX103,                                        ///< GFX IP 10.3
     GDT_HW_GENERATION_GFX11,                                         ///< GFX IP 11
+    GDT_HW_GENERATION_CDNA,                                          ///< MI-100
+    GDT_HW_GENERATION_CDNA2,                                         ///< MI-200
+    GDT_HW_GENERATION_CDNA3,                                         ///< MI-300
     GDT_HW_GENERATION_LAST
 };
 
