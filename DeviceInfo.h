@@ -58,6 +58,7 @@ enum GDT_HW_ASIC_TYPE
     GDT_GFX10_3_0,            ///< GFX10_3_0 GPU
     GDT_GFX10_3_1,            ///< GFX10_3_1 GPU
     GDT_GFX10_3_2,            ///< GFX10_3_2 GPU
+    GDT_GFX10_3_3,            ///< GFX10_3_3 APU
     GDT_GFX10_3_4,            ///< GFX10_3_4 GPU
     GDT_GFX10_3_5,            ///< GFX10_3_5 APU
     GDT_GFX11_0_0,            ///< GFX11_0_0 GPU
@@ -65,6 +66,7 @@ enum GDT_HW_ASIC_TYPE
     GDT_GFX11_0_2,            ///< GFX11_0_2 GPU
     GDT_GFX11_0_3,            ///< GFX11_0_3 APU
     GDT_GFX11_0_3B,           ///< GFX11_0_3B APU
+    GDT_GFX11_5_0,            ///< GFX11_5_0 APU
     GDT_LAST                  ///< last
 };
 
