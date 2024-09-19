@@ -84,6 +84,7 @@ enum GDT_HW_GENERATION
     GDT_HW_GENERATION_GFX10,                                         ///< GFX IP 10
     GDT_HW_GENERATION_GFX103,                                        ///< GFX IP 10.3
     GDT_HW_GENERATION_GFX11,                                         ///< GFX IP 11
+    GDT_HW_GENERATION_GFX115,                                        ///< GFX IP 11.5
     GDT_HW_GENERATION_CDNA,                                          ///< MI-100
     GDT_HW_GENERATION_CDNA2,                                         ///< MI-200
     GDT_HW_GENERATION_CDNA3,                                         ///< MI-300

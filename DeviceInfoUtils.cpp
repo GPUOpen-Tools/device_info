@@ -317,16 +317,17 @@ bool AMDTDeviceInfoUtils::GetAllCardsWithAsicType(GDT_HW_ASIC_TYPE asicType, std
 
 bool AMDTDeviceInfoUtils::GetHardwareGenerationDisplayName(GDT_HW_GENERATION gen, std::string& strGenerationDisplayName) const
 {
-    static const std::string s_SI_FAMILY_NAME    = "Graphics IP v6";
-    static const std::string s_CI_FAMILY_NAME    = "Graphics IP v7";
-    static const std::string s_VI_FAMILY_NAME    = "Graphics IP v8";
-    static const std::string s_GFX9_FAMILY_NAME  = "Vega";
-    static const std::string s_RDNA_FAMILY_NAME  = "RDNA";
-    static const std::string s_RDNA2_FAMILY_NAME = "RDNA2";
-    static const std::string s_RDNA3_FAMILY_NAME = "RDNA3";
-    static const std::string s_CDNA_FAMILY_NAME  = "CDNA";
-    static const std::string s_CDNA2_FAMILY_NAME = "CDNA2";
-    static const std::string s_CDNA3_FAMILY_NAME = "CDNA3";
+    static const std::string s_SI_FAMILY_NAME      = "Graphics IP v6";
+    static const std::string s_CI_FAMILY_NAME      = "Graphics IP v7";
+    static const std::string s_VI_FAMILY_NAME      = "Graphics IP v8";
+    static const std::string s_GFX9_FAMILY_NAME    = "Vega";
+    static const std::string s_RDNA_FAMILY_NAME    = "RDNA";
+    static const std::string s_RDNA2_FAMILY_NAME   = "RDNA2";
+    static const std::string s_RDNA3_FAMILY_NAME   = "RDNA3";
+    static const std::string s_RDNA3_5_FAMILY_NAME = "RDNA3.5";
+    static const std::string s_CDNA_FAMILY_NAME    = "CDNA";
+    static const std::string s_CDNA2_FAMILY_NAME   = "CDNA2";
+    static const std::string s_CDNA3_FAMILY_NAME   = "CDNA3";
 
     bool retVal = true;
 
@@ -359,6 +360,10 @@ bool AMDTDeviceInfoUtils::GetHardwareGenerationDisplayName(GDT_HW_GENERATION gen
         case GDT_HW_GENERATION_GFX11:
             strGenerationDisplayName = s_RDNA3_FAMILY_NAME;
             break;
+        
+        case GDT_HW_GENERATION_GFX115:
+            strGenerationDisplayName = s_RDNA3_5_FAMILY_NAME;
+            break;
 
         case GDT_HW_GENERATION_CDNA:
             strGenerationDisplayName = s_CDNA_FAMILY_NAME;
@@ -367,7 +372,7 @@ bool AMDTDeviceInfoUtils::GetHardwareGenerationDisplayName(GDT_HW_GENERATION gen
         case GDT_HW_GENERATION_CDNA2:
             strGenerationDisplayName = s_CDNA2_FAMILY_NAME;
             break;
-
+        
         case GDT_HW_GENERATION_CDNA3:
             strGenerationDisplayName = s_CDNA3_FAMILY_NAME;
             break;
