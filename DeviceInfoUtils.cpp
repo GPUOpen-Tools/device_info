@@ -1,5 +1,5 @@
 //==============================================================================
-// Copyright (c) 2010-2024 Advanced Micro Devices, Inc. All rights reserved.
+// Copyright (c) 2010-2025 Advanced Micro Devices, Inc. All rights reserved.
 /// @author AMD Developer Tools Team
 /// @file
 /// @brief Device info utils class.
@@ -198,6 +198,16 @@ bool AMDTDeviceInfoUtils::IsXFamily(size_t deviceID, GDT_HW_GENERATION generatio
     }
 }
 
+bool AMDTDeviceInfoUtils::IsGfx12Family(size_t deviceID, bool& isGfx12) const
+{
+    return IsXFamily(deviceID, GDT_HW_GENERATION_GFX12, isGfx12);
+}
+
+bool AMDTDeviceInfoUtils::IsGfx115Family(size_t deviceID, bool& isGfx115) const
+{
+    return IsXFamily(deviceID, GDT_HW_GENERATION_GFX115, isGfx115);
+}
+
 bool AMDTDeviceInfoUtils::IsGfx11Family(size_t deviceID, bool& isGfx11) const
 {
     return IsXFamily(deviceID, GDT_HW_GENERATION_GFX11, isGfx11);
@@ -325,6 +335,7 @@ bool AMDTDeviceInfoUtils::GetHardwareGenerationDisplayName(GDT_HW_GENERATION gen
     static const std::string s_RDNA2_FAMILY_NAME   = "RDNA2";
     static const std::string s_RDNA3_FAMILY_NAME   = "RDNA3";
     static const std::string s_RDNA3_5_FAMILY_NAME = "RDNA3.5";
+    static const std::string s_RDNA4_FAMILY_NAME   = "RDNA4";
     static const std::string s_CDNA_FAMILY_NAME    = "CDNA";
     static const std::string s_CDNA2_FAMILY_NAME   = "CDNA2";
     static const std::string s_CDNA3_FAMILY_NAME   = "CDNA3";
@@ -363,6 +374,10 @@ bool AMDTDeviceInfoUtils::GetHardwareGenerationDisplayName(GDT_HW_GENERATION gen
         
         case GDT_HW_GENERATION_GFX115:
             strGenerationDisplayName = s_RDNA3_5_FAMILY_NAME;
+			break;
+		
+		case GDT_HW_GENERATION_GFX12:
+            strGenerationDisplayName = s_RDNA4_FAMILY_NAME;
             break;
 
         case GDT_HW_GENERATION_CDNA:
