@@ -374,9 +374,9 @@ bool AMDTDeviceInfoUtils::GetHardwareGenerationDisplayName(GDT_HW_GENERATION gen
         
         case GDT_HW_GENERATION_GFX115:
             strGenerationDisplayName = s_RDNA3_5_FAMILY_NAME;
-			break;
-		
-		case GDT_HW_GENERATION_GFX12:
+            break;
+            
+        case GDT_HW_GENERATION_GFX12:
             strGenerationDisplayName = s_RDNA4_FAMILY_NAME;
             break;
 
@@ -387,7 +387,7 @@ bool AMDTDeviceInfoUtils::GetHardwareGenerationDisplayName(GDT_HW_GENERATION gen
         case GDT_HW_GENERATION_CDNA2:
             strGenerationDisplayName = s_CDNA2_FAMILY_NAME;
             break;
-        
+
         case GDT_HW_GENERATION_CDNA3:
             strGenerationDisplayName = s_CDNA3_FAMILY_NAME;
             break;
