@@ -1111,9 +1111,14 @@ GDT_GfxCardInfo gs_cardInfo[] = {
     {GDT_GFX11_5_2, 0x1114, 0xD4, GDT_HW_GENERATION_GFX11, true, "gfx1152", "AMD Radeon(TM) Graphics"},
     {GDT_GFX11_5_2, 0x1114, 0xD5, GDT_HW_GENERATION_GFX11, true, "gfx1152", "AMD Radeon(TM) Graphics"},
 
+    // GFX12_0_0
+    {GDT_GFX12_0_0, 0x7590, 0xC0, GDT_HW_GENERATION_GFX12, false, "gfx1200", "AMD Radeon RX 9060 XT"},
+
     // GFX12_0_1
     {GDT_GFX12_0_1, 0x7550, 0xC0, GDT_HW_GENERATION_GFX12, false, "gfx1201", "AMD Radeon RX 9070 XT"},
+    {GDT_GFX12_0_1, 0x7550, 0xC2, GDT_HW_GENERATION_GFX12, false, "gfx1201", "AMD Radeon RX 9070 GRE"},
     {GDT_GFX12_0_1, 0x7550, 0xC3, GDT_HW_GENERATION_GFX12, false, "gfx1201", "AMD Radeon RX 9070"},
+    {GDT_GFX12_0_1, 0x7551, 0xC0, GDT_HW_GENERATION_GFX12, false, "gfx1201", "AMD Radeon AI PRO R9700"},
 };
 
 GDT_DeviceInfo gs_deviceInfo[] = {
@@ -1169,6 +1174,7 @@ GDT_DeviceInfo gs_deviceInfo[] = {
     {1, 16, 1, 8, 1, 64, 2, 8, 2, true},    // GDT_GFX11_5_0
     {2, 16, 1, 8, 1, 64, 2, 10, 2, true},   // GDT_GFX11_5_1
     {1, 16, 1, 8, 1, 64, 2, 4, 2, true},    // GDT_GFX11_5_2
+    {2, 16, 1, 8, 1, 64, 2, 8, 2, true},    // GDT_GFX12_0_0
     {4, 16, 1, 8, 1, 64, 2, 8, 2, true},    // GDT_GFX12_0_1
 };
 
