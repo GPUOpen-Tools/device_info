@@ -14,9 +14,10 @@
 
 #define REVISION_ID_ANY 0xFFFFFFFF  ///< Ignore revision id when looking up device Id.
 
+/// Specifies the Asic type.
 enum GDT_HW_ASIC_TYPE
 {
-    GDT_ASIC_TYPE_NONE = -1,  ///< undefined asic
+    GDT_ASIC_TYPE_NONE = -1,  ///< Undefined asic
     GDT_TAHITI_PRO     = 0,   ///< TAHITI GPU PRO
     GDT_TAHITI_XT,            ///< TAHITI GPU XT
     GDT_PITCAIRN_PRO,         ///< PITCAIRN GPU PRO
@@ -51,6 +52,7 @@ enum GDT_HW_ASIC_TYPE
     GDT_GFX9_0_A,             ///< GFX9_0_A GPU
     GDT_GFX9_0_C,             ///< GfX9_0_C GPU
     GDT_GFX9_4_2,             ///< GfX9_4_2 GPU
+    GDT_GFX9_5_0,             ///< GfX9_5_0 GPU
     GDT_GFX10_1_0,            ///< GFX10_1_0 GPU
     GDT_GFX10_1_0_XL,         ///< GFX10_1_0_XL GPU
     GDT_GFX10_1_2,            ///< GFX10_1_2 GPU
@@ -68,19 +70,20 @@ enum GDT_HW_ASIC_TYPE
     GDT_GFX11_5_0,            ///< GFX11_5_0 APU
     GDT_GFX11_5_1,            ///< GFX11_5_1 APU
     GDT_GFX11_5_2,            ///< GFX11_5_2 APU
+    GDT_GFX11_5_3,            ///< GFX11_5_3 APU
     GDT_GFX12_0_0,            ///< GFX12_0_0 GPU
     GDT_GFX12_0_1,            ///< GFX12_0_1 GPU
-    GDT_LAST                  ///< last
+    GDT_LAST                  ///< Last
 };
 
 /// Specifies the hardware vendor or generation.
 enum GDT_HW_GENERATION
 {
-    GDT_HW_GENERATION_NONE,                                          ///< undefined hw generation
-    GDT_HW_GENERATION_NVIDIA,                                        ///< nvidia GPU
-    GDT_HW_GENERATION_INTEL,                                         ///< intel GPU
+    GDT_HW_GENERATION_NONE,                                          ///< Undefined hw generation
+    GDT_HW_GENERATION_NVIDIA,                                        ///< Nvidia GPU
+    GDT_HW_GENERATION_INTEL,                                         ///< Intel GPU
     GDT_HW_GENERATION_SOUTHERNISLAND,                                ///< GFX IP 6
-    GDT_HW_GENERATION_FIRST_AMD = GDT_HW_GENERATION_SOUTHERNISLAND,  ///< first AMD generation
+    GDT_HW_GENERATION_FIRST_AMD = GDT_HW_GENERATION_SOUTHERNISLAND,  ///< First AMD generation
     GDT_HW_GENERATION_SEAISLAND,                                     ///< GFX IP 7
     GDT_HW_GENERATION_VOLCANICISLAND,                                ///< GFX IP 8
     GDT_HW_GENERATION_GFX9,                                          ///< GFX IP 9
@@ -92,6 +95,7 @@ enum GDT_HW_GENERATION
     GDT_HW_GENERATION_CDNA2,                                         ///< MI-200
     GDT_HW_GENERATION_CDNA3,                                         ///< MI-300
     GDT_HW_GENERATION_GFX12,                                         ///< GFX IP 12
+    GDT_HW_GENERATION_CDNA4,                                         ///< MI-350
     GDT_HW_GENERATION_LAST
 };
 

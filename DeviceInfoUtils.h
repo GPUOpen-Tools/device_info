@@ -416,7 +416,7 @@ private:
     /// Destructor
     ~AMDTDeviceInfoManager() = default;
 
-    static AMDTDeviceInfoManager* ms_pInstance; ///< the singleton AMDTDeviceInfoManager instance
+    static AMDTDeviceInfoManager* ms_pInstance; ///< The singleton AMDTDeviceInfoManager instance.
 };
 
 #endif // DEVICE_INFO_DEVICE_INFO_UTILS_H_
