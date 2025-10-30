@@ -1,4 +1,5 @@
-## Copyright (c) 2025 Advanced Micro Devices, Inc. All rights reserved.
+## Copyright (C) 2025 Advanced Micro Devices, Inc. All rights reserved.
+
 cmake_minimum_required(VERSION 3.25)
 
 project(DEVICE_INFO LANGUAGES CXX)
@@ -17,3 +18,5 @@ target_sources(device_info
             DeviceInfo.h
             DeviceInfoUtils.h
 )
+
+target_compile_features(device_info PUBLIC cxx_std_17)

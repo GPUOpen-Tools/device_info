@@ -1,5 +1,5 @@
 //==============================================================================
-// Copyright (c) 2010-2024 Advanced Micro Devices, Inc. All rights reserved.
+// Copyright (c) 2010-2025 Advanced Micro Devices, Inc. All rights reserved.
 /// @author AMD Developer Tools Team
 /// @file
 /// @brief Device info utils class.
@@ -68,10 +68,7 @@ bool AMDTDeviceInfoUtils::GetDeviceInfo(size_t deviceID, size_t revisionID, GDT_
             {
                 deviceInfo = itr->second;
 
-                if (deviceInfo.m_deviceInfoValid)
-                {
-                    found = true;
-                }
+                found = true;
             }
         }
     }
@@ -93,10 +90,7 @@ bool AMDTDeviceInfoUtils::GetDeviceInfo(const char* szCALDeviceName, GDT_DeviceI
         {
             deviceInfo = deviceIt->second;
 
-            if (deviceInfo.m_deviceInfoValid)
-            {
-                return true;
-            }
+            return true;
         }
     }
 
@@ -196,6 +190,11 @@ bool AMDTDeviceInfoUtils::IsXFamily(size_t deviceID, GDT_HW_GENERATION generatio
     {
         return false;
     }
+}
+
+bool AMDTDeviceInfoUtils::IsGfx12Family(size_t deviceID, bool& isGfx12) const
+{
+    return IsXFamily(deviceID, GDT_HW_GENERATION_GFX12, isGfx12);
 }
 
 bool AMDTDeviceInfoUtils::IsGfx11Family(size_t deviceID, bool& isGfx11) const
@@ -324,6 +323,7 @@ bool AMDTDeviceInfoUtils::GetHardwareGenerationDisplayName(GDT_HW_GENERATION gen
     static const std::string s_RDNA_FAMILY_NAME  = "RDNA";
     static const std::string s_RDNA2_FAMILY_NAME = "RDNA2";
     static const std::string s_RDNA3_FAMILY_NAME = "RDNA3";
+    static const std::string s_RDNA4_FAMILY_NAME = "RDNA4";
     static const std::string s_CDNA_FAMILY_NAME  = "CDNA";
     static const std::string s_CDNA2_FAMILY_NAME = "CDNA2";
     static const std::string s_CDNA3_FAMILY_NAME = "CDNA3";
@@ -358,6 +358,10 @@ bool AMDTDeviceInfoUtils::GetHardwareGenerationDisplayName(GDT_HW_GENERATION gen
 
         case GDT_HW_GENERATION_GFX11:
             strGenerationDisplayName = s_RDNA3_FAMILY_NAME;
+            break;
+
+        case GDT_HW_GENERATION_GFX12:
+            strGenerationDisplayName = s_RDNA4_FAMILY_NAME;
             break;
 
         case GDT_HW_GENERATION_CDNA:

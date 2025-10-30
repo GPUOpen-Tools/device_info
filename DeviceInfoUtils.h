@@ -1,5 +1,5 @@
 //==============================================================================
-// Copyright (c) 2010-2024 Advanced Micro Devices, Inc. All rights reserved.
+// Copyright (c) 2010-2025 Advanced Micro Devices, Inc. All rights reserved.
 /// @author AMD Developer Tools Team
 /// @file
 /// @brief Device info utils class.
@@ -165,6 +165,21 @@ public:
     /// \param[out] isXFamily Set to true if input device name is a specified family card
     /// \return false if device ID is not found
     bool IsXFamily(size_t deviceID, GDT_HW_GENERATION generation, bool& isXFamily) const;
+
+    /// Determine if the specified device is a member of the Gfx12 family
+    /// \param[in] szCALDeviceName CAL device name
+    /// \param[out] bIsGfx12 Set to true if input device name is a member of the Gfx12 family
+    /// \return false if device name is not found
+    bool IsGfx12Family(const char* szCALDeviceName, bool& bIsGfx12) const
+    {
+        return IsXFamily(szCALDeviceName, GDT_HW_GENERATION_GFX12, bIsGfx12);
+    }
+
+    /// Determine if the specified device is a member of the Gfx12 family
+    /// \param[in] deviceID the PCIE device ID
+    /// \param[out] isGfx12 Set to true if input device name is a member of the Gfx12 family
+    /// \return false if device ID is not found
+    bool IsGfx12Family(size_t deviceID, bool& isGfx12) const;
 
     /// Determine if the specified device is a member of the Gfx11 family
     /// \param[in] szCALDeviceName CAL device name
@@ -386,7 +401,7 @@ private:
     /// Destructor
     ~AMDTDeviceInfoManager() = default;
 
-    static AMDTDeviceInfoManager* ms_pInstance; ///< the singleton AMDTDeviceInfoManager instance
+    static AMDTDeviceInfoManager* ms_pInstance; ///< The singleton AMDTDeviceInfoManager instance.
 };
 
-#endif // DEVICE_INFO_DEVICE_INFO_UTILS_H_
+#endif
