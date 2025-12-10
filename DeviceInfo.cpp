@@ -740,6 +740,10 @@ GDT_GfxCardInfo gs_cardInfo[] = {
     {GDT_GFX10_3_2, 0x73E1, 0x00, GDT_HW_GENERATION_GFX103, false, "gfx1032", "AMD Radeon PRO W6600M"},
     {GDT_GFX10_3_2, 0x73E3, 0x00, GDT_HW_GENERATION_GFX103, false, "gfx1032", "AMD Radeon PRO W6600"},
 
+    {GDT_GFX10_3_3, 0x163F, 0x00, GDT_HW_GENERATION_GFX103, true, "gfx1033", "AMD Radeon(TM) Navi Graphics Custom Made for Magic Leap"},
+    {GDT_GFX10_3_3, 0x163F, 0xE1, GDT_HW_GENERATION_GFX103, true, "gfx1033", "AMD Radeon(TM) Navi Graphics Custom Made for Magic Leap"},
+    {GDT_GFX10_3_3, 0x163F, 0xAF, GDT_HW_GENERATION_GFX103, true, "gfx1033", "AMD Radeon(TM) Graphics"},
+
     {GDT_GFX10_3_4, 0x7420, 0x00, GDT_HW_GENERATION_GFX103, false, "gfx1034", "AMD Radeon(TM) Graphics"},
     {GDT_GFX10_3_4, 0x7422, 0x00, GDT_HW_GENERATION_GFX103, false, "gfx1034", "AMD Radeon PRO W6400"},
     {GDT_GFX10_3_4, 0x743F, 0xC1, GDT_HW_GENERATION_GFX103, false, "gfx1034", "AMD Radeon RX 6500 XT"},
@@ -1156,6 +1160,7 @@ GDT_DeviceInfo gs_deviceInfo[] = {
     {4, 16, 1, 16, 4, 64, 2, 10, 2, true},  // GDT_GFX10_3_0
     {2, 16, 1, 16, 2, 64, 2, 10, 2, true},  // GDT_GFX10_3_1
     {2, 16, 1, 16, 2, 64, 2, 8, 2, true},   // GDT_GFX10_3_2
+    {1, 16, 1, 16, 4, 32, 1, 8, 2, true},   // GDT_GFX10_3_3
     {1, 16, 1, 16, 2, 64, 2, 8, 2, true},   // GDT_GFX10_3_4
     {1, 16, 1, 16, 1, 64, 2, 6, 2, true},   // GDT_GFX10_3_5
     {6, 16, 1, 8, 12, 64, 2, 8, 2, true},   // GDT_GFX11_0_0
