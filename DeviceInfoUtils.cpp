@@ -1,183 +1,171 @@
 //==============================================================================
-// Copyright (c) 2010-2025 Advanced Micro Devices, Inc. All rights reserved.
+// Copyright (c) 2010-2026 Advanced Micro Devices, Inc. All rights reserved.
 /// @author AMD Developer Tools Team
 /// @file
-/// @brief Device info utils class.
+/// @brief  Device info utils class.
 //==============================================================================
 
-#ifdef _WIN32
-#include <Windows.h>
-#endif
-#ifdef _LINUX
-#include <dlfcn.h>
-#endif
-
+#include <algorithm>
 #include <cassert>
+#include <string_view>
+#include <ranges>
+
 #include "DeviceInfoUtils.h"
 
-using namespace std;
-
-AMDTDeviceInfoUtils* AMDTDeviceInfoUtils::ms_pInstance = nullptr;
-AMDTDeviceInfoManager* AMDTDeviceInfoManager::ms_pInstance = nullptr;
-
-AMDTDeviceInfoManager::AMDTDeviceInfoManager()
+namespace
 {
-    AMDTDeviceInfoUtils* pDeviceInfoUtils = AMDTDeviceInfoUtils::Instance();
+    AMDTDeviceInfoUtils::DeviceNameTranslatorFunction deviceNameTranslatorFunction = nullptr; ///< The function to call to translate device names.
 
-    for (size_t i = 0; i < gs_cardInfoSize; ++i)
-    {
-        pDeviceInfoUtils->AddDevice(gs_cardInfo[i]);
-    }
-
-    for (size_t i = 0; i < gs_deviceInfoSize; ++i)
-    {
-        pDeviceInfoUtils->AddDeviceInfo(static_cast<GDT_HW_ASIC_TYPE>(i), gs_deviceInfo[i]);
-    }
+    constexpr unsigned int kGfxToGdtHwGenConversionFactor = 3; ///< Factor to apply when converting between GFX IP version and GDT_HW_GENERATION.
 }
 
-AMDTDeviceInfoUtils* AMDTDeviceInfoUtils::Instance()
+bool AMDTDeviceInfoUtils::GetDeviceInfo(uint32_t deviceID, uint32_t revisionID, GDT_DeviceInfo &deviceInfo)
 {
-    if (nullptr == ms_pInstance)
+    auto find_device = [&](GDT_GfxCardInfo const &info)
     {
-        ms_pInstance = new AMDTDeviceInfoUtils();
-        AMDTDeviceInfoManager::Instance();
-    }
-    return ms_pInstance;
-}
-
-void AMDTDeviceInfoUtils::DeleteInstance()
-{
-    delete ms_pInstance;
-    ms_pInstance = nullptr;
-
-    AMDTDeviceInfoManager::DeleteInstance();
-}
-
-bool AMDTDeviceInfoUtils::GetDeviceInfo(size_t deviceID, size_t revisionID, GDT_DeviceInfo& deviceInfo) const
-{
-    bool found = false;
-
-    auto matches = m_deviceIDMap.equal_range(deviceID);
-    for (auto it = matches.first; it != matches.second && !found; ++it)
-    {
-        size_t thisRevId = (*it).second.m_revID;
-
-        if (REVISION_ID_ANY == revisionID || thisRevId == revisionID)
+        if (info.m_deviceID != deviceID)
         {
-            for (auto itr = m_asicTypeDeviceInfoMap.find((*it).second.m_asicType); itr != m_asicTypeDeviceInfoMap.end() && !found; ++itr)
-            {
-                deviceInfo = itr->second;
-
-                found = true;
-            }
+            return false;
         }
-    }
 
+        return (kRevisionIdAny == revisionID || info.m_revID == revisionID);
+    };
+
+    const auto it = std::ranges::find_if(gs_cardInfo, find_device);
+    const bool found = it != gs_cardInfo.end();
+    if (found)
+    {
+        deviceInfo = GetDeviceInfoForAsicType(it->m_asicType);
+    }
     return found;
 }
 
 /// NOTE: this might not return the correct GDT_DeviceInfo instance, since some devices with the same CAL name might have different GDT_DeviceInfo instances
-bool AMDTDeviceInfoUtils::GetDeviceInfo(const char* szCALDeviceName, GDT_DeviceInfo& deviceInfo) const
+bool AMDTDeviceInfoUtils::GetDeviceInfo(const char *szCALDeviceName, GDT_DeviceInfo &deviceInfo)
 {
-    std::string strDeviceName = TranslateDeviceName(szCALDeviceName);
-    auto matches = m_deviceNameMap.equal_range(strDeviceName.c_str());
+    const std::string strDeviceName = TranslateDeviceName(szCALDeviceName);
 
-    if (matches.first != matches.second)
+    auto same_name = [&strDeviceName](GDT_GfxCardInfo const &info)
+    { return strDeviceName == info.m_szCALName; };
+
+    const auto it = std::ranges::find_if(gs_cardInfo, same_name);
+    const bool found = it != gs_cardInfo.end();
+    if (found)
     {
-        auto deviceIt = m_asicTypeDeviceInfoMap.find(matches.first->second.m_asicType);
-
-        if (m_asicTypeDeviceInfoMap.end() != deviceIt)
-        {
-            deviceInfo = deviceIt->second;
-
-            return true;
-        }
+        deviceInfo = GetDeviceInfoForAsicType(it->m_asicType);
     }
-
-    return false;
-}
-
-bool AMDTDeviceInfoUtils::GetDeviceInfo(size_t deviceID, size_t revisionID, GDT_GfxCardInfo& cardInfo) const
-{
-    bool found = false;
-
-    assert(m_deviceIDMap.size() != 0);
-
-    auto matches = m_deviceIDMap.equal_range(deviceID);
-    for (auto it = matches.first; it != matches.second && !found; ++it)
-    {
-        size_t thisRevId = (*it).second.m_revID;
-
-        if (REVISION_ID_ANY == revisionID || thisRevId == revisionID)
-        {
-            cardInfo = (*it).second;
-            found = true;
-        }
-    }
-
     return found;
 }
 
-bool AMDTDeviceInfoUtils::GetDeviceInfo(const char* szCALDeviceName, vector<GDT_GfxCardInfo>& cardList) const
+[[nodiscard]] std::optional<uint32_t> AMDTDeviceInfoUtils::GetTotalLdsSizeInBytes(const GDT_HW_GENERATION gen, GDT_DeviceInfo const &info)
 {
-    std::string strDeviceName = TranslateDeviceName(szCALDeviceName);
+    static_assert(GDT_HW_GENERATION_LAST == 15, "Update this function!");
 
-    cardList.clear();
-    auto matches = m_deviceNameMap.equal_range(strDeviceName.c_str());
-
-    for (auto it = matches.first; it != matches.second; ++it)
+    // Anything less than GFX9 is not supported.
+    if (gen < GDT_HW_GENERATION_GFX9)
     {
-        cardList.push_back((*it).second);
+        return std::nullopt;
     }
+    // GFX9 to GFX12 all have the same amount of LDS bytes per CU.
+    if (gen < GDT_HW_GENERATION_CDNA4)
+    {
+        constexpr uint32_t kLdsBytesPerCu = 64 * 1024;
+        return info.numberCUs() * kLdsBytesPerCu;
+    }
+
+    if(gen == GDT_HW_GENERATION_CDNA4)
+    {
+        constexpr uint32_t kLdsBytesPerCu = 160 * 1024;
+        return info.numberCUs() * kLdsBytesPerCu;
+    }
+
+    return std::nullopt;
+}
+
+bool AMDTDeviceInfoUtils::GetDeviceInfo(uint32_t deviceID, uint32_t revisionID, GDT_GfxCardInfo &cardInfo)
+{
+    auto find_device = [&](GDT_GfxCardInfo const &info)
+    {
+        if (info.m_deviceID != deviceID)
+        {
+            return false;
+        }
+
+        return (kRevisionIdAny == revisionID || info.m_revID == revisionID);
+    };
+
+    const auto it = std::ranges::find_if(gs_cardInfo, find_device);
+    const bool found = it != gs_cardInfo.end();
+    if (found)
+    {
+        cardInfo = *it;
+    }
+    return found;
+}
+
+bool AMDTDeviceInfoUtils::GetDeviceInfo(const char *szCALDeviceName, std::vector<GDT_GfxCardInfo> &cardList)
+{
+    cardList.clear();
+
+    const std::string strDeviceName = TranslateDeviceName(szCALDeviceName);
+
+    auto same_name = [&strDeviceName](GDT_GfxCardInfo const &info)
+    { return strDeviceName == info.m_szMarketingName; };
+
+    std::ranges::copy_if(gs_cardInfo, std::back_inserter(cardList),
+                         same_name);
 
     return !cardList.empty();
 }
 
-bool AMDTDeviceInfoUtils::GetDeviceInfoMarketingName(const char* szMarketingDeviceName, vector<GDT_GfxCardInfo>& cardList) const
+bool AMDTDeviceInfoUtils::GetDeviceInfoMarketingName(const char *szMarketingDeviceName, std::vector<GDT_GfxCardInfo> &cardList)
 {
     cardList.clear();
-    auto matches = m_deviceMarketingNameMap.equal_range(szMarketingDeviceName);
 
-    for (auto it = matches.first; it != matches.second; ++it)
-    {
-        cardList.push_back((*it).second);
-    }
+    const std::string_view marketing_name = szMarketingDeviceName;
+
+    auto same_name = [&marketing_name](GDT_GfxCardInfo const &info)
+    { return marketing_name == info.m_szMarketingName; };
+
+    std::ranges::copy_if(gs_cardInfo, std::back_inserter(cardList),
+                         same_name);
 
     return !cardList.empty();
 }
 
-bool AMDTDeviceInfoUtils::IsAPU(const char* szCALDeviceName, bool& bIsAPU) const
+bool AMDTDeviceInfoUtils::IsAPU(const char *szCALDeviceName, bool &bIsAPU)
 {
-    std::string strDeviceName = TranslateDeviceName(szCALDeviceName);
-    auto matches = m_deviceNameMap.equal_range(strDeviceName.c_str());
+    const std::string strDeviceName = TranslateDeviceName(szCALDeviceName);
 
-    if (matches.first != matches.second)
+    auto same_name = [&strDeviceName](GDT_GfxCardInfo const &info)
+    { return strDeviceName == info.m_szCALName; };
+
+    const auto it = std::ranges::find_if(gs_cardInfo, same_name);
+    const bool found = it != gs_cardInfo.end();
+    if (found)
     {
-        bIsAPU = matches.first->second.m_bAPU;
-        return true;
+        bIsAPU = it->m_bAPU;
     }
-    else
-    {
-        return false;
-    }
+    return found;
 }
 
-bool AMDTDeviceInfoUtils::IsAPU(size_t deviceID, bool& isAPU) const
+bool AMDTDeviceInfoUtils::IsAPU(uint32_t deviceID, bool &isAPU)
 {
-    auto matches = m_deviceIDMap.equal_range(deviceID);
+    auto find_device = [&](GDT_GfxCardInfo const &info)
+    {
+        return info.m_deviceID != deviceID;
+    };
 
-    if (matches.first != matches.second)
+    const auto it = std::ranges::find_if(gs_cardInfo, find_device);
+    const bool found = it != gs_cardInfo.end();
+    if (found)
     {
-        isAPU = matches.first->second.m_bAPU;
-        return true;
+        isAPU = it->m_bAPU;
     }
-    else
-    {
-        return false;
-    }
+    return found;
 }
 
-bool AMDTDeviceInfoUtils::IsXFamily(size_t deviceID, GDT_HW_GENERATION generation, bool& isXFamily) const
+bool AMDTDeviceInfoUtils::IsXFamily(uint32_t deviceID, GDT_HW_GENERATION generation, bool &isXFamily)
 {
     GDT_HW_GENERATION gen = GDT_HW_GENERATION_NONE;
 
@@ -192,141 +180,139 @@ bool AMDTDeviceInfoUtils::IsXFamily(size_t deviceID, GDT_HW_GENERATION generatio
     }
 }
 
-bool AMDTDeviceInfoUtils::IsGfx12Family(size_t deviceID, bool& isGfx12) const
+bool AMDTDeviceInfoUtils::IsGfx12Family(uint32_t deviceID, bool &isGfx12)
 {
     return IsXFamily(deviceID, GDT_HW_GENERATION_GFX12, isGfx12);
 }
 
-bool AMDTDeviceInfoUtils::IsGfx11Family(size_t deviceID, bool& isGfx11) const
+bool AMDTDeviceInfoUtils::IsGfx11Family(uint32_t deviceID, bool &isGfx11)
 {
     return IsXFamily(deviceID, GDT_HW_GENERATION_GFX11, isGfx11);
 }
 
-bool AMDTDeviceInfoUtils::IsGfx10Family(size_t deviceID, bool& isGfx10) const
+bool AMDTDeviceInfoUtils::IsGfx10Family(uint32_t deviceID, bool &isGfx10)
 {
     return IsXFamily(deviceID, GDT_HW_GENERATION_GFX10, isGfx10);
 }
 
-bool AMDTDeviceInfoUtils::IsGfx9Family(size_t deviceID, bool& isGfx9) const
+bool AMDTDeviceInfoUtils::IsGfx9Family(uint32_t deviceID, bool &isGfx9)
 {
     return IsXFamily(deviceID, GDT_HW_GENERATION_GFX9, isGfx9);
 }
 
-bool AMDTDeviceInfoUtils::IsVIFamily(size_t deviceID, bool& isVI) const
+bool AMDTDeviceInfoUtils::IsVIFamily(uint32_t deviceID, bool &isVI)
 {
     return IsXFamily(deviceID, GDT_HW_GENERATION_VOLCANICISLAND, isVI);
 }
 
-bool AMDTDeviceInfoUtils::IsCIFamily(size_t deviceID, bool& isCI) const
+bool AMDTDeviceInfoUtils::IsCIFamily(uint32_t deviceID, bool &isCI)
 {
     return IsXFamily(deviceID, GDT_HW_GENERATION_SEAISLAND, isCI);
 }
 
-bool AMDTDeviceInfoUtils::IsSIFamily(size_t deviceID, bool& isSI) const
+bool AMDTDeviceInfoUtils::IsSIFamily(uint32_t deviceID, bool &isSI)
 {
     return IsXFamily(deviceID, GDT_HW_GENERATION_SOUTHERNISLAND, isSI);
 }
 
-bool AMDTDeviceInfoUtils::GetHardwareGeneration(size_t deviceID, GDT_HW_GENERATION& gen) const
+bool AMDTDeviceInfoUtils::GetHardwareGeneration(uint32_t deviceID, GDT_HW_GENERATION &gen)
 {
     // revId not needed here, since all revs will have the same hardware family
-    auto matches = m_deviceIDMap.equal_range(deviceID);
+    auto find_device = [&](GDT_GfxCardInfo const &info)
+    {
+        return info.m_deviceID != deviceID;
+    };
 
-    if (matches.first != matches.second)
+    const auto it = std::ranges::find_if(gs_cardInfo, find_device);
+    const bool found = it != gs_cardInfo.end();
+    if (found)
     {
-        gen = matches.first->second.m_generation;
-        return true;
+        gen = it->m_generation;
     }
-    else
-    {
-        return false;
-    }
+    return found;
 }
 
-bool AMDTDeviceInfoUtils::GetHardwareGeneration(const char* szCALDeviceName, GDT_HW_GENERATION& gen) const
+bool AMDTDeviceInfoUtils::GetHardwareGeneration(const char *szCALDeviceName, GDT_HW_GENERATION &gen)
 {
-    std::string strDeviceName = TranslateDeviceName(szCALDeviceName);
-    auto matches = m_deviceNameMap.equal_range(strDeviceName.c_str());
+    const std::string strDeviceName = TranslateDeviceName(szCALDeviceName);
 
-    if (matches.first != matches.second)
+    auto same_name = [&strDeviceName](GDT_GfxCardInfo const &info)
+    { return strDeviceName == info.m_szCALName; };
+
+    const auto it = std::ranges::find_if(gs_cardInfo, same_name);
+    const bool found = it != gs_cardInfo.end();
+    if (found)
     {
-        gen = matches.first->second.m_generation;
-        return true;
+        gen = it->m_generation;
     }
-    else
-    {
-        return false;
-    }
+    return found;
 }
 
-void AMDTDeviceInfoUtils::GetAllCards(std::vector<GDT_GfxCardInfo>& cardList) const
+void AMDTDeviceInfoUtils::GetAllCards(std::vector<GDT_GfxCardInfo> &cardList)
 {
     cardList.clear();
-    cardList.reserve(gs_cardInfoSize);
-
-    for(size_t i = 0ULL; i < gs_cardInfoSize; ++i)
-    {
-        cardList.push_back(gs_cardInfo[i]);
-    }
+    cardList.reserve(gs_cardInfo.size());
+    std::ranges::copy(gs_cardInfo, std::back_inserter(cardList));
 }
 
-bool AMDTDeviceInfoUtils::GetAllCardsWithName(const char* szCALDeviceName, std::vector<GDT_GfxCardInfo>& cardList) const
+bool AMDTDeviceInfoUtils::GetAllCardsWithName(const char *szCALDeviceName, std::vector<GDT_GfxCardInfo> &cardList)
 {
     return GetDeviceInfo(szCALDeviceName, cardList);
 }
 
-bool AMDTDeviceInfoUtils::GetAllCardsInHardwareGeneration(GDT_HW_GENERATION gen, std::vector<GDT_GfxCardInfo>& cardList) const
+bool AMDTDeviceInfoUtils::GetAllCardsInHardwareGeneration(GDT_HW_GENERATION gen, std::vector<GDT_GfxCardInfo> &cardList)
 {
     cardList.clear();
-    auto matches = m_deviceHwGenerationMap.equal_range(gen);
 
-    for (auto it = matches.first; it != matches.second; ++it)
-    {
-        cardList.push_back((*it).second);
-    }
+    auto same_gen = [&gen](GDT_GfxCardInfo const &info)
+    { return gen == info.m_generation; };
+
+    std::ranges::copy_if(gs_cardInfo, std::back_inserter(cardList),
+                         same_gen);
 
     return !cardList.empty();
 }
 
-bool AMDTDeviceInfoUtils::GetAllCardsWithDeviceId(size_t deviceID, std::vector<GDT_GfxCardInfo>& cardList) const
+bool AMDTDeviceInfoUtils::GetAllCardsWithDeviceId(uint32_t deviceID, std::vector<GDT_GfxCardInfo> &cardList)
 {
     cardList.clear();
-    auto matches = m_deviceIDMap.equal_range(deviceID);
 
-    for (auto it = matches.first; it != matches.second; ++it)
-    {
-        cardList.push_back((*it).second);
-    }
+    auto same_device_id = [&deviceID](GDT_GfxCardInfo const &info)
+    { return deviceID == info.m_deviceID; };
+
+    std::ranges::copy_if(gs_cardInfo, std::back_inserter(cardList),
+                         same_device_id);
 
     return !cardList.empty();
 }
 
-bool AMDTDeviceInfoUtils::GetAllCardsWithAsicType(GDT_HW_ASIC_TYPE asicType, std::vector<GDT_GfxCardInfo>& cardList) const
+bool AMDTDeviceInfoUtils::GetAllCardsWithAsicType(GDT_HW_ASIC_TYPE asicType, std::vector<GDT_GfxCardInfo> &cardList)
 {
     cardList.clear();
-    auto matches = m_asicTypeCardInfoMap.equal_range(asicType);
 
-    for (auto it = matches.first; it != matches.second; ++it)
-    {
-        cardList.push_back((*it).second);
-    }
+    auto same_asic = [&asicType](GDT_GfxCardInfo const &info)
+    { return asicType == info.m_asicType; };
+
+    std::ranges::copy_if(gs_cardInfo, std::back_inserter(cardList),
+                         same_asic);
 
     return !cardList.empty();
 }
 
-bool AMDTDeviceInfoUtils::GetHardwareGenerationDisplayName(GDT_HW_GENERATION gen, std::string& strGenerationDisplayName) const
+bool AMDTDeviceInfoUtils::GetHardwareGenerationDisplayName(GDT_HW_GENERATION gen, std::string &strGenerationDisplayName)
 {
-    static const std::string s_SI_FAMILY_NAME    = "Graphics IP v6";
-    static const std::string s_CI_FAMILY_NAME    = "Graphics IP v7";
-    static const std::string s_VI_FAMILY_NAME    = "Graphics IP v8";
-    static const std::string s_GFX9_FAMILY_NAME  = "Vega";
-    static const std::string s_RDNA_FAMILY_NAME  = "RDNA";
-    static const std::string s_RDNA2_FAMILY_NAME = "RDNA2";
-    static const std::string s_RDNA3_FAMILY_NAME = "RDNA3";
-    static const std::string s_RDNA4_FAMILY_NAME = "RDNA4";
-    static const std::string s_CDNA_FAMILY_NAME  = "CDNA";
-    static const std::string s_CDNA2_FAMILY_NAME = "CDNA2";
-    static const std::string s_CDNA3_FAMILY_NAME = "CDNA3";
+    static constexpr std::string_view s_SI_FAMILY_NAME    = "Graphics IP v6";
+    static constexpr std::string_view s_CI_FAMILY_NAME    = "Graphics IP v7";
+    static constexpr std::string_view s_VI_FAMILY_NAME    = "Graphics IP v8";
+    static constexpr std::string_view s_GFX9_FAMILY_NAME  = "Vega";
+    static constexpr std::string_view s_RDNA_FAMILY_NAME  = "RDNA";
+    static constexpr std::string_view s_RDNA2_FAMILY_NAME = "RDNA2";
+    static constexpr std::string_view s_RDNA3_FAMILY_NAME = "RDNA3";
+    static constexpr std::string_view s_RDNA4_FAMILY_NAME = "RDNA4";
+    static constexpr std::string_view s_CDNA_FAMILY_NAME  = "CDNA";
+    static constexpr std::string_view s_CDNA2_FAMILY_NAME = "CDNA2";
+    static constexpr std::string_view s_CDNA3_FAMILY_NAME = "CDNA3";
+    static constexpr std::string_view s_CDNA4_FAMILY_NAME = "CDNA4";
 
     bool retVal = true;
 
@@ -376,6 +362,10 @@ bool AMDTDeviceInfoUtils::GetHardwareGenerationDisplayName(GDT_HW_GENERATION gen
             strGenerationDisplayName = s_CDNA3_FAMILY_NAME;
             break;
 
+        case GDT_HW_GENERATION_CDNA4:
+            strGenerationDisplayName = s_CDNA4_FAMILY_NAME;
+            break;
+
         default:
             strGenerationDisplayName.clear();
             assert(false);
@@ -386,7 +376,7 @@ bool AMDTDeviceInfoUtils::GetHardwareGenerationDisplayName(GDT_HW_GENERATION gen
     return retVal;
 }
 
-std::string AMDTDeviceInfoUtils::TranslateDeviceName(const char* strDeviceName) const
+std::string AMDTDeviceInfoUtils::TranslateDeviceName(const char *strDeviceName)
 {
     std::string retVal(strDeviceName);
 
@@ -410,17 +400,17 @@ std::string AMDTDeviceInfoUtils::TranslateDeviceName(const char* strDeviceName) 
         retVal = "gfx906";
     }
 
-    if (nullptr != m_pDeviceNameTranslatorFunction)
+    if (nullptr != deviceNameTranslatorFunction)
     {
-        retVal = m_pDeviceNameTranslatorFunction(retVal.c_str());
+        retVal = deviceNameTranslatorFunction(retVal.c_str());
     }
 
     return retVal;
 }
 
-bool AMDTDeviceInfoUtils::GfxIPVerToHwGeneration(size_t gfxIPVer, GDT_HW_GENERATION& hwGen) const
+bool AMDTDeviceInfoUtils::GfxIPVerToHwGeneration(uint32_t gfxIPVer, GDT_HW_GENERATION &hwGen)
 {
-    hwGen = static_cast<GDT_HW_GENERATION>(gfxIPVer - ms_gfxToGdtHwGenConversionFactor);
+    hwGen = static_cast<GDT_HW_GENERATION>(gfxIPVer - kGfxToGdtHwGenConversionFactor);
 
     bool retVal = hwGen >= GDT_HW_GENERATION_FIRST_AMD && hwGen < GDT_HW_GENERATION_LAST;
 
@@ -432,7 +422,7 @@ bool AMDTDeviceInfoUtils::GfxIPVerToHwGeneration(size_t gfxIPVer, GDT_HW_GENERAT
     return retVal;
 }
 
-bool AMDTDeviceInfoUtils::HwGenerationToGfxIPVer(GDT_HW_GENERATION hwGen, size_t& gfxIPVer) const
+bool AMDTDeviceInfoUtils::HwGenerationToGfxIPVer(GDT_HW_GENERATION hwGen, uint32_t &gfxIPVer)
 {
     gfxIPVer = 0;
 
@@ -440,82 +430,13 @@ bool AMDTDeviceInfoUtils::HwGenerationToGfxIPVer(GDT_HW_GENERATION hwGen, size_t
 
     if (retVal)
     {
-        gfxIPVer = static_cast<size_t>(hwGen) + ms_gfxToGdtHwGenConversionFactor;
+        gfxIPVer = static_cast<uint32_t>(hwGen) + kGfxToGdtHwGenConversionFactor;
     }
 
     return retVal;
 }
 
-void AMDTDeviceInfoUtils::AddDeviceInfo(GDT_HW_ASIC_TYPE asicType, const GDT_DeviceInfo& deviceInfo)
+void AMDTDeviceInfoUtils::SetDeviceNameTranslator(DeviceNameTranslatorFunction func)
 {
-    if (m_asicTypeDeviceInfoMap.end() == m_asicTypeDeviceInfoMap.find(asicType))
-    {
-        m_asicTypeDeviceInfoMap.insert(ASICTypeDeviceInfoMapPair(asicType, deviceInfo));
-    }
-    else
-    {
-        m_asicTypeDeviceInfoMap[asicType] = deviceInfo;
-    }
-}
-
-void AMDTDeviceInfoUtils::AddDevice(const GDT_GfxCardInfo& cardInfo)
-{
-    m_deviceIDMap.insert(DeviceIDMapPair(cardInfo.m_deviceID, cardInfo));
-    m_asicTypeCardInfoMap.insert(ASICTypeCardInfoMapPair(cardInfo.m_asicType, cardInfo));
-    m_deviceNameMap.insert(DeviceNameMapPair(cardInfo.m_szCALName, cardInfo));
-    m_deviceMarketingNameMap.insert(DeviceNameMapPair(cardInfo.m_szMarketingName, cardInfo));
-    m_deviceHwGenerationMap.insert(DeviceHWGenerationMapPair(cardInfo.m_generation, cardInfo));
-}
-
-void AMDTDeviceInfoUtils::RemoveDevice(const GDT_GfxCardInfo& cardInfo)
-{
-    for (auto it = m_deviceIDMap.begin(); it != m_deviceIDMap.end(); ++it)
-    {
-        if (it->first == cardInfo.m_deviceID && it->second.m_revID == cardInfo.m_revID)
-        {
-            m_deviceIDMap.erase(it);
-            break;
-        }
-    }
-
-    for (auto it = m_asicTypeCardInfoMap.begin(); it != m_asicTypeCardInfoMap.end(); ++it)
-    {
-        if (it->second.m_deviceID == cardInfo.m_deviceID && it->second.m_revID == cardInfo.m_revID)
-        {
-            m_asicTypeCardInfoMap.erase(it);
-            break;
-        }
-    }
-
-    for (auto it = m_deviceNameMap.begin(); it != m_deviceNameMap.end(); ++it)
-    {
-        if (it->second.m_deviceID == cardInfo.m_deviceID && it->second.m_revID == cardInfo.m_revID)
-        {
-            m_deviceNameMap.erase(it);
-            break;
-        }
-    }
-
-    for (auto it = m_deviceMarketingNameMap.begin(); it != m_deviceMarketingNameMap.end(); ++it)
-    {
-        if (it->second.m_deviceID == cardInfo.m_deviceID && it->second.m_revID == cardInfo.m_revID)
-        {
-            m_deviceMarketingNameMap.erase(it);
-            break;
-        }
-    }
-
-    for (auto it = m_deviceHwGenerationMap.begin(); it != m_deviceHwGenerationMap.end(); ++it)
-    {
-        if (it->first == cardInfo.m_generation && it->second.m_deviceID == cardInfo.m_deviceID && it->second.m_revID == cardInfo.m_revID)
-        {
-            m_deviceHwGenerationMap.erase(it);
-            break;
-        }
-    }
-}
-
-void AMDTDeviceInfoUtils::SetDeviceNameTranslator(DeviceNameTranslatorFunction deviceNametranslatorFunction)
-{
-    m_pDeviceNameTranslatorFunction = deviceNametranslatorFunction;
+    deviceNameTranslatorFunction = func;
 }

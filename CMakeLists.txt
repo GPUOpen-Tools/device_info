@@ -1,4 +1,4 @@
-## Copyright (C) 2025 Advanced Micro Devices, Inc. All rights reserved.
+## Copyright (C) 2025-2026 Advanced Micro Devices, Inc. All rights reserved. ##
 
 cmake_minimum_required(VERSION 3.25)
 
@@ -19,4 +19,26 @@ target_sources(device_info
             DeviceInfoUtils.h
 )
 
-target_compile_features(device_info PUBLIC cxx_std_17)
+target_compile_features(device_info PUBLIC cxx_std_20)
+
+if (MSVC)
+    target_compile_options(device_info PRIVATE
+        # Reasonable warning level
+        /W4
+        # Compiler warnings as errors
+        /WX
+    )
+else(${CMAKE_CXX_COMPILER_ID} MATCHES "(GNU|Clang)")
+    target_compile_options(device_info PRIVATE
+        -Wall
+        -Wextra
+        -Werror
+    )
+    if (${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")
+        target_compile_options(device_info PRIVATE
+            -Wconversion
+            -Wimplicit-fallthrough
+            -Wstring-conversion
+        )
+    endif()
+endif()

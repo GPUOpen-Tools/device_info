@@ -1,13 +1,15 @@
 //==============================================================================
-/// Copyright (c) 2020-2025 Advanced Micro Devices, Inc. All rights reserved.
+/// Copyright (c) 2020-2026 Advanced Micro Devices, Inc. All rights reserved.
 /// @author AMD Developer Tools Team
 /// @file
-/// @brief Device info table.
+/// @brief Device info table
 //==============================================================================
 
 #include "DeviceInfo.h"
 
-GDT_GfxCardInfo gs_cardInfo[] = {
+#include <cassert>
+
+static constexpr GDT_GfxCardInfo kCardInfo[] = {
     {GDT_TAHITI_XT, 0x6798, 0x00, GDT_HW_GENERATION_SOUTHERNISLAND, false, "Tahiti", "AMD Radeon R9 200 / HD 7900 Series"},
     {GDT_TAHITI_XT, 0x6799, 0x00, GDT_HW_GENERATION_SOUTHERNISLAND, false, "Tahiti", "AMD Radeon HD 7900 Series"},
     {GDT_TAHITI_PRO, 0x679A, 0x00, GDT_HW_GENERATION_SOUTHERNISLAND, false, "Tahiti", "AMD Radeon HD 7900 Series"},
@@ -630,6 +632,9 @@ GDT_GfxCardInfo gs_cardInfo[] = {
     {GDT_GFX9_4_2, 0x74A1, 0x01, GDT_HW_GENERATION_CDNA3, false, "gfx942", "AMD Instinct(TM) MI300A"},
     {GDT_GFX9_4_2, 0x74A9, 0x00, GDT_HW_GENERATION_CDNA3, false, "gfx942", "AMD Instinct(TM) MI300XHF"},
 
+    {GDT_GFX9_5_0, 0x75A0, 0x00, GDT_HW_GENERATION_CDNA4, false, "gfx950", "AMD Instinct(TM) MI355X"},
+    {GDT_GFX9_5_0, 0x75A1, 0x00, GDT_HW_GENERATION_CDNA4, false, "gfx950", "AMD Instinct(TM) MI355X"},
+
     {GDT_GFX10_1_0, 0x7310, 0x00, GDT_HW_GENERATION_GFX10, false, "gfx1010", "AMD Radeon Pro W5700X"},
     {GDT_GFX10_1_0, 0x7312, 0x00, GDT_HW_GENERATION_GFX10, false, "gfx1010", "AMD Radeon Pro W5700"},
     {GDT_GFX10_1_0, 0x7318, 0x40, GDT_HW_GENERATION_GFX10, false, "gfx1010", "7318:40"},
@@ -844,6 +849,47 @@ GDT_GfxCardInfo gs_cardInfo[] = {
     {GDT_GFX10_3_5, 0x1681, 0xDD, GDT_HW_GENERATION_GFX103, true, "gfx1035", "AMD Radeon(TM) Graphics"},
     {GDT_GFX10_3_5, 0x1681, 0xDE, GDT_HW_GENERATION_GFX103, true, "gfx1035", "AMD Radeon(TM) Graphics"},
     {GDT_GFX10_3_5, 0x1681, 0xDF, GDT_HW_GENERATION_GFX103, true, "gfx1035", "AMD Radeon(TM) Graphics"},
+
+    {GDT_GFX10_3_6, 0x1506, 0x00, GDT_HW_GENERATION_GFX103, true, "gfx1036", "1506:00"},
+    {GDT_GFX10_3_6, 0x1506, 0xC1, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x1506, 0xC2, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x1506, 0xC3, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x1506, 0xC4, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x1506, 0xC5, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x1506, 0xC6, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x1506, 0xD8, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x1506, 0xD9, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x1506, 0xDA, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x1506, 0xDB, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x1506, 0xDC, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x1506, 0xDD, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x1506, 0xDE, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+
+    {GDT_GFX10_3_6, 0x13C0, 0xC1, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x13C0, 0xC2, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x13C0, 0xC3, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x13C0, 0xC4, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x13C0, 0xC5, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x13C0, 0xC6, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x13C0, 0xC7, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x13C0, 0xC9, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x13C0, 0xCA, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x13C0, 0xCB, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x13C0, 0xCC, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x13C0, 0xCD, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x13C0, 0xD1, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x13C0, 0xD2, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x13C0, 0xD3, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x13C0, 0xE1, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x13C0, 0xE2, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x13C0, 0xE3, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x13C0, 0xE4, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x13C0, 0xE5, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x13C0, 0xE6, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x13C0, 0xE7, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x13C0, 0xE8, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x13C0, 0xE9, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX10_3_6, 0x13C0, 0xEA, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
 
     {GDT_GFX10_3_6, 0x13C0, 0xD4, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
     {GDT_GFX10_3_6, 0x13C0, 0xD5, GDT_HW_GENERATION_GFX103, true, "gfx1036", "AMD Radeon(TM) Graphics"},
@@ -1085,6 +1131,13 @@ GDT_GfxCardInfo gs_cardInfo[] = {
     {GDT_GFX11_5_0, 0x150E, 0xD1, GDT_HW_GENERATION_GFX11, true, "gfx1150", "AMD Radeon(TM) 890M Graphics"},
     {GDT_GFX11_5_0, 0x150E, 0xD2, GDT_HW_GENERATION_GFX11, true, "gfx1150", "AMD Radeon(TM) 890M Graphics"},
     {GDT_GFX11_5_0, 0x150E, 0xD3, GDT_HW_GENERATION_GFX11, true, "gfx1150", "AMD Radeon(TM) 890M Graphics"},
+    {GDT_GFX11_5_0, 0x150E, 0xE1, GDT_HW_GENERATION_GFX11, true, "gfx1150", "AMD Radeon(TM) 890M Graphics"},
+    {GDT_GFX11_5_0, 0x150E, 0xE2, GDT_HW_GENERATION_GFX11, true, "gfx1150", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_5_0, 0x150E, 0xE3, GDT_HW_GENERATION_GFX11, true, "gfx1150", "AMD Radeon(TM) 890M Graphics"},
+    {GDT_GFX11_5_0, 0x150E, 0xE4, GDT_HW_GENERATION_GFX11, true, "gfx1150", "AMD Radeon(TM) 890M Graphics"},
+    {GDT_GFX11_5_0, 0x150E, 0xF1, GDT_HW_GENERATION_GFX11, true, "gfx1150", "AMD Radeon(TM) 890M Graphics"},
+    {GDT_GFX11_5_0, 0x150E, 0xF3, GDT_HW_GENERATION_GFX11, true, "gfx1150", "AMD Radeon(TM) 890M Graphics"},
+    {GDT_GFX11_5_0, 0x150E, 0xF3, GDT_HW_GENERATION_GFX11, true, "gfx1150", "AMD Radeon(TM) 890M Graphics"},
 
     {GDT_GFX11_5_1, 0x1586, 0x00, GDT_HW_GENERATION_GFX11, true, "gfx1151", "AMD Radeon(TM) Graphics"},
     {GDT_GFX11_5_1, 0x1586, 0xC1, GDT_HW_GENERATION_GFX11, true, "gfx1151", "AMD Radeon(TM) 8060S Graphics"},
@@ -1109,20 +1162,39 @@ GDT_GfxCardInfo gs_cardInfo[] = {
     {GDT_GFX11_5_2, 0x1114, 0xD3, GDT_HW_GENERATION_GFX11, true, "gfx1152", "AMD Radeon(TM) 840M Graphics"},
     {GDT_GFX11_5_2, 0x1114, 0xD4, GDT_HW_GENERATION_GFX11, true, "gfx1152", "AMD Radeon(TM) Graphics"},
     {GDT_GFX11_5_2, 0x1114, 0xD5, GDT_HW_GENERATION_GFX11, true, "gfx1152", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_5_2, 0x1114, 0xE1, GDT_HW_GENERATION_GFX11, true, "gfx1152", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_5_2, 0x1114, 0xE2, GDT_HW_GENERATION_GFX11, true, "gfx1152", "AMD Radeon(TM) 860M Graphics"},
+    {GDT_GFX11_5_2, 0x1114, 0xE3, GDT_HW_GENERATION_GFX11, true, "gfx1152", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_5_2, 0x1114, 0xE4, GDT_HW_GENERATION_GFX11, true, "gfx1152", "AMD Radeon(TM) 860M Graphics"},
+    {GDT_GFX11_5_2, 0x1114, 0xE5, GDT_HW_GENERATION_GFX11, true, "gfx1152", "AMD Radeon(TM) 840M Graphics"},
+    {GDT_GFX11_5_2, 0x1114, 0xE6, GDT_HW_GENERATION_GFX11, true, "gfx1152", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_5_2, 0x1114, 0xE7, GDT_HW_GENERATION_GFX11, true, "gfx1152", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_5_2, 0x1114, 0xE9, GDT_HW_GENERATION_GFX11, true, "gfx1152", "AMD Radeon(TM) 860M Graphics"},
+    {GDT_GFX11_5_2, 0x1114, 0xEA, GDT_HW_GENERATION_GFX11, true, "gfx1152", "AMD Radeon(TM) 840M Graphics"},
+    {GDT_GFX11_5_2, 0x1114, 0xED, GDT_HW_GENERATION_GFX11, true, "gfx1152", "AMD Radeon(TM) 860M Graphics"},
+    {GDT_GFX11_5_2, 0x1114, 0xEE, GDT_HW_GENERATION_GFX11, true, "gfx1152", "AMD Radeon(TM) 840M Graphics"},
+    {GDT_GFX11_5_2, 0x1114, 0xF1, GDT_HW_GENERATION_GFX11, true, "gfx1152", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_5_2, 0x1114, 0xF2, GDT_HW_GENERATION_GFX11, true, "gfx1152", "AMD Radeon(TM) 860M Graphics"},
+    {GDT_GFX11_5_2, 0x1114, 0xF3, GDT_HW_GENERATION_GFX11, true, "gfx1152", "AMD Radeon(TM) 840M Graphics"},
+    {GDT_GFX11_5_2, 0x1114, 0xF9, GDT_HW_GENERATION_GFX11, true, "gfx1152", "AMD Radeon(TM) 860M Graphics"},
+    {GDT_GFX11_5_2, 0x1114, 0xFA, GDT_HW_GENERATION_GFX11, true, "gfx1152", "AMD Radeon(TM) 840M Graphics"},
+    {GDT_GFX11_5_2, 0x1114, 0xFC, GDT_HW_GENERATION_GFX11, true, "gfx1152", "AMD Radeon(TM) 860M Graphics"},
+    {GDT_GFX11_5_2, 0x1114, 0xFD, GDT_HW_GENERATION_GFX11, true, "gfx1152", "AMD Radeon(TM) 840M Graphics"},
 
     {GDT_GFX11_5_3, 0x1902, 0xC0, GDT_HW_GENERATION_GFX11, true, "gfx1153", "AMD Radeon(TM) 840M Graphics"},
-    {GDT_GFX11_5_3, 0x1902, 0xC1, GDT_HW_GENERATION_GFX11, true, "gfx1153", "AMD Radeon(TM) Graphics"},
-    {GDT_GFX11_5_3, 0x1902, 0xC2, GDT_HW_GENERATION_GFX11, true, "gfx1153", "AMD Radeon(TM) Graphics"},
-    {GDT_GFX11_5_3, 0x1902, 0xC3, GDT_HW_GENERATION_GFX11, true, "gfx1153", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_5_3, 0x1902, 0xC1, GDT_HW_GENERATION_GFX11, true, "gfx1153", "AMD Radeon(TM) 840M Graphics"},
+    {GDT_GFX11_5_3A, 0x1902, 0xC2, GDT_HW_GENERATION_GFX11, true, "gfx1153", "AMD Radeon(TM) 820M Graphics"},
+    {GDT_GFX11_5_3, 0x1902, 0xC3, GDT_HW_GENERATION_GFX11, true, "gfx1153", "AMD Radeon(TM) 840M Graphics"},
     {GDT_GFX11_5_3, 0x1902, 0xC4, GDT_HW_GENERATION_GFX11, true, "gfx1153", "AMD Radeon(TM) Graphics"},
     {GDT_GFX11_5_3A, 0x1902, 0xC5, GDT_HW_GENERATION_GFX11, true, "gfx1153", "AMD Radeon(TM) Graphics"},
     {GDT_GFX11_5_3A, 0x1902, 0xC6, GDT_HW_GENERATION_GFX11, true, "gfx1153", "AMD Radeon(TM) 820M Graphics"},
     {GDT_GFX11_5_3, 0x1902, 0xC7, GDT_HW_GENERATION_GFX11, true, "gfx1153", "AMD Radeon(TM) 840M Graphics"},
     {GDT_GFX11_5_3, 0x1902, 0xC8, GDT_HW_GENERATION_GFX11, true, "gfx1153", "AMD Radeon(TM) 840M Graphics"},
-    {GDT_GFX11_5_3A, 0x1902, 0xC9, GDT_HW_GENERATION_GFX11, true, "gfx1153", "AMD Radeon(TM) Graphics"},
-    {GDT_GFX11_5_3, 0x1902, 0xD1, GDT_HW_GENERATION_GFX11, true, "gfx1153", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_5_3A, 0x1902, 0xC9, GDT_HW_GENERATION_GFX11, true, "gfx1153", "AMD Radeon(TM) 820M Graphics"},
+    {GDT_GFX11_5_3, 0x1902, 0xCA, GDT_HW_GENERATION_GFX11, true, "gfx1153", "AMD Radeon(TM) 840M Graphics"},
+    {GDT_GFX11_5_3, 0x1902, 0xD1, GDT_HW_GENERATION_GFX11, true, "gfx1153", "AMD Radeon(TM) 840M Graphics"},
     {GDT_GFX11_5_3, 0x1902, 0xD2, GDT_HW_GENERATION_GFX11, true, "gfx1153", "AMD Radeon(TM) Graphics"},
-    {GDT_GFX11_5_3, 0x1902, 0xD3, GDT_HW_GENERATION_GFX11, true, "gfx1153", "AMD Radeon(TM) Graphics"},
+    {GDT_GFX11_5_3, 0x1902, 0xD3, GDT_HW_GENERATION_GFX11, true, "gfx1153", "AMD Radeon(TM) 840M Graphics"},
     {GDT_GFX11_5_3, 0x1902, 0xD4, GDT_HW_GENERATION_GFX11, true, "gfx1153", "AMD Radeon(TM) Graphics"},
     {GDT_GFX11_5_3, 0x1902, 0xD7, GDT_HW_GENERATION_GFX11, true, "gfx1153", "AMD Radeon(TM) 840M Graphics"},
     {GDT_GFX11_5_3, 0x1902, 0xD8, GDT_HW_GENERATION_GFX11, true, "gfx1153", "AMD Radeon(TM) 840M Graphics"},
@@ -1142,88 +1214,93 @@ GDT_GfxCardInfo gs_cardInfo[] = {
     {GDT_GFX12_0_1_XT, 0x7550, 0xC0, GDT_HW_GENERATION_GFX12, false, "gfx1201", "AMD Radeon RX 9070 XT"},
     {GDT_GFX12_0_1_GRE, 0x7550, 0xC2, GDT_HW_GENERATION_GFX12, false, "gfx1201", "AMD Radeon RX 9070 GRE"},
     {GDT_GFX12_0_1, 0x7550, 0xC3, GDT_HW_GENERATION_GFX12, false, "gfx1201", "AMD Radeon RX 9070"},
-    {GDT_GFX12_0_1, 0x7551, 0xC0, GDT_HW_GENERATION_GFX12, false, "gfx1201", "AMD Radeon AI PRO R9700"},
+    {GDT_GFX12_0_1_XT, 0x7551, 0xC0, GDT_HW_GENERATION_GFX12, false, "gfx1201", "AMD Radeon AI PRO R9700"},
+    {GDT_GFX12_0_1_XT, 0x7551, 0xC8, GDT_HW_GENERATION_GFX12, false, "gfx1201", "AMD Radeon AI PRO R9600D"},
 };
+
+const std::span<const GDT_GfxCardInfo> gs_cardInfo = kCardInfo;
 
 // GPUs older than GFX10 have an unknown number of VGPRs per SIMD.
 static constexpr size_t kUnknownVgprsPerSIMD = 0;
 
-GDT_DeviceInfo gs_deviceInfo[] = {
-    {2, 10, 1, 8, 2, 64, 2, 28, 4, kUnknownVgprsPerSIMD},   // GDT_TAHITI_PRO
-    {2, 10, 1, 8, 2, 64, 2, 32, 4, kUnknownVgprsPerSIMD},   // GDT_TAHITI_XT
-    {2, 10, 1, 8, 2, 64, 2, 16, 4, kUnknownVgprsPerSIMD},   // GDT_PITCAIRN_PRO
-    {2, 10, 1, 8, 2, 64, 2, 20, 4, kUnknownVgprsPerSIMD},   // GDT_PITCAIRN_XT
-    {1, 10, 1, 8, 1, 64, 2, 8, 4, kUnknownVgprsPerSIMD},    // GDT_CAPEVERDE_PRO
-    {1, 10, 1, 8, 1, 64, 2, 10, 4, kUnknownVgprsPerSIMD},   // GDT_CAPEVERDE_XT
-    {1, 10, 1, 8, 1, 64, 1, 6, 4, kUnknownVgprsPerSIMD},    // GDT_OLAND
-    {1, 10, 1, 8, 1, 64, 1, 5, 4, kUnknownVgprsPerSIMD},    // GDT_HAINAN
-    {2, 10, 1, 8, 2, 64, 1, 14, 4, kUnknownVgprsPerSIMD},   // GDT_BONAIRE
-    {4, 10, 1, 8, 4, 64, 1, 44, 4, kUnknownVgprsPerSIMD},   // GDT_HAWAII
-    {1, 10, 1, 8, 1, 64, 1, 2, 4, kUnknownVgprsPerSIMD},    // GDT_KALINDI
-    {1, 10, 1, 8, 1, 64, 1, 8, 4, kUnknownVgprsPerSIMD},    // GDT_SPECTRE
-    {1, 10, 1, 8, 1, 64, 1, 4, 4, kUnknownVgprsPerSIMD},    // GDT_SPECTRE_SL
-    {1, 10, 1, 8, 1, 64, 1, 6, 4, kUnknownVgprsPerSIMD},    // GDT_SPECTRE_LITE
-    {1, 10, 1, 8, 1, 64, 1, 3, 4, kUnknownVgprsPerSIMD},    // GDT_SPOOKY
-    {1, 10, 1, 8, 1, 64, 1, 6, 4, kUnknownVgprsPerSIMD},    // GDT_ICELAND
-    {4, 10, 1, 8, 4, 64, 1, 32, 4, kUnknownVgprsPerSIMD},   // GDT_TONGA
-    {1, 10, 1, 8, 1, 64, 1, 8, 4, kUnknownVgprsPerSIMD},    // GDT_CARRIZO
-    {1, 10, 1, 8, 1, 64, 1, 3, 4, kUnknownVgprsPerSIMD},    // GDT_CARRIZO_EM
-    {4, 10, 1, 8, 4, 64, 1, 64, 4, kUnknownVgprsPerSIMD},   // GDT_FIJI
-    {1, 10, 1, 8, 1, 64, 1, 3, 4, kUnknownVgprsPerSIMD},    // GDT_STONEY
-    {4, 8, 1, 8, 4, 64, 1, 36, 4, kUnknownVgprsPerSIMD},    // GDT_ELLESMERE
-    {2, 8, 1, 8, 2, 64, 1, 16, 4, kUnknownVgprsPerSIMD},    // GDT_BAFFIN
-    {2, 8, 1, 8, 2, 64, 1, 10, 4, kUnknownVgprsPerSIMD},    // GDT_GFX8_0_4
-    {4, 8, 1, 8, 4, 64, 1, 24, 4, kUnknownVgprsPerSIMD},    // GDT_VEGAM1
-    {4, 8, 1, 8, 4, 64, 1, 20, 4, kUnknownVgprsPerSIMD},    // GDT_VEGAM2
-    {4, 10, 1, 8, 4, 64, 1, 64, 4, kUnknownVgprsPerSIMD},   // GDT_GFX9_0_0
-    {1, 10, 1, 8, 1, 64, 1, 11, 4, kUnknownVgprsPerSIMD},   // GDT_GFX9_0_2
-    {4, 10, 1, 8, 4, 64, 1, 20, 4, kUnknownVgprsPerSIMD},   // GDT_GFX9_0_4
-    {4, 10, 1, 8, 4, 64, 1, 64, 4, kUnknownVgprsPerSIMD},   // GDT_GFX9_0_6
-    {1, 10, 1, 8, 1, 64, 1, 8, 4, kUnknownVgprsPerSIMD},    // GDT_GFX9_0_9
-    {8, 10, 1, 8, 0, 64, 1, 112, 4, kUnknownVgprsPerSIMD},  // GDT_GFX9_0_A
-    {1, 10, 1, 8, 1, 64, 1, 8, 4, kUnknownVgprsPerSIMD},    // GDT_GFX9_0_C
-    {4, 10, 1, 8, 0, 64, 1, 40, 4, kUnknownVgprsPerSIMD},   // GDT_GFX9_4_2
-    {2, 20, 1, 16, 4, 64, 2, 40, 2, 1024},                  // GDT_GFX10_1_0
-    {2, 20, 1, 16, 4, 64, 2, 36, 2, 1024},                  // GDT_GFX10_1_0_XL
-    {1, 20, 1, 16, 4, 64, 2, 20, 2, 1024},                  // GDT_GFX10_1_2
-    {1, 20, 1, 16, 4, 64, 2, 22, 2, 1024},                  // GDT_GFX10_1_2_X
-    {1, 20, 1, 16, 4, 64, 2, 24, 2, 1024},                  // GDT_GFX10_1_2_XT
-    {2, 20, 1, 16, 4, 64, 2, 40, 2, 1024},                  // GDT_GFX10_1_1
-    {3, 16, 1, 16, 4, 64, 2, 60, 2, 1024},                  // GDT_GFX10_3_0
-    {4, 16, 1, 16, 4, 64, 2, 72, 2, 1024},                  // GDT_GFX10_3_0_XT
-    {4, 16, 1, 16, 4, 64, 2, 80, 2, 1024},                  // GDT_GFX10_3_0_XTX
-    {2, 16, 1, 16, 2, 64, 2, 40, 2, 1024},                  // GDT_GFX10_3_1
-    {2, 16, 1, 16, 2, 64, 2, 28, 2, 1024},                  // GDT_GFX10_3_2
-    {2, 16, 1, 16, 2, 64, 2, 32, 2, 1024},                  // GDT_GFX10_3_2_XT
-    {1, 16, 1, 16, 4, 32, 1, 8, 2, 1024},                   // GDT_GFX10_3_3
-    {1, 16, 1, 16, 2, 64, 2, 16, 2, 1024},                  // GDT_GFX10_3_4
-    {1, 16, 1, 16, 1, 64, 2, 12, 2, 1024},                  // GDT_GFX10_3_5
-    {1, 16, 1, 16, 1, 64, 1, 2, 2, 1024},                   // GDT_GFX10_3_6
-    {6, 16, 1, 8, 12, 64, 2, 96, 2, 1536},                  // GDT_GFX11_0_0
-    {6, 16, 1, 8, 12, 64, 2, 84, 2, 1536},                  // GDT_GFX11_0_0_XT
-    {6, 16, 1, 8, 12, 64, 2, 80, 2, 1536},                  // GDT_GFX11_0_0_GRE
-    {6, 16, 1, 8, 12, 64, 2, 72, 2, 1536},                  // GDT_GFX11_0_0_M
-    {3, 16, 1, 8, 6, 64, 2, 54, 2, 1536},                   // GDT_GFX11_0_1
-    {3, 16, 1, 8, 6, 64, 2, 60, 2, 1536},                   // GDT_GFX11_0_1_XT
-    {2, 16, 1, 8, 4, 64, 2, 28, 2, 1024},                   // GDT_GFX11_0_2
-    {2, 16, 1, 8, 4, 64, 2, 32, 2, 1024},                   // GDT_GFX11_0_2_XT
-    {1, 16, 1, 8, 2, 64, 2, 12, 2, 1024},                   // GDT_GFX11_0_3
-    {1, 16, 1, 8, 2, 64, 2, 8, 2, 1024},                    // GDT_GFX11_0_3A
-    {1, 16, 1, 8, 1, 64, 1, 4, 2, 1024},                    // GDT_GFX11_0_3B
-    {1, 16, 1, 8, 1, 64, 2, 16, 2, 1024},                   // GDT_GFX11_5_0
-    {2, 16, 1, 8, 1, 64, 2, 40, 2, 1536},                   // GDT_GFX11_5_1
-    {1, 16, 1, 8, 1, 64, 2, 8, 2, 1024},                    // GDT_GFX11_5_2
-    {1, 16, 1, 8, 1, 64, 1, 4, 2, 1024},                    // GDT_GFX11_5_3
-    {1, 16, 1, 8, 1, 64, 1, 2, 2, 1024},                    // GDT_GFX11_5_3A
-    {2, 16, 1, 8, 1, 64, 2, 28, 2, 1536},                   // GDT_GFX12_0_0
-    {2, 16, 1, 8, 1, 64, 2, 32, 2, 1536},                   // GDT_GFX12_0_0_XT
-    {3, 16, 1, 8, 1, 64, 2, 48, 2, 1536},                   // GDT_GFX12_0_1_GRE
-    {4, 16, 1, 8, 1, 64, 2, 56, 2, 1536},                   // GDT_GFX12_0_1
-    {4, 16, 1, 8, 1, 64, 2, 64, 2, 1536},                   // GDT_GFX12_0_1_XT
-};
+const GDT_DeviceInfo &GetDeviceInfoForAsicType(const GDT_HW_ASIC_TYPE asic_type)
+{
+    static constexpr GDT_DeviceInfo kDeviceInfo[] = {
+        {2, 10, 1, 8, 2, 64, 2, 28, 4, kUnknownVgprsPerSIMD}, // GDT_TAHITI_PRO
+        {2, 10, 1, 8, 2, 64, 2, 32, 4, kUnknownVgprsPerSIMD}, // GDT_TAHITI_XT
+        {2, 10, 1, 8, 2, 64, 2, 16, 4, kUnknownVgprsPerSIMD}, // GDT_PITCAIRN_PRO
+        {2, 10, 1, 8, 2, 64, 2, 20, 4, kUnknownVgprsPerSIMD}, // GDT_PITCAIRN_XT
+        {1, 10, 1, 8, 1, 64, 2, 8, 4, kUnknownVgprsPerSIMD},  // GDT_CAPEVERDE_PRO
+        {1, 10, 1, 8, 1, 64, 2, 10, 4, kUnknownVgprsPerSIMD}, // GDT_CAPEVERDE_XT
+        {1, 10, 1, 8, 1, 64, 1, 6, 4, kUnknownVgprsPerSIMD},  // GDT_OLAND
+        {1, 10, 1, 8, 1, 64, 1, 5, 4, kUnknownVgprsPerSIMD},  // GDT_HAINAN
+        {2, 10, 1, 8, 2, 64, 1, 14, 4, kUnknownVgprsPerSIMD}, // GDT_BONAIRE
+        {4, 10, 1, 8, 4, 64, 1, 44, 4, kUnknownVgprsPerSIMD}, // GDT_HAWAII
+        {1, 10, 1, 8, 1, 64, 1, 2, 4, kUnknownVgprsPerSIMD},  // GDT_KALINDI
+        {1, 10, 1, 8, 1, 64, 1, 8, 4, kUnknownVgprsPerSIMD},  // GDT_SPECTRE
+        {1, 10, 1, 8, 1, 64, 1, 4, 4, kUnknownVgprsPerSIMD},  // GDT_SPECTRE_SL
+        {1, 10, 1, 8, 1, 64, 1, 6, 4, kUnknownVgprsPerSIMD},  // GDT_SPECTRE_LITE
+        {1, 10, 1, 8, 1, 64, 1, 3, 4, kUnknownVgprsPerSIMD},  // GDT_SPOOKY
+        {1, 10, 1, 8, 1, 64, 1, 6, 4, kUnknownVgprsPerSIMD},  // GDT_ICELAND
+        {4, 10, 1, 8, 4, 64, 1, 32, 4, kUnknownVgprsPerSIMD}, // GDT_TONGA
+        {1, 10, 1, 8, 1, 64, 1, 8, 4, kUnknownVgprsPerSIMD},  // GDT_CARRIZO
+        {1, 10, 1, 8, 1, 64, 1, 3, 4, kUnknownVgprsPerSIMD},  // GDT_CARRIZO_EM
+        {4, 10, 1, 8, 4, 64, 1, 64, 4, kUnknownVgprsPerSIMD}, // GDT_FIJI
+        {1, 10, 1, 8, 1, 64, 1, 3, 4, kUnknownVgprsPerSIMD},  // GDT_STONEY
+        {4, 8, 1, 8, 4, 64, 1, 36, 4, kUnknownVgprsPerSIMD},  // GDT_ELLESMERE
+        {2, 8, 1, 8, 2, 64, 1, 16, 4, kUnknownVgprsPerSIMD},   // GDT_BAFFIN
+        {2, 8, 1, 8, 2, 64, 1, 10, 4, kUnknownVgprsPerSIMD},   // GDT_GFX8_0_4
+        {4, 8, 1, 8, 4, 64, 1, 24, 4, kUnknownVgprsPerSIMD},   // GDT_VEGAM1
+        {4, 8, 1, 8, 4, 64, 1, 20, 4, kUnknownVgprsPerSIMD},   // GDT_VEGAM2
+        {4, 10, 1, 8, 4, 64, 1, 64, 4, kUnknownVgprsPerSIMD},  // GDT_GFX9_0_0
+        {1, 10, 1, 8, 1, 64, 1, 11, 4, kUnknownVgprsPerSIMD},  // GDT_GFX9_0_2
+        {4, 10, 1, 8, 4, 64, 1, 20, 4, kUnknownVgprsPerSIMD},  // GDT_GFX9_0_4
+        {4, 10, 1, 8, 4, 64, 1, 64, 4, kUnknownVgprsPerSIMD},  // GDT_GFX9_0_6
+        {1, 10, 1, 8, 1, 64, 1, 8, 4, kUnknownVgprsPerSIMD},   // GDT_GFX9_0_9
+        {8, 10, 1, 8, 0, 64, 1, 112, 4, kUnknownVgprsPerSIMD}, // GDT_GFX9_0_A
+        {1, 10, 1, 8, 1, 64, 1, 8, 4, kUnknownVgprsPerSIMD},   // GDT_GFX9_0_C
+        {4, 10, 1, 8, 0, 64, 1, 40, 4, kUnknownVgprsPerSIMD},  // GDT_GFX9_4_2
+        {4, 10, 1, 8, 0, 64, 1, 36, 4, kUnknownVgprsPerSIMD},  // GDT_GFX9_5_0
+        {2, 20, 1, 16, 4, 64, 2, 40, 2, 1024},                 // GDT_GFX10_1_0
+        {2, 20, 1, 16, 4, 64, 2, 36, 2, 1024},                 // GDT_GFX10_1_0_XL
+        {1, 20, 1, 16, 4, 64, 2, 20, 2, 1024},                 // GDT_GFX10_1_2
+        {1, 20, 1, 16, 4, 64, 2, 22, 2, 1024},                 // GDT_GFX10_1_2_X
+        {1, 20, 1, 16, 4, 64, 2, 24, 2, 1024},                 // GDT_GFX10_1_2_XT
+        {2, 20, 1, 16, 4, 64, 2, 40, 2, 1024},                 // GDT_GFX10_1_1
+        {3, 16, 1, 16, 4, 64, 2, 60, 2, 1024},                 // GDT_GFX10_3_0
+        {4, 16, 1, 16, 4, 64, 2, 72, 2, 1024},                 // GDT_GFX10_3_0_XT
+        {4, 16, 1, 16, 4, 64, 2, 80, 2, 1024},                 // GDT_GFX10_3_0_XTX
+        {2, 16, 1, 16, 2, 64, 2, 40, 2, 1024},                 // GDT_GFX10_3_1
+        {2, 16, 1, 16, 2, 64, 2, 28, 2, 1024},                 // GDT_GFX10_3_2
+        {2, 16, 1, 16, 2, 64, 2, 32, 2, 1024},                 // GDT_GFX10_3_2_XT
+        {1, 16, 1, 16, 4, 32, 1, 8, 2, 1024},                  // GDT_GFX10_3_3
+        {1, 16, 1, 16, 2, 64, 2, 16, 2, 1024},                 // GDT_GFX10_3_4
+        {1, 16, 1, 16, 1, 64, 2, 12, 2, 1024},                 // GDT_GFX10_3_5
+        {1, 16, 1, 16, 1, 64, 1, 2, 2, 1024},                  // GDT_GFX10_3_6
+        {6, 16, 1, 8, 12, 64, 2, 96, 2, 1536},                 // GDT_GFX11_0_0
+        {6, 16, 1, 8, 12, 64, 2, 84, 2, 1536},                 // GDT_GFX11_0_0_XT
+        {6, 16, 1, 8, 12, 64, 2, 80, 2, 1536},                 // GDT_GFX11_0_0_GRE
+        {6, 16, 1, 8, 12, 64, 2, 72, 2, 1536},                 // GDT_GFX11_0_0_M
+        {3, 16, 1, 8, 6, 64, 2, 54, 2, 1536},                  // GDT_GFX11_0_1
+        {3, 16, 1, 8, 6, 64, 2, 60, 2, 1536},                  // GDT_GFX11_0_1_XT
+        {2, 16, 1, 8, 4, 64, 2, 28, 2, 1024},                  // GDT_GFX11_0_2
+        {2, 16, 1, 8, 4, 64, 2, 32, 2, 1024},                  // GDT_GFX11_0_2_XT
+        {1, 16, 1, 8, 2, 64, 2, 12, 2, 1024},                  // GDT_GFX11_0_3
+        {1, 16, 1, 8, 2, 64, 2, 8, 2, 1024},                   // GDT_GFX11_0_3A
+        {1, 16, 1, 8, 1, 64, 1, 4, 2, 1024},                   // GDT_GFX11_0_3B
+        {1, 16, 1, 8, 1, 64, 2, 16, 2, 1024},                  // GDT_GFX11_5_0
+        {2, 16, 1, 8, 1, 64, 2, 40, 2, 1536},                  // GDT_GFX11_5_1
+        {1, 16, 1, 8, 1, 64, 2, 8, 2, 1024},                   // GDT_GFX11_5_2
+        {1, 16, 1, 8, 1, 64, 1, 4, 2, 1024},                   // GDT_GFX11_5_3
+        {1, 16, 1, 8, 1, 64, 1, 2, 2, 1024},                   // GDT_GFX11_5_3A
+        {2, 16, 1, 8, 1, 64, 2, 28, 2, 1536}, // GDT_GFX12_0_0
+        {2, 16, 1, 8, 1, 64, 2, 32, 2, 1536}, // GDT_GFX12_0_0_XT
+        {3, 16, 1, 8, 1, 64, 2, 48, 2, 1536}, // GDT_GFX12_0_1_GRE
+        {4, 16, 1, 8, 1, 64, 2, 56, 2, 1536}, // GDT_GFX12_0_1
+        {4, 16, 1, 8, 1, 64, 2, 64, 2, 1536}, // GDT_GFX12_0_1_XT
+    };
+    static_assert(std::size(kDeviceInfo) == GDT_LAST, "kDeviceInfo needs to have the same number of entries as the GDT_HW_ASIC_TYPE enum.");
 
-static_assert(sizeof(gs_deviceInfo) / sizeof(GDT_DeviceInfo) == GDT_LAST,
-              "gs_deviceInfo needs to have the same number of entries as the GDT_HW_ASIC_TYPE enum.");
-
-size_t gs_cardInfoSize   = sizeof(gs_cardInfo) / sizeof(GDT_GfxCardInfo);
-size_t gs_deviceInfoSize = sizeof(gs_deviceInfo) / sizeof(GDT_DeviceInfo);
+    assert(asic_type > GDT_ASIC_TYPE_NONE && asic_type < GDT_LAST);
+    return kDeviceInfo[static_cast<size_t>(asic_type)];
+}

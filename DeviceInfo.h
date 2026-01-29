@@ -1,16 +1,16 @@
 //==============================================================================
-/// Copyright (c) 2010-2025 Advanced Micro Devices, Inc. All rights reserved.
+/// Copyright (c) 2010-2026 Advanced Micro Devices, Inc. All rights reserved.
 /// @author AMD Developer Tools Team
 /// @file
-/// @brief Device info table.
+/// @brief Device info table
 //==============================================================================
 
 #ifndef DEVICE_INFO_DEVICE_INFO_H_
 #define DEVICE_INFO_DEVICE_INFO_H_
 
 #include <cstddef>
-
-#define REVISION_ID_ANY 0xFFFFFFFF  ///< Ignore revision id when looking up device Id.
+#include <cstdint>
+#include <span>
 
 /// Specifies the Asic type.
 enum GDT_HW_ASIC_TYPE
@@ -38,56 +38,57 @@ enum GDT_HW_ASIC_TYPE
     GDT_FIJI,                 ///< FIJI GPU
     GDT_STONEY,               ///< STONEY APU
     GDT_ELLESMERE,            ///< ELLESMERE GPU
-    GDT_BAFFIN,               ///< BAFFIN GPU
-    GDT_GFX8_0_4,             ///< GFX8_0_4 GPU
-    GDT_VEGAM1,               ///< VegaM GPU
-    GDT_VEGAM2,               ///< VegaM GPU
-    GDT_GFX9_0_0,             ///< GFX9_0_0 GPU
-    GDT_GFX9_0_2,             ///< GFX9_0_2 APU
-    GDT_GFX9_0_4,             ///< GFX9_0_4 GPU
-    GDT_GFX9_0_6,             ///< GFX9_0_6 GPU
-    GDT_GFX9_0_9,             ///< GFX9_0_9 GPU
-    GDT_GFX9_0_A,             ///< GFX9_0_A GPU
-    GDT_GFX9_0_C,             ///< GfX9_0_C GPU
-    GDT_GFX9_4_2,             ///< GfX9_4_2 GPU
-    GDT_GFX10_1_0,            ///< GFX10_1_0 GPU
-    GDT_GFX10_1_0_XL,         ///< GFX10_1_0_XL GPU
-    GDT_GFX10_1_2,            ///< GFX10_1_2 GPU
-    GDT_GFX10_1_2_X,          ///< GFX10_1_2 GPU
-    GDT_GFX10_1_2_XT,         ///< GFX10_1_2_XT GPU
-    GDT_GFX10_1_1,            ///< GFX10_1_1 GPU
-    GDT_GFX10_3_0,            ///< GFX10_3_0 GPU
-    GDT_GFX10_3_0_XT,         ///< GFX10_3_0_XT GPU
-    GDT_GFX10_3_0_XTX,        ///< GFX10_3_0_XTX GPU
-    GDT_GFX10_3_1,            ///< GFX10_3_1 GPU
-    GDT_GFX10_3_2,            ///< GFX10_3_2 GPU
-    GDT_GFX10_3_2_XT,         ///< GFX10_3_2_XT GPU
-    GDT_GFX10_3_3,            ///< GFX10_3_3 APU
-    GDT_GFX10_3_4,            ///< GFX10_3_4 GPU
-    GDT_GFX10_3_5,            ///< GFX10_3_5 APU
-    GDT_GFX10_3_6,            ///< GFX10_3_6 APU
-    GDT_GFX11_0_0,            ///< GFX11_0_0 GPU
-    GDT_GFX11_0_0_XT,         ///< GFX11_0_0_XT GPU
-    GDT_GFX11_0_0_GRE,        ///< GFX11_0_0_GRE GPU
-    GDT_GFX11_0_0_M,          ///< GFX11_0_0_M GPU
-    GDT_GFX11_0_1,            ///< GFX11_0_1 GPU
-    GDT_GFX11_0_1_XT,         ///< GFX11_0_1_XT GPU
-    GDT_GFX11_0_2,            ///< GFX11_0_2 GPU
-    GDT_GFX11_0_2_XT,         ///< GFX11_0_2_XT GPU
-    GDT_GFX11_0_3,            ///< GFX11_0_3 APU
-    GDT_GFX11_0_3A,           ///< GFX11_0_3A APU
-    GDT_GFX11_0_3B,           ///< GFX11_0_3B APU
-    GDT_GFX11_5_0,            ///< GFX11_5_0 APU
-    GDT_GFX11_5_1,            ///< GFX11_5_1 APU
-    GDT_GFX11_5_2,            ///< GFX11_5_2 APU
-    GDT_GFX11_5_3,            ///< GFX11_5_3 APU
-    GDT_GFX11_5_3A,           ///< GFX11_5_3A APU
-    GDT_GFX12_0_0,            ///< GFX12_0_0 GPU
-    GDT_GFX12_0_0_XT,         ///< GFX12_0_0_XT GPU
-    GDT_GFX12_0_1_GRE,        ///< GDT_GFX12_0_0_GRE GPU
-    GDT_GFX12_0_1,            ///< GFX12_0_1 GPU
-    GDT_GFX12_0_1_XT,         ///< GFX12_0_1_XT GPU
-    GDT_LAST                  ///< Last
+    GDT_BAFFIN,    ///< BAFFIN GPU
+    GDT_GFX8_0_4,  ///< GFX8_0_4 GPU
+    GDT_VEGAM1,    ///< VegaM GPU
+    GDT_VEGAM2,    ///< VegaM GPU
+    GDT_GFX9_0_0,  ///< GFX9_0_0 GPU
+    GDT_GFX9_0_2,  ///< GFX9_0_2 APU
+    GDT_GFX9_0_4,  ///< GFX9_0_4 GPU
+    GDT_GFX9_0_6,  ///< GFX9_0_6 GPU
+    GDT_GFX9_0_9,  ///< GFX9_0_9 GPU
+    GDT_GFX9_0_A,  ///< GFX9_0_A GPU
+    GDT_GFX9_0_C,  ///< GfX9_0_C GPU
+    GDT_GFX9_4_2,  ///< GfX9_4_2 GPU
+    GDT_GFX9_5_0,  ///< Gfx9_5_0 GPU
+    GDT_GFX10_1_0,     ///< GFX10_1_0 GPU
+    GDT_GFX10_1_0_XL,  ///< GFX10_1_0_XL GPU
+    GDT_GFX10_1_2,     ///< GFX10_1_2 GPU
+    GDT_GFX10_1_2_X,   ///< GFX10_1_2 GPU
+    GDT_GFX10_1_2_XT,  ///< GFX10_1_2_XT GPU
+    GDT_GFX10_1_1,     ///< GFX10_1_1 GPU
+    GDT_GFX10_3_0,     ///< GFX10_3_0 GPU
+    GDT_GFX10_3_0_XT,  ///< GFX10_3_0_XT GPU
+    GDT_GFX10_3_0_XTX, ///< GFX10_3_0_XTX GPU
+    GDT_GFX10_3_1,     ///< GFX10_3_1 GPU
+    GDT_GFX10_3_2,     ///< GFX10_3_2 GPU
+    GDT_GFX10_3_2_XT,  ///< GFX10_3_2_XT GPU
+    GDT_GFX10_3_3,     ///< GFX10_3_3 APU
+    GDT_GFX10_3_4,     ///< GFX10_3_4 GPU
+    GDT_GFX10_3_5,     ///< GFX10_3_5 APU
+    GDT_GFX10_3_6,     ///< GFX10_3_6 APU
+    GDT_GFX11_0_0,     ///< GFX11_0_0 GPU
+    GDT_GFX11_0_0_XT,  ///< GFX11_0_0_XT GPU
+    GDT_GFX11_0_0_GRE, ///< GFX11_0_0_GRE GPU
+    GDT_GFX11_0_0_M,   ///< GFX11_0_0_M GPU
+    GDT_GFX11_0_1,     ///< GFX11_0_1 GPU
+    GDT_GFX11_0_1_XT,  ///< GFX11_0_1_XT GPU
+    GDT_GFX11_0_2,     ///< GFX11_0_2 GPU
+    GDT_GFX11_0_2_XT,  ///< GFX11_0_2_XT GPU
+    GDT_GFX11_0_3,     ///< GFX11_0_3 APU
+    GDT_GFX11_0_3A,    ///< GFX11_0_3A APU
+    GDT_GFX11_0_3B,    ///< GFX11_0_3B APU
+    GDT_GFX11_5_0,     ///< GFX11_5_0 APU
+    GDT_GFX11_5_1,     ///< GFX11_5_1 APU
+    GDT_GFX11_5_2,     ///< GFX11_5_2 APU
+    GDT_GFX11_5_3,     ///< GFX11_5_3 APU
+    GDT_GFX11_5_3A,    ///< GFX11_5_3A APU
+    GDT_GFX12_0_0,     ///< GFX12_0_0 GPU
+    GDT_GFX12_0_0_XT,  ///< GFX12_0_0_XT GPU
+    GDT_GFX12_0_1_GRE, ///< GDT_GFX12_0_0_GRE GPU
+    GDT_GFX12_0_1,     ///< GFX12_0_1 GPU
+    GDT_GFX12_0_1_XT,  ///< GFX12_0_1_XT GPU
+    GDT_LAST           ///< Last
 };
 
 /// Specifies the hardware vendor or generation.
@@ -108,6 +109,7 @@ enum GDT_HW_GENERATION
     GDT_HW_GENERATION_CDNA2,                                         ///< MI-200
     GDT_HW_GENERATION_CDNA3,                                         ///< MI-300
     GDT_HW_GENERATION_GFX12,                                         ///< GFX IP 12
+    GDT_HW_GENERATION_CDNA4,                                         ///< MI-350
     GDT_HW_GENERATION_LAST
 };
 
@@ -115,8 +117,8 @@ enum GDT_HW_GENERATION
 struct GDT_GfxCardInfo
 {
     GDT_HW_ASIC_TYPE  m_asicType;         ///< ASIC type, which is also the index to gs_deviceInfo table.
-    size_t            m_deviceID;         ///< Numeric device id.
-    size_t            m_revID;            ///< Numeric revision id.
+    uint32_t          m_deviceID;         ///< Numeric device id.
+    uint32_t          m_revID;            ///< Numeric revision id.
     GDT_HW_GENERATION m_generation;       ///< Hardware generation.
     bool              m_bAPU;             ///< Flag indicating whether or not the device is an APU.
     const char*       m_szCALName;        ///< CAL name.
@@ -126,45 +128,44 @@ struct GDT_GfxCardInfo
 /// Device info.
 struct GDT_DeviceInfo
 {
-    size_t m_nNumShaderEngines;  ///< Number of shader engines.
-    size_t m_nMaxWavePerSIMD;    ///< Number of wave slots per SIMD.
-    size_t m_suClocksPrim;       ///< Number of clocks it takes to process a primitive.
-    size_t m_nNumSQMaxCounters;  ///< Max number of SQ counters.
-    size_t m_nNumPrimPipes;      ///< Number of primitive pipes.
-    size_t m_nWaveSize;          ///< Wavefront size.
-    size_t m_nNumSHPerSE;        ///< Number of shader array per Shader Engine.
-    size_t m_nNumCUs;            ///< Number of Compute Units
-    size_t m_nNumSIMDPerCU;      ///< Number of SIMDs per Compute unit.
-    size_t m_nNumVGPRPerSIMD;    ///< Number of VGPRs per SIMD.
+    uint8_t m_nNumShaderEngines; ///< Number of shader engines.
+    uint8_t m_nMaxWavePerSIMD;   ///< Number of wave slots per SIMD.
+    uint8_t m_suClocksPrim;      ///< Number of clocks it takes to process a primitive.
+    uint8_t m_nNumSQMaxCounters; ///< Max number of SQ counters.
+    uint8_t m_nNumPrimPipes;     ///< Number of primitive pipes.
+    uint8_t m_nWaveSize;         ///< Wavefront size.
+    uint8_t m_nNumSHPerSE;       ///< Number of shader array per Shader Engine.
+    uint8_t m_nNumCUs;           ///< Number of Compute Units
+    uint8_t m_nNumSIMDPerCU;     ///< Number of SIMDs per Compute unit.
+    uint16_t m_nNumVGPRPerSIMD;  ///< Number of VGPRs per SIMD.
 
     /// Get total number of SIMDs.
-    [[nodiscard]] size_t numberSIMDs() const
+    [[nodiscard]] uint32_t numberSIMDs() const
     {
         return m_nNumSIMDPerCU * m_nNumCUs;
     }
 
     /// Get total number of shader arrays.
-    [[nodiscard]] size_t numberSHs() const
+    [[nodiscard]] uint32_t numberSHs() const
     {
         return m_nNumSHPerSE * m_nNumShaderEngines;
     }
 
     /// Get total number of compute units.
-    [[nodiscard]] size_t numberCUs() const
+    [[nodiscard]] uint32_t numberCUs() const
     {
         return m_nNumCUs;
     }
 
     /// Get total number of VGPRs.
-    [[nodiscard]] size_t numberVGPRs() const
+    [[nodiscard]] uint32_t numberVGPRs() const
     {
         return numberSIMDs() * m_nNumVGPRPerSIMD;
     }
 };
 
-extern GDT_GfxCardInfo gs_cardInfo[];
-extern GDT_DeviceInfo  gs_deviceInfo[];
-extern size_t          gs_cardInfoSize;
-extern size_t          gs_deviceInfoSize;
+extern const std::span<const GDT_GfxCardInfo> gs_cardInfo;
+
+const GDT_DeviceInfo &GetDeviceInfoForAsicType(const GDT_HW_ASIC_TYPE asic_type);
 
 #endif
