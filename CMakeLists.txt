@@ -1,4 +1,4 @@
-## Copyright (C) 2025-2026 Advanced Micro Devices, Inc. All rights reserved. ##
+#/ Copyright (C) Advanced Micro Devices, Inc. All rights reserved.
 
 cmake_minimum_required(VERSION 3.25)
 
@@ -8,16 +8,19 @@ add_library(device_info STATIC)
 add_library(AMD::device_info ALIAS device_info)
 target_sources(device_info
     PRIVATE
-        DeviceInfo.cpp
-        DeviceInfoUtils.cpp
+        device_info.cpp
     PUBLIC
         FILE_SET public_headers
         TYPE "HEADERS"
         BASE_DIRS .
         FILES
-            DeviceInfo.h
-            DeviceInfoUtils.h
+            device_info.hpp
 )
+
+if (PROJECT_IS_TOP_LEVEL)
+    # Used to verify that all headers in a target's PUBLIC and INTERFACE header sets can be included on their own.
+    set_target_properties(device_info PROPERTIES VERIFY_INTERFACE_HEADER_SETS ON)
+endif()
 
 target_compile_features(device_info PUBLIC cxx_std_20)
 
