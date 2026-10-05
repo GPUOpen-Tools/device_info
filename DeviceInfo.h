@@ -60,6 +60,7 @@ enum GDT_HW_ASIC_TYPE
     GDT_GFX10_3_0,            ///< GFX10_3_0 GPU
     GDT_GFX10_3_1,            ///< GFX10_3_1 GPU
     GDT_GFX10_3_2,            ///< GFX10_3_2 GPU
+    GDT_GFX10_3_3,            ///< GFX10_3_3 APU
     GDT_GFX10_3_4,            ///< GFX10_3_4 GPU
     GDT_GFX10_3_5,            ///< GFX10_3_5 APU
     GDT_GFX11_0_0,            ///< GFX11_0_0 GPU
@@ -73,6 +74,7 @@ enum GDT_HW_ASIC_TYPE
     GDT_GFX11_5_3,            ///< GFX11_5_3 APU
     GDT_GFX12_0_0,            ///< GFX12_0_0 GPU
     GDT_GFX12_0_1,            ///< GFX12_0_1 GPU
+    GDT_GFX12_5_0,            ///< GFX12_5_0 GPU
     GDT_LAST                  ///< Last
 };
 
@@ -96,6 +98,7 @@ enum GDT_HW_GENERATION
     GDT_HW_GENERATION_CDNA3,                                         ///< MI-300
     GDT_HW_GENERATION_GFX12,                                         ///< GFX IP 12
     GDT_HW_GENERATION_CDNA4,                                         ///< MI-350
+    GDT_HW_GENERATION_CDNA5,                                         ///< MI-450
     GDT_HW_GENERATION_LAST
 };
 

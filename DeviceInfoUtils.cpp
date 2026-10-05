@@ -340,6 +340,7 @@ bool AMDTDeviceInfoUtils::GetHardwareGenerationDisplayName(GDT_HW_GENERATION gen
     static const std::string s_CDNA2_FAMILY_NAME   = "CDNA2";
     static const std::string s_CDNA3_FAMILY_NAME   = "CDNA3";
     static const std::string s_CDNA4_FAMILY_NAME   = "CDNA4";
+    static const std::string s_CDNA5_FAMILY_NAME   = "CDNA5";
 
     bool retVal = true;
 
@@ -395,6 +396,10 @@ bool AMDTDeviceInfoUtils::GetHardwareGenerationDisplayName(GDT_HW_GENERATION gen
 
         case GDT_HW_GENERATION_CDNA4:
             strGenerationDisplayName = s_CDNA4_FAMILY_NAME;
+            break;
+
+        case GDT_HW_GENERATION_CDNA5:
+            strGenerationDisplayName = s_CDNA5_FAMILY_NAME;
             break;
 
         default:
