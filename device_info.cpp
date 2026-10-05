@@ -1207,6 +1207,17 @@ namespace
             {kGfx11_5_1, 0x1586, 0xE2, kGfx11_5, true, "gfx1151", "AMD Radeon(TM) 8050S Graphics"},
             {kGfx11_5_1, 0x1586, 0xE3, kGfx11_5, true, "gfx1151", "AMD Radeon(TM) 8050S Graphics"},
 
+            {kGfx11_5_1, 0x1586, 0xCA, kGfx11_5, true, "gfx1151", "AMD Radeon(TM) 8065S Graphics"},
+            {kGfx11_5_1, 0x1586, 0xCB, kGfx11_5, true, "gfx1151", "AMD Radeon(TM) 8060S Graphics"},
+            {kGfx11_5_1, 0x1586, 0xCC, kGfx11_5, true, "gfx1151", "AMD Radeon(TM) 8050S Graphics"},
+            {kGfx11_5_1, 0x1586, 0xCD, kGfx11_5, true, "gfx1151", "AMD Radeon(TM) 8060S Graphics"},
+            {kGfx11_5_1, 0x1586, 0xCE, kGfx11_5, true, "gfx1151", "AMD Radeon(TM) 8050S Graphics"},
+            {kGfx11_5_1, 0x1586, 0xCF, kGfx11_5, true, "gfx1151", "AMD Radeon(TM) 8040S Graphics"},
+            {kGfx11_5_1, 0x1586, 0xDA, kGfx11_5, true, "gfx1151", "AMD Radeon(TM) 8065S Graphics"},
+            {kGfx11_5_1, 0x1586, 0xDB, kGfx11_5, true, "gfx1151", "AMD Radeon(TM) 8050S Graphics"},
+            {kGfx11_5_1, 0x1586, 0xDC, kGfx11_5, true, "gfx1151", "AMD Radeon(TM) 8050S Graphics"},
+            {kGfx11_5_1, 0x1586, 0xDD, kGfx11_5, true, "gfx1151", "AMD Radeon(TM) 8040S Graphics"},
+
             {kGfx11_5_2, 0x1114, 0x00, kGfx11_5, true, "gfx1152", "AMD Radeon(TM) Graphics"},
             {kGfx11_5_2, 0x1114, 0xC1, kGfx11_5, true, "gfx1152", "AMD Radeon(TM) Graphics"},
             {kGfx11_5_2, 0x1114, 0xC2, kGfx11_5, true, "gfx1152", "AMD Radeon(TM) 860M Graphics"},
@@ -1368,78 +1379,726 @@ namespace
 
     /// Device info for AMD GPUs, indexed by AsicType enum values.
     static constexpr auto kDeviceInfo = std::to_array<DeviceInfo>({
-        {2, 10, 1, 8, 2, 64, 2, 28, 4, kUnknownVgprsPerSIMD},  // kTahitiPro
-        {2, 10, 1, 8, 2, 64, 2, 32, 4, kUnknownVgprsPerSIMD},  // kTahitiXt
-        {2, 10, 1, 8, 2, 64, 2, 16, 4, kUnknownVgprsPerSIMD},  // kPitcairnPro
-        {2, 10, 1, 8, 2, 64, 2, 20, 4, kUnknownVgprsPerSIMD},  // kPitcairnXt
-        {1, 10, 1, 8, 1, 64, 2, 8, 4, kUnknownVgprsPerSIMD},   // kCapeVerdePro
-        {1, 10, 1, 8, 1, 64, 2, 10, 4, kUnknownVgprsPerSIMD},  // kCapeVerdeXt
-        {1, 10, 1, 8, 1, 64, 1, 6, 4, kUnknownVgprsPerSIMD},   // kOland
-        {1, 10, 1, 8, 1, 64, 1, 5, 4, kUnknownVgprsPerSIMD},   // kHainan
-        {2, 10, 1, 8, 2, 64, 1, 14, 4, kUnknownVgprsPerSIMD},  // kBonaire
-        {4, 10, 1, 8, 4, 64, 1, 44, 4, kUnknownVgprsPerSIMD},  // kHawaii
-        {1, 10, 1, 8, 1, 64, 1, 2, 4, kUnknownVgprsPerSIMD},   // kKalindi
-        {1, 10, 1, 8, 1, 64, 1, 8, 4, kUnknownVgprsPerSIMD},   // kSpectre
-        {1, 10, 1, 8, 1, 64, 1, 4, 4, kUnknownVgprsPerSIMD},   // kSpectreSl
-        {1, 10, 1, 8, 1, 64, 1, 6, 4, kUnknownVgprsPerSIMD},   // kSpectreLite
-        {1, 10, 1, 8, 1, 64, 1, 3, 4, kUnknownVgprsPerSIMD},   // kSpooky
-        {1, 10, 1, 8, 1, 64, 1, 6, 4, kUnknownVgprsPerSIMD},   // kIceland
-        {4, 10, 1, 8, 4, 64, 1, 32, 4, kUnknownVgprsPerSIMD},  // kTonga
-        {1, 10, 1, 8, 1, 64, 1, 8, 4, kUnknownVgprsPerSIMD},   // kCarrizo
-        {1, 10, 1, 8, 1, 64, 1, 3, 4, kUnknownVgprsPerSIMD},   // kCarrizo_EM
-        {4, 10, 1, 8, 4, 64, 1, 64, 4, kUnknownVgprsPerSIMD},  // kFiji
-        {1, 10, 1, 8, 1, 64, 1, 3, 4, kUnknownVgprsPerSIMD},   // kStoney
-        {4, 8, 1, 8, 4, 64, 1, 36, 4, kUnknownVgprsPerSIMD},   // kEllesmere
-        {2, 8, 1, 8, 2, 64, 1, 16, 4, kUnknownVgprsPerSIMD},    // kBaffin
-        {2, 8, 1, 8, 2, 64, 1, 10, 4, kUnknownVgprsPerSIMD},    // kGfx8_0_4
-        {4, 8, 1, 8, 4, 64, 1, 24, 4, kUnknownVgprsPerSIMD},    // kVegaM1
-        {4, 8, 1, 8, 4, 64, 1, 20, 4, kUnknownVgprsPerSIMD},    // kVegaM2
-        {4, 10, 1, 8, 4, 64, 1, 64, 4, kUnknownVgprsPerSIMD},   // kGfx9_0_0
-        {1, 10, 1, 8, 1, 64, 1, 11, 4, kUnknownVgprsPerSIMD},   // kGfx9_0_2
-        {4, 10, 1, 8, 4, 64, 1, 20, 4, kUnknownVgprsPerSIMD},   // kGfx9_0_4
-        {4, 10, 1, 8, 4, 64, 1, 64, 4, kUnknownVgprsPerSIMD},   // kGfx9_0_6
-        {1, 10, 1, 8, 1, 64, 1, 8, 4, kUnknownVgprsPerSIMD},    // kGfx9_0_9
-        {8, 10, 1, 8, 0, 64, 1, 112, 4, kUnknownVgprsPerSIMD},  // kGfx9_0_A
-        {1, 10, 1, 8, 1, 64, 1, 8, 4, kUnknownVgprsPerSIMD},    // kGfx9_0_C
-        {4, 10, 1, 8, 0, 64, 1, 40, 4, kUnknownVgprsPerSIMD},   // kGfx9_4_2
-        {4, 10, 1, 8, 0, 64, 1, 36, 4, kUnknownVgprsPerSIMD},   // kGfx9_5_0
-        {2, 20, 1, 16, 4, 64, 2, 40, 2, 1024},                  // kGfx10_1_0
-        {2, 20, 1, 16, 4, 64, 2, 36, 2, 1024},                  // kGfx10_1_0Xl
-        {1, 20, 1, 16, 4, 64, 2, 20, 2, 1024},                  // kGfx10_1_2
-        {1, 20, 1, 16, 4, 64, 2, 22, 2, 1024},                  // kGfx10_1_2X
-        {1, 20, 1, 16, 4, 64, 2, 24, 2, 1024},                  // kGfx10_1_2Xt
-        {2, 20, 1, 16, 4, 64, 2, 40, 2, 1024},                  // kGfx10_1_1
-        {3, 16, 1, 16, 4, 64, 2, 60, 2, 1024},                  // kGfx10_3_0
-        {4, 16, 1, 16, 4, 64, 2, 72, 2, 1024},                  // kGfx10_3_0Xt
-        {4, 16, 1, 16, 4, 64, 2, 80, 2, 1024},                  // kGfx10_3_0Xtx
-        {2, 16, 1, 16, 2, 64, 2, 40, 2, 1024},                  // kGfx10_3_1
-        {2, 16, 1, 16, 2, 64, 2, 28, 2, 1024},                  // kGfx10_3_2
-        {2, 16, 1, 16, 2, 64, 2, 32, 2, 1024},                  // kGfx10_3_2Xt
-        {1, 16, 1, 16, 4, 32, 1, 8, 2, 1024},                   // kGfx10_3_3
-        {1, 16, 1, 16, 2, 64, 2, 16, 2, 1024},                  // kGfx10_3_4
-        {1, 16, 1, 16, 1, 64, 2, 12, 2, 1024},                  // kGfx10_3_5
-        {1, 16, 1, 16, 1, 64, 1, 2, 2, 1024},                   // kGfx10_3_6
-        {6, 16, 1, 8, 12, 64, 2, 96, 2, 1536},                  // kGfx11_0_0
-        {6, 16, 1, 8, 12, 64, 2, 84, 2, 1536},                  // kGfx11_0_0Xt
-        {6, 16, 1, 8, 12, 64, 2, 80, 2, 1536},                  // kGfx11_0_0Gre
-        {6, 16, 1, 8, 12, 64, 2, 72, 2, 1536},                  // kGfx11_0_0M
-        {3, 16, 1, 8, 6, 64, 2, 54, 2, 1536},                   // kGfx11_0_1
-        {3, 16, 1, 8, 6, 64, 2, 60, 2, 1536},                   // kGfx11_0_1Xt
-        {2, 16, 1, 8, 4, 64, 2, 28, 2, 1024},                   // kGfx11_0_2
-        {2, 16, 1, 8, 4, 64, 2, 32, 2, 1024},                   // kGfx11_0_2Xt
-        {1, 16, 1, 8, 2, 64, 2, 12, 2, 1024},                   // kGfx11_0_3
-        {1, 16, 1, 8, 2, 64, 2, 8, 2, 1024},                    // kGfx11_0_3A
-        {1, 16, 1, 8, 1, 64, 1, 4, 2, 1024},                    // kGfx11_0_3B
-        {1, 16, 1, 8, 1, 64, 2, 16, 2, 1024},                   // kGfx11_5_0
-        {2, 16, 1, 8, 1, 64, 2, 40, 2, 1536},                   // kGfx11_5_1
-        {1, 16, 1, 8, 1, 64, 2, 8, 2, 1024},                    // kGfx11_5_2
-        {1, 16, 1, 8, 1, 64, 1, 4, 2, 1024},                    // kGfx11_5_3
-        {1, 16, 1, 8, 1, 64, 1, 2, 2, 1024},                    // kGfx11_5_3A
-        {2, 16, 1, 8, 1, 64, 2, 28, 2, 1536},  // kGfx12_0_0
-        {2, 16, 1, 8, 1, 64, 2, 32, 2, 1536},  // kGfx12_0_0Xt
-        {3, 16, 1, 8, 1, 64, 2, 48, 2, 1536},  // kGfx12_0_1Gre
-        {4, 16, 1, 8, 1, 64, 2, 56, 2, 1536},  // kGfx12_0_1
-        {4, 16, 1, 8, 1, 64, 2, 64, 2, 1536},  // kGfx12_0_1Xt
+        {.num_shader_engines   = 2,
+         .max_wave_per_simd    = 10,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 2,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 28,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kTahitiPro
+        {.num_shader_engines   = 2,
+         .max_wave_per_simd    = 10,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 2,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 32,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kTahitiXt
+        {.num_shader_engines   = 2,
+         .max_wave_per_simd    = 10,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 2,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 16,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kPitcairnPro
+        {.num_shader_engines   = 2,
+         .max_wave_per_simd    = 10,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 2,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 20,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kPitcairnXt
+        {.num_shader_engines   = 1,
+         .max_wave_per_simd    = 10,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 1,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 8,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kCapeVerdePro
+        {.num_shader_engines   = 1,
+         .max_wave_per_simd    = 10,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 1,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 10,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kCapeVerdeXt
+        {.num_shader_engines   = 1,
+         .max_wave_per_simd    = 10,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 1,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 6,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kOland
+        {.num_shader_engines   = 1,
+         .max_wave_per_simd    = 10,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 1,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 5,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kHainan
+        {.num_shader_engines   = 2,
+         .max_wave_per_simd    = 10,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 2,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 14,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kBonaire
+        {.num_shader_engines   = 4,
+         .max_wave_per_simd    = 10,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 4,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 44,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kHawaii
+        {.num_shader_engines   = 1,
+         .max_wave_per_simd    = 10,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 1,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 2,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kKalindi
+        {.num_shader_engines   = 1,
+         .max_wave_per_simd    = 10,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 1,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 8,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kSpectre
+        {.num_shader_engines   = 1,
+         .max_wave_per_simd    = 10,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 1,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 4,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kSpectreSl
+        {.num_shader_engines   = 1,
+         .max_wave_per_simd    = 10,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 1,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 6,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kSpectreLite
+        {.num_shader_engines   = 1,
+         .max_wave_per_simd    = 10,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 1,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 3,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kSpooky
+        {.num_shader_engines   = 1,
+         .max_wave_per_simd    = 10,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 1,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 6,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kIceland
+        {.num_shader_engines   = 4,
+         .max_wave_per_simd    = 10,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 4,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 32,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kTonga
+        {.num_shader_engines   = 1,
+         .max_wave_per_simd    = 10,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 1,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 8,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kCarrizo
+        {.num_shader_engines   = 1,
+         .max_wave_per_simd    = 10,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 1,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 3,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kCarrizo_EM
+        {.num_shader_engines   = 4,
+         .max_wave_per_simd    = 10,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 4,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 64,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kFiji
+        {.num_shader_engines   = 1,
+         .max_wave_per_simd    = 10,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 1,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 3,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kStoney
+        {.num_shader_engines   = 4,
+         .max_wave_per_simd    = 8,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 4,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 36,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kEllesmere
+        {.num_shader_engines   = 2,
+         .max_wave_per_simd    = 8,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 2,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 16,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kBaffin
+        {.num_shader_engines   = 2,
+         .max_wave_per_simd    = 8,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 2,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 10,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kGfx8_0_4
+        {.num_shader_engines   = 4,
+         .max_wave_per_simd    = 8,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 4,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 24,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kVegaM1
+        {.num_shader_engines   = 4,
+         .max_wave_per_simd    = 8,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 4,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 20,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kVegaM2
+        {.num_shader_engines   = 4,
+         .max_wave_per_simd    = 10,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 4,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 64,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kGfx9_0_0
+        {.num_shader_engines   = 1,
+         .max_wave_per_simd    = 10,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 1,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 11,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kGfx9_0_2
+        {.num_shader_engines   = 4,
+         .max_wave_per_simd    = 10,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 4,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 20,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kGfx9_0_4
+        {.num_shader_engines   = 4,
+         .max_wave_per_simd    = 10,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 4,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 64,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kGfx9_0_6
+        {.num_shader_engines   = 1,
+         .max_wave_per_simd    = 10,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 1,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 8,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kGfx9_0_9
+        {.num_shader_engines   = 8,
+         .max_wave_per_simd    = 10,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 0,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 112,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kGfx9_0_A
+        {.num_shader_engines   = 1,
+         .max_wave_per_simd    = 10,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 1,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 8,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kGfx9_0_C
+        {.num_shader_engines   = 4,
+         .max_wave_per_simd    = 10,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 0,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 40,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kGfx9_4_2
+        {.num_shader_engines   = 4,
+         .max_wave_per_simd    = 10,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 0,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 36,
+         .num_simd_per_cu      = 4,
+         .num_vgpr_per_simd    = kUnknownVgprsPerSIMD},  // kGfx9_5_0
+        {.num_shader_engines   = 2,
+         .max_wave_per_simd    = 20,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 16,
+         .num_prim_pipes       = 4,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 40,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1024},  // kGfx10_1_0
+        {.num_shader_engines   = 2,
+         .max_wave_per_simd    = 20,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 16,
+         .num_prim_pipes       = 4,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 36,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1024},  // kGfx10_1_0Xl
+        {.num_shader_engines   = 1,
+         .max_wave_per_simd    = 20,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 16,
+         .num_prim_pipes       = 4,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 20,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1024},  // kGfx10_1_2
+        {.num_shader_engines   = 1,
+         .max_wave_per_simd    = 20,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 16,
+         .num_prim_pipes       = 4,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 22,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1024},  // kGfx10_1_2X
+        {.num_shader_engines   = 1,
+         .max_wave_per_simd    = 20,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 16,
+         .num_prim_pipes       = 4,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 24,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1024},  // kGfx10_1_2Xt
+        {.num_shader_engines   = 2,
+         .max_wave_per_simd    = 20,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 16,
+         .num_prim_pipes       = 4,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 40,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1024},  // kGfx10_1_1
+        {.num_shader_engines   = 3,
+         .max_wave_per_simd    = 16,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 16,
+         .num_prim_pipes       = 4,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 60,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1024},  // kGfx10_3_0
+        {.num_shader_engines   = 4,
+         .max_wave_per_simd    = 16,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 16,
+         .num_prim_pipes       = 4,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 72,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1024},  // kGfx10_3_0Xt
+        {.num_shader_engines   = 4,
+         .max_wave_per_simd    = 16,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 16,
+         .num_prim_pipes       = 4,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 80,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1024},  // kGfx10_3_0Xtx
+        {.num_shader_engines   = 2,
+         .max_wave_per_simd    = 16,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 16,
+         .num_prim_pipes       = 2,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 40,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1024},  // kGfx10_3_1
+        {.num_shader_engines   = 2,
+         .max_wave_per_simd    = 16,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 16,
+         .num_prim_pipes       = 2,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 28,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1024},  // kGfx10_3_2
+        {.num_shader_engines   = 2,
+         .max_wave_per_simd    = 16,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 16,
+         .num_prim_pipes       = 2,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 32,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1024},  // kGfx10_3_2Xt
+        {.num_shader_engines   = 1,
+         .max_wave_per_simd    = 16,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 16,
+         .num_prim_pipes       = 4,
+         .wave_size            = 32,
+         .num_sh_per_se        = 1,
+         .num_cus              = 8,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1024},  // kGfx10_3_3
+        {.num_shader_engines   = 1,
+         .max_wave_per_simd    = 16,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 16,
+         .num_prim_pipes       = 2,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 16,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1024},  // kGfx10_3_4
+        {.num_shader_engines   = 1,
+         .max_wave_per_simd    = 16,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 16,
+         .num_prim_pipes       = 1,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 12,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1024},  // kGfx10_3_5
+        {.num_shader_engines   = 1,
+         .max_wave_per_simd    = 16,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 16,
+         .num_prim_pipes       = 1,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 2,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1024},  // kGfx10_3_6
+        {.num_shader_engines   = 6,
+         .max_wave_per_simd    = 16,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 12,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 96,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1536},  // kGfx11_0_0
+        {.num_shader_engines   = 6,
+         .max_wave_per_simd    = 16,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 12,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 84,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1536},  // kGfx11_0_0Xt
+        {.num_shader_engines   = 6,
+         .max_wave_per_simd    = 16,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 12,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 80,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1536},  // kGfx11_0_0Gre
+        {.num_shader_engines   = 6,
+         .max_wave_per_simd    = 16,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 12,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 72,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1536},  // kGfx11_0_0M
+        {.num_shader_engines   = 3,
+         .max_wave_per_simd    = 16,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 6,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 54,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1536},  // kGfx11_0_1
+        {.num_shader_engines   = 3,
+         .max_wave_per_simd    = 16,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 6,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 60,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1536},  // kGfx11_0_1Xt
+        {.num_shader_engines   = 2,
+         .max_wave_per_simd    = 16,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 4,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 28,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1024},  // kGfx11_0_2
+        {.num_shader_engines   = 2,
+         .max_wave_per_simd    = 16,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 4,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 32,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1024},  // kGfx11_0_2Xt
+        {.num_shader_engines   = 1,
+         .max_wave_per_simd    = 16,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 2,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 12,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1024},  // kGfx11_0_3
+        {.num_shader_engines   = 1,
+         .max_wave_per_simd    = 16,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 2,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 8,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1024},  // kGfx11_0_3A
+        {.num_shader_engines   = 1,
+         .max_wave_per_simd    = 16,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 1,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 4,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1024},  // kGfx11_0_3B
+        {.num_shader_engines   = 1,
+         .max_wave_per_simd    = 16,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 1,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 16,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1024},  // kGfx11_5_0
+        {.num_shader_engines   = 2,
+         .max_wave_per_simd    = 16,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 1,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 40,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1536},  // kGfx11_5_1
+        {.num_shader_engines   = 1,
+         .max_wave_per_simd    = 16,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 1,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 8,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1024},  // kGfx11_5_2
+        {.num_shader_engines   = 1,
+         .max_wave_per_simd    = 16,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 1,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 4,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1024},  // kGfx11_5_3
+        {.num_shader_engines   = 1,
+         .max_wave_per_simd    = 16,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 1,
+         .wave_size            = 64,
+         .num_sh_per_se        = 1,
+         .num_cus              = 2,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1024},  // kGfx11_5_3A
+        {.num_shader_engines   = 2,
+         .max_wave_per_simd    = 16,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 1,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 28,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1536},  // kGfx12_0_0
+        {.num_shader_engines   = 2,
+         .max_wave_per_simd    = 16,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 1,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 32,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1536},  // kGfx12_0_0Xt
+        {.num_shader_engines   = 3,
+         .max_wave_per_simd    = 16,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 1,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 48,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1536},  // kGfx12_0_1Gre
+        {.num_shader_engines   = 4,
+         .max_wave_per_simd    = 16,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 1,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 56,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1536},  // kGfx12_0_1
+        {.num_shader_engines   = 4,
+         .max_wave_per_simd    = 16,
+         .clocks_per_primitive = 1,
+         .num_sq_counters      = 8,
+         .num_prim_pipes       = 1,
+         .wave_size            = 64,
+         .num_sh_per_se        = 2,
+         .num_cus              = 64,
+         .num_simd_per_cu      = 2,
+         .num_vgpr_per_simd    = 1536},  // kGfx12_0_1Xt
     });
 
     [[nodiscard]] constexpr std::optional<DeviceInfo> GetDeviceInfoForAsicType(const AsicType asic_type) noexcept
@@ -1457,29 +2116,59 @@ namespace
         return std::nullopt;
     }
 
+    static_assert(
+        []() constexpr noexcept {
+            constexpr uint32_t kRevisions[] = {0xCA, 0xCB, 0xCC, 0xCD, 0xCE, 0xCF, 0xDA, 0xDB, 0xDC, 0xDD};
+            for (const uint32_t revision_id : kRevisions)
+            {
+                const auto card_info = GetCardInfoForDevice({device_info::kAmdVendorId, 0x1586, revision_id});
+                if (!card_info.has_value() || card_info->asic_type != device_info::AsicType::kGfx11_5_1 || card_info->generation != kGfx11_5 ||
+                    !card_info->is_apu)
+                {
+                    return false;
+                }
+
+                const auto device_info = GetDeviceInfoForAsicType(card_info->asic_type);
+                if (!device_info.has_value() || device_info->num_cus != 40)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }(),
+        "Device ID 0x1586 (revisions 0xCA-0xCF and 0xDA-0xDD) is not properly supported by GetCardInfoForDevice.");
+
     [[nodiscard]] constexpr std::optional<uint32_t> GetTotalLdsSizeInBytesImpl(const HwGeneration gen, const uint8_t num_cus) noexcept
     {
-        // Anything less than GFX9 is not supported.
-        if (gen < kGfx9) [[unlikely]]
+        constexpr uint32_t kKiB             = 1024;
+        uint32_t           lds_bytes_per_cu = 0;
+        switch (gen)
         {
+        case kGfx9:
+        case kGfx10:
+        case kGfx10_3:
+        case kGfx11:
+        case kGfx11_5:
+        case kGfx12:
+        case kCdna:
+        case kCdna2:
+        case kCdna3:
+            lds_bytes_per_cu = 64 * kKiB;
+            break;
+        case kCdna4:
+            lds_bytes_per_cu = 160 * kKiB;
+            break;
+        case kUndefinedGeneration:
+        case kNvidia:
+        case kIntel:
+        case kSouthernIsland:
+        case kSeaIsland:
+        case kVolcanicIsland:
+            [[fallthrough]];
+        [[unlikely]] default:
             return std::nullopt;
         }
-
-        static_assert(kCdna4 < kGfx11_5, "Update this check!");
-        if (gen == kCdna4)
-        {
-            constexpr uint32_t kLdsBytesPerCu = 160 * 1024;
-            return num_cus * kLdsBytesPerCu;
-        }
-
-        static_assert(kGfx11_5 > kGfx12, "Update this check!");
-        if (gen <= kGfx11_5)
-        {
-            constexpr uint32_t kLdsBytesPerCu = 64 * 1024;
-            return num_cus * kLdsBytesPerCu;
-        }
-
-        return std::nullopt;
+        return num_cus * lds_bytes_per_cu;
     }
 
     // Compile-time tests — one per HW generation, with an arbitrary CU count of 4.
@@ -1504,7 +2193,7 @@ namespace
     static_assert(GetTotalLdsSizeInBytesImpl(kGfx11, 4) == 4U * 64 * 1024);
     static_assert(GetTotalLdsSizeInBytesImpl(kGfx11_5, 4) == 4U * 64 * 1024);
 
-    // GFX12: 64 KiB/CU (kGfx12 < kGfx11_5 numerically, so it falls into the <= kGfx11_5 branch).
+    // GFX12: 64 KiB/CU.
     static_assert(GetTotalLdsSizeInBytesImpl(kGfx12, 4) == 4U * 64 * 1024);
 
     // CDNA4: 160 KiB/CU.

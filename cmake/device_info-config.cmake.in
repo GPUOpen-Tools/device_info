@@ -1,0 +1,6 @@
+# Copyright Advanced Micro Devices, Inc. All rights reserved.
+@PACKAGE_INIT@
+
+include("${CMAKE_CURRENT_LIST_DIR}/device_info-targets.cmake")
+
+check_required_components(device_info)
